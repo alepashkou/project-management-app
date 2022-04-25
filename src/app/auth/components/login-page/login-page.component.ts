@@ -6,9 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  title = 'LOGIN';
-  public isAuthenticated = false;
-  public logout(): void {
-    // todo
-  }
+
 }

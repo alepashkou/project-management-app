@@ -10,3 +10,7 @@ export const loginSuccess = createAction(
   '[Auth] Login Success',
   props<{ authInfo: AuthInfo }>()
 );
+
+export const loginError = createAction(
+  '[Auth] Login Error'
+)

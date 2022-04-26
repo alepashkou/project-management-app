@@ -10,6 +10,9 @@ import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './redux/main.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthEffects } from './auth/store/auth.effects';
+import { EffectsModule } from '@ngrx/effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,9 @@ import { environment } from 'src/environments/environment';
       logOnly: environment.production,
       autoPause: true,
     }),
+    FormsModule,
+    ReactiveFormsModule,
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

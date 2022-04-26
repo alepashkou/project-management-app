@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Board } from '../../models/boards.model';
 
 @Component({
@@ -10,4 +10,8 @@ export class BoardCardComponent  {
   @Input() board: Board;
   @Output() deleteDialog = new EventEmitter();
   @Output() editDialog = new EventEmitter();
+
+  goToBoard(id:string):void {
+    
+  }
 }

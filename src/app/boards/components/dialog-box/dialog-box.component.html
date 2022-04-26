@@ -1,12 +1,12 @@
 <div mat-dialog-content>
-  <mat-form-field class="dialog-delete-field" appearance="fill" *ngIf="action === 'Create'">
+  <mat-form-field class="dialog-field" appearance="fill" *ngIf="action === 'Create'">
     <mat-label>Board name</mat-label>
     <input matInput [(ngModel)]="localData.createBoard">
   </mat-form-field>
-  <ng-template *ngIf="action === 'Delete'">
-    Are you sure you want to delete the board?
-  </ng-template>
-  <mat-form-field class="dialog-delete-field" appearance="fill" *ngIf="action === 'Edit'">
+  <mat-dialog-content *ngIf="action === 'Delete'">
+    <h3>Are you sure you want to delete the board?</h3>
+  </mat-dialog-content>
+  <mat-form-field class="dialog-field" appearance="fill" *ngIf="action === 'Edit'">
     <mat-label>Board name</mat-label>
     <input matInput [(ngModel)]="localData.editBoard">
   </mat-form-field>

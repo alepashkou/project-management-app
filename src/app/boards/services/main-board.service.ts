@@ -16,6 +16,9 @@ export class MainBoardService {
   craeteBoard(name:string):Observable<Board>{
     return this.http.post<Board>(`boards`, { title: name })
   }
+  editBoard(name:string, id:string):Observable<Board>{
+    return this.http.put<Board>(`boards/${id}`, { title: name })
+  }
   //УДАЛИТЬ
   login(){
     return this.http.post<Token>('signin', { login: "test", password: "test" })

@@ -1,5 +1,6 @@
 export interface DialogData {
     action: string,
     id?: string,
-    createBoard?: string
+    createBoard?: string,
+    editBoard?:string,
 }

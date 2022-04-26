@@ -21,13 +21,15 @@ export class MainComponent implements OnInit {
   openDialog(action:string, id?:string):void {
     const dialog = this.dialog.open(DialogBoxComponent, {
       width: '300px',
-      data: {action, id}
+      data: { action, id }
     });
     dialog.afterClosed().subscribe(result => {
-      if(result.event == 'Delete'){
+      if (result.event === 'Delete'){
         this.deleteBoard(result.data.id);
-      }else if(result.event == 'Create'){
+      } else if(result.event === 'Create'){
         this.createBoard(result.data.createBoard);
+      } else if (result.event === 'Edit'){
+        this.editBoard(result.data.editBoard, result.data.id)
       }
     });
   }
@@ -37,9 +39,19 @@ export class MainComponent implements OnInit {
     })
     this.mainBoard.deleteBoard(id).subscribe();
   }
-  createBoard(name:string){
+  createBoard(name:string):void {
     this.mainBoard.craeteBoard(name).subscribe((board) => {
       this.allBoards.push(board);
+    })
+  }
+  editBoard(name:string, id:string):void {
+    this.mainBoard.editBoard(name, id).subscribe((board) => {
+      this.allBoards = this.allBoards.map((el) =>{
+        if(el.id === board.id){
+          el.title = board.title
+        }
+        return el;
+      })
     })
   }
   //УДАЛИТЬ

@@ -9,4 +9,5 @@ import { Board } from '../../models/boards.model';
 export class BoardCardComponent  {
   @Input() board: Board;
   @Output() deleteDialog = new EventEmitter();
+  @Output() editDialog = new EventEmitter();
 }

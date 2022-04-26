@@ -1,4 +1,4 @@
-<div mat-dialog-content>
+<mat-dialog-content>
   <mat-form-field class="dialog-field" appearance="fill" *ngIf="action === 'Create'">
     <mat-label>Board name</mat-label>
     <input matInput [(ngModel)]="localData.createBoard">
@@ -10,8 +10,8 @@
     <mat-label>Board name</mat-label>
     <input matInput [(ngModel)]="localData.editBoard">
   </mat-form-field>
-</div>
+</mat-dialog-content>
 <div mat-dialog-actions class="dialog-buttons">
-  <button mat-button (click)="doAction()">{{action}}</button>
-  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+  <button mat-flat-button (click)="doAction()">{{action}}</button>
+  <button mat-flat-button color="warn" mat-dialog-close="false">Cancel</button>
 </div>

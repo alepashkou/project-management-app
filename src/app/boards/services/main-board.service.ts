@@ -10,7 +10,13 @@ export class MainBoardService {
   getAllBoards():Observable<Board[]>{
     return this.http.get<Board[]>(`boards`)
   }
-
+  deleteBoard(id: string):Observable<Response>{
+    return this.http.delete<Response>(`boards/${id}`)
+  }
+  craeteBoard(name:string):Observable<Board>{
+    return this.http.post<Board>(`boards`, { title: name })
+  }
+  //УДАЛИТЬ
   login(){
     return this.http.post<Token>('signin', { login: "test", password: "test" })
   }

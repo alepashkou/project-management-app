@@ -1,0 +1,13 @@
+<div mat-dialog-content>
+  <mat-form-field class="dialog-delete-field" appearance="fill" *ngIf="action !== 'Delete'; else elseTemplate">
+    <mat-label>Board name</mat-label>
+    <input matInput [(ngModel)]="localData.createBoard">
+  </mat-form-field>
+  <ng-template #elseTemplate>
+    Are you sure you want to delete the board?
+  </ng-template>
+</div>
+<div mat-dialog-actions class="dialog-buttons">
+  <button mat-button (click)="doAction()">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>

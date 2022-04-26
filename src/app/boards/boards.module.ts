@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainBoardService } from './services/main-board.service';
 import { BoardCardComponent } from './components/board-card/board-card.component';
 import { LeftBorderColorDirective } from './directives/left-border-color.directive';
-import { DialogDeleteBoardComponent } from './components/dialog-delete-board/dialog-delete-board.component';
+import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -17,7 +17,7 @@ const routes: Routes = [
     MainComponent,
     BoardCardComponent,
     LeftBorderColorDirective,
-    DialogDeleteBoardComponent
+    DialogBoxComponent
   ],
   imports: [
     CommonModule,

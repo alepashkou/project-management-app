@@ -1,4 +1,9 @@
 <div class="boards-container">
-    <app-board-card *ngFor="let item of allBoards" [board]="item" (deleteDialog)="dialogDeleteBoard($event)"></app-board-card>
+    <app-board-card *ngFor="let item of allBoards" [board]="item" (deleteDialog)="openDialog('Delete', $event)"></app-board-card>
+    <mat-card class="board-plus" (click)="openDialog('Create')">
+        <div class="board-plus-area">
+            <p>Add Board</p>
+        </div>
+    </mat-card>
 </div>
 <button type="button" (click)="getLoginToken()">Login</button>

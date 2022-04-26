@@ -4,6 +4,8 @@ import { SharedModule } from '../shared/shared.module';
 import { MainComponent } from './pages/main/main.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MainBoardService } from './services/main-board.service';
+import { BoardCardComponent } from './components/board-card/board-card.component';
+import { LeftBorderColorDirective } from './directives/left-border-color.directive';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -11,7 +13,9 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    MainComponent
+    MainComponent,
+    BoardCardComponent,
+    LeftBorderColorDirective
   ],
   imports: [
     CommonModule,

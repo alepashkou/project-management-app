@@ -1,4 +1,4 @@
-<ul class="list1a">
-    <li *ngFor="let item of allBoards">{{item.title}}</li>
-</ul>
+<div class="boards-container">
+    <app-board-card *ngFor="let item of allBoards" [board]="item"></app-board-card>
+</div>
 <button type="button" (click)="getLoginToken()">Login</button>

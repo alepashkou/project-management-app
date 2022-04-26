@@ -1,7 +1,5 @@
 
 export interface AuthInfo {
-  id: string;
-  name: string;
   login: string;
   token: string;
 }

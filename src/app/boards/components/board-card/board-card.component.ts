@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Board } from '../../models/boards.model';
 
 @Component({
@@ -8,4 +8,5 @@ import { Board } from '../../models/boards.model';
 })
 export class BoardCardComponent  {
   @Input() board: Board;
+  @Output() deleteDialog = new EventEmitter();
 }

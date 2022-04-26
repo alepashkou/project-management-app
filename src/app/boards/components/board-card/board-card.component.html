@@ -3,6 +3,6 @@
     <mat-card-subtitle>Board</mat-card-subtitle>
     <mat-card-actions>
       <mat-icon>edit</mat-icon>
-      <mat-icon>delete</mat-icon>
+      <mat-icon (click)="deleteDialog.emit(board.id)">delete</mat-icon>
     </mat-card-actions>
 </mat-card>

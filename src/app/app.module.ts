@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPageComponent } from './auth/components/login-page/login-page.component';
-import { MaterialModule } from './material.module';
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './redux/main.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -14,6 +13,7 @@ import { AuthEffects } from './auth/store/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { ApiInterceptor } from './core/services/api.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MaterialModule } from './shared/material/material.module';
 
 @NgModule({
   declarations: [

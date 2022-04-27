@@ -27,9 +27,9 @@ export class MainComponent implements OnInit {
       if (result.event === 'Delete'){
         this.deleteBoard(result.data.id);
       } else if(result.event === 'Create'){
-        this.createBoard(result.data.createBoard);
+        this.createBoard(result.data.param);
       } else if (result.event === 'Edit'){
-        this.editBoard(result.data.editBoard, result.data.id)
+        this.editBoard(result.data.param, result.data.id)
       }
     });
   }

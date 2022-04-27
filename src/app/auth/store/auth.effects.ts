@@ -19,30 +19,34 @@ export class AuthEffects {
 
   ) { }
 
-  login$ = createEffect(() => this.actions$.pipe(
-    ofType(login),
-    // delay(3000),
-    switchMap(
-      (action) => this.authService.signIn({ login: action.login, password: action.password }).pipe(
-        map((result) => loginSuccess({
-          authInfo: {
-            login: action.login,
-            token: result.token
-          }
-        })),
-        catchError(() => of(loginError()))
-      )
-    ),
+  login$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(login),
+      // delay(3000),
+      switchMap(
+        (action) => this.authService.signIn({ login: action.login, password: action.password }).pipe(
+          map((result) => loginSuccess({
+            authInfo: {
+              login: action.login,
+              token: result.token
+            }
+          })),
+          catchError(() => of(loginError()))
+        )
+      ),
 
-  ));
+    )
+  });
 
-  showSnackbarWhenError$ = createEffect(() => this.actions$.pipe(
-    ofType(loginError),
-    tap(() => {
-      this.matSnackBar.open('Unable to login', 'Hide', {
-        duration: 5000
+  showSnackbarWhenError$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(loginError),
+      tap(() => {
+        this.matSnackBar.open('Unable to login', 'Hide', {
+          duration: 5000
+        })
       })
-    })
-  ), { dispatch: false })
+    )
+  }, { dispatch: false })
 
 }

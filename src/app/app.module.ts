@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginPageComponent } from './auth/components/login-page/login-page.component';
+import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './redux/main.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';

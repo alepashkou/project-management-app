@@ -54,8 +54,4 @@ export class MainComponent implements OnInit {
       })
     })
   }
-  //УДАЛИТЬ
-  getLoginToken():void {
-    this.mainBoard.login().subscribe((value)=> {console.log(value), localStorage.setItem('token', value.token)});
-  }
 }

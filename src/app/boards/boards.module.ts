@@ -7,9 +7,11 @@ import { MainBoardService } from './services/main-board.service';
 import { BoardCardComponent } from './components/board-card/board-card.component';
 import { LeftBorderColorDirective } from './directives/left-border-color.directive';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
+import { BoardComponent } from './pages/board/board.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent },
+  { path: '', component: MainComponent},
+  { path: ':id', component: BoardComponent },
 ];
 
 @NgModule({
@@ -17,7 +19,8 @@ const routes: Routes = [
     MainComponent,
     BoardCardComponent,
     LeftBorderColorDirective,
-    DialogBoxComponent
+    DialogBoxComponent,
+    BoardComponent
   ],
   imports: [
     CommonModule,

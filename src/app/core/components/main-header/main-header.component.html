@@ -1,0 +1,25 @@
+<header class="container main-header">
+  <div class="therm-block">
+    <mat-icon *ngIf="curretnTheme === 'light'" (click)="toggleTheme('dark')" fill="red" >brightness_7</mat-icon>
+    <mat-icon *ngIf="curretnTheme === 'dark' " (click)="toggleTheme('light')">brightness_3</mat-icon>
+  </div>
+
+  <div class="add-new-board">
+    <button class="add-new-board__button" mat-icon-button>
+        <mat-icon>add</mat-icon>
+        <span>Ann new board</span>
+    </button>
+  </div>
+
+  <div class="language-block">
+    <span class="lang">RU</span>
+    <mat-slide-toggle [(ngModel)]="isCurretnLanguageChecked" (change)="checkLanguage()"></mat-slide-toggle>
+    <span class="lang">ENG</span>
+  </div>
+
+  <div class="auth-block">
+    <button mat-raised-button color="primary">Sign in</button>
+    <button mat-raised-button color="primary">Sign up</button>
+  </div>
+
+</header>

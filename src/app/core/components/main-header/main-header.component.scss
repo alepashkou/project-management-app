@@ -1,0 +1,30 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.auth-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 15%;
+}
+
+.lang {
+  margin-right: 10px;
+  &:last-child {
+    margin-right: 0;
+    margin-left: 10px;
+  }
+}
+
+.add-new-board__button {
+  border: 1px solid;
+}
+
+.mat-icon-button {
+  width: auto;
+  padding: 0px 100px 0px 5px;
+  border-radius: 0;
+}

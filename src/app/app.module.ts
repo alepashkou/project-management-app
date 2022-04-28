@@ -8,11 +8,13 @@ import { ApiInterceptor } from './core/services/api.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { MainFooterComponent } from './core/components/main-footer/main-footer.component';
+import { MainHeaderComponent } from './core/components/main-header/main-header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainFooterComponent
+    MainFooterComponent,
+    MainHeaderComponent
   ],
   imports: [SharedModule,
     BrowserModule,

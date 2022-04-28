@@ -4,6 +4,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { signup } from '../../store/auth.actions';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -12,7 +14,7 @@ import {
 })
 export class SignUpPageComponent {
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   signUpForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -20,9 +22,9 @@ export class SignUpPageComponent {
     password: new FormControl('', [Validators.required]),
   })
 
-  login() {
+  signup() {
     if (this.signUpForm.valid) {
-      console.log('success')
+      this.store.dispatch(signup({ signupInfo: this.signUpForm.value }))
     }
   }
 }

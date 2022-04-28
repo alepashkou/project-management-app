@@ -37,9 +37,6 @@ export class LoginPageComponent {
   login() {
     if (this.loginForm.valid) {
       this.store.dispatch(login(this.loginForm.value))
-      console.log(this.loginForm.value)
-      // navigate
     }
   }
-
 }

@@ -14,11 +14,13 @@ import { EffectsModule } from '@ngrx/effects';
 import { ApiInterceptor } from './core/services/api.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './shared/material/material.module';
+import { SignUpPageComponent } from './auth/pages/sign-up-page/sign-up-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    SignUpPageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+.logo {
+  display: block;
+  width: 150px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.links, .development-date {
+  display: flex;
+  gap: 40px;
+  font-size: 22px;
+}
+
+.developer-link {
+  transition: 0.5s;
+  text-decoration: none;
+  color: #000;
+  &:hover {
+    color: red;
+  }
+}
+
+.main-footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.main-footer {
+  padding: 20px 0px;
+}

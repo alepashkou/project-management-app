@@ -19,7 +19,6 @@ export class LoginPageComponent {
   isLoginInProgress$ = this.store.select(selectIsLoginInProgress);
 
   constructor(
-    private httpClient: HttpClient,
     private store: Store,
   ) {
     this.isLoginInProgress$.subscribe((value) => {
@@ -29,10 +28,6 @@ export class LoginPageComponent {
         this.loginForm.enable()
       }
     })
-    // this.httpClient.post<any>('https://managment-app.ddns.net/signin', {
-    //   "login": "user001",
-    //   "password": "userpass@123"
-    // }).subscribe((result) => console.log(result))
   }
 
   loginForm = new FormGroup({

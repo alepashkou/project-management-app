@@ -1,5 +1,5 @@
-import { AuthInfo } from "../models/user.model";
 import { createReducer, on } from '@ngrx/store';
+import { AuthInfo } from '../models/auth.model';
 import { login, loginError, loginSuccess } from "./auth.actions";
 
 export interface State {
@@ -13,13 +13,13 @@ const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(login, (state) => {
+  on(login, (state): State => {
     return { ...state, loginInProgress: true }
   }),
-  on(loginSuccess, (state, action) => {
+  on(loginSuccess, (state, action): State => {
     return { ...state, user: action.authInfo, loginInProgress: false }
   }),
-  on(loginError, (state) => {
+  on(loginError, (state): State => {
     return { ...state, loginInProgress: false }
   })
 )

@@ -8,12 +8,10 @@ import { BoardCardComponent } from './components/board-card/board-card.component
 import { LeftBorderColorDirective } from './directives/left-border-color.directive';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { BoardComponent } from './pages/board/board.component';
-import { BoardColumComponent } from './components/board-colum/board-colum.component';
 import { BoardService } from './services/board.service';
-import { BoardTaskComponent } from './components/board-task/board-task.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent},
+  { path: '', component: MainComponent },
   { path: ':id', component: BoardComponent },
 ];
 
@@ -24,14 +22,8 @@ const routes: Routes = [
     LeftBorderColorDirective,
     DialogBoxComponent,
     BoardComponent,
-    BoardColumComponent,
-    BoardTaskComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule.forChild(routes),
-  ],
-  providers:[MainBoardService, BoardService]
+  imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
+  providers: [MainBoardService, BoardService],
 })
-export class BoardsModule { }
+export class BoardsModule {}

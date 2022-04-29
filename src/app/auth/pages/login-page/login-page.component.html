@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" class="flex flex-col">
       <h2>Log In</h2>
       <mat-form-field>
         <input matInput placeholder="Login" name="username" formControlName="login">
@@ -11,7 +11,7 @@
           Please provide your login
         </mat-error>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="py-3">
         <input matInput type="password" placeholder="Password" name="password" formControlName="password">
         <mat-error *ngIf="loginForm.get('password')?.hasError('smallLetter')">
           Password should contain small letter
@@ -32,7 +32,9 @@
           Please provide your password
         </mat-error>
       </mat-form-field>
-      <button type="submit" mat-raised-button color="primary" [disabled]="isLoginInProgress$ | async">Login</button>
+      <div class="flex justify-end">
+        <button type="submit" mat-raised-button color="primary" [disabled]="isLoginInProgress$ | async">Login</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

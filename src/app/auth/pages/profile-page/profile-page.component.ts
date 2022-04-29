@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectParseToken } from '../../store/auth.selectors';
 
 @Component({
   selector: 'app-profile-page',
@@ -7,6 +9,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePageComponent {
 
-  constructor() { }
-
+  token$ = this.store.select(selectParseToken);
+  constructor(private store: Store) { }
 }

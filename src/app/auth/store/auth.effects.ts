@@ -2,9 +2,12 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, map, tap, catchError, of } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { switchMap, map, tap, catchError, of, filter } from 'rxjs';
+import { isNotNull } from 'src/app/core/utils';
 import { AuthService } from '../services/auth.service';
-import { login, loginError, loginSuccess, signup, signupError, signupSuccess } from './auth.actions';
+import { loadToken, login, loginError, loginSuccess, signup, signupError, signupSuccess } from './auth.actions';
+import { selectToken } from './auth.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +19,15 @@ export class AuthEffects {
     private authService: AuthService,
     private matSnackBar: MatSnackBar,
     private router: Router,
-  ) { }
+    private store: Store,
+  ) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.store.dispatch(loadToken({ token }));
+    }
+  }
+
+
 
   login$ = createEffect(() => {
     return this.actions$.pipe(
@@ -104,14 +115,12 @@ export class AuthEffects {
   )
 
   saveTokenToLocalStorage$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(login),
-      switchMap(
-        (action) => this.authService.signIn({ login: action.login, password: action.password }).pipe(
-          map((result) => {
-            localStorage.setItem('token', JSON.stringify(result.token));
-          })
-        )))
+    return this.store.select(selectToken).pipe(
+      filter(isNotNull),
+      tap((token) => {
+        localStorage.setItem('token', token);
+      })
+    )
   }, { dispatch: false }
   )
 }

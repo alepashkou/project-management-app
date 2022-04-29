@@ -27,3 +27,8 @@ export const signupSuccess = createAction(
 export const signupError = createAction(
   '[Auth] Signup Error'
 )
+
+export const loadToken = createAction(
+  '[Auth] Load Token',
+  props<{ token: string }>()
+)

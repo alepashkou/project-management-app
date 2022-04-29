@@ -1,0 +1,7 @@
+
+<div class="colum-container">
+    <ng-content></ng-content>
+    <h2>{{colum.title}}</h2>
+    <div class="task-container"></div>
+</div>
+<app-board-task *ngFor="let item of colum?.tasks" [task]="item"></app-board-task>

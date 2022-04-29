@@ -1,1 +1,23 @@
-<p>board works!</p>
+<div
+  cdkDropList
+  cdkDropList
+  cdkDropListOrientation="horizontal"
+  class="colum-list"
+  (cdkDropListDropped)="dropColum($event)"
+>
+  <div class="div" cdkDropListGroup class="box-list">
+    <div class="task-container" *ngFor="let colum of board?.columns" cdkDrag>
+      <h2>{{ colum.title }}</h2>
+      <div
+        cdkDropList
+        [cdkDropListData]="colum.tasks"
+        class="task-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="task-box" *ngFor="let task of colum.tasks" cdkDrag>
+          {{ task.title }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

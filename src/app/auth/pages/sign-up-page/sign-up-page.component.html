@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-content>
-    <form [formGroup]="signUpForm" (ngSubmit)="signup()">
+    <form [formGroup]="signUpForm" (ngSubmit)="signup()" class="flex flex-col">
       <h2>Sign Up</h2>
       <mat-form-field>
         <input matInput placeholder="Name" name="username" formControlName="name">
@@ -8,19 +8,39 @@
           Please provide your name
         </mat-error>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="py-3">
         <input matInput placeholder="Login" name="login" formControlName="login">
-        <mat-error>
+        <mat-error *ngIf="signUpForm.get('login')?.hasError('minlength')">
+          Your login must be at least 4 characters long
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">
           Please provide your login
         </mat-error>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="py-3">
         <input matInput type="password" placeholder="Password" name="password" formControlName="password">
-        <mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('smallLetter')">
+          Password should contain small letter
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('capitalLetter')">
+          Password should contain capital letter
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('number')">
+          Password should contain number
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('symbol')">
+          Password should contain special symbol
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('minlength')">
+          Your password must be at least 8 characters long
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">
           Please provide your password
         </mat-error>
       </mat-form-field>
-      <button type="submit" mat-raised-button color="primary">Create Account</button>
+      <div class="flex justify-end">
+        <button type="submit" mat-raised-button color="primary">Create Account</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

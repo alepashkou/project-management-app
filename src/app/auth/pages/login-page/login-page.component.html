@@ -4,30 +4,12 @@
       <h2>Log In</h2>
       <mat-form-field>
         <input matInput placeholder="Login" name="username" formControlName="login">
-        <mat-error *ngIf="loginForm.get('login')?.hasError('minlength')">
-          Your login must be at least 4 characters long
-        </mat-error>
-        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+        <mat-error *ngIf="loginForm.get('login')?.hasError('required')">
           Please provide your login
         </mat-error>
       </mat-form-field>
       <mat-form-field class="py-3">
         <input matInput type="password" placeholder="Password" name="password" formControlName="password">
-        <mat-error *ngIf="loginForm.get('password')?.hasError('smallLetter')">
-          Password should contain small letter
-        </mat-error>
-        <mat-error *ngIf="loginForm.get('password')?.hasError('capitalLetter')">
-          Password should contain capital letter
-        </mat-error>
-        <mat-error *ngIf="loginForm.get('password')?.hasError('number')">
-          Password should contain number
-        </mat-error>
-        <mat-error *ngIf="loginForm.get('password')?.hasError('symbol')">
-          Password should contain special symbol
-        </mat-error>
-        <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
-          Your password must be at least 8 characters long
-        </mat-error>
         <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
           Please provide your password
         </mat-error>

@@ -9,6 +9,7 @@ import { LeftBorderColorDirective } from './directives/left-border-color.directi
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { BoardComponent } from './pages/board/board.component';
 import { BoardService } from './services/board.service';
+import { DialogColumComponent } from './components/dialog-colum/dialog-colum.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
     LeftBorderColorDirective,
     DialogBoxComponent,
     BoardComponent,
+    DialogColumComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
   providers: [MainBoardService, BoardService],

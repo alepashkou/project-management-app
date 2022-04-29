@@ -13,8 +13,12 @@
 
   <div class="language-block">
     <span class="lang">RU</span>
-    <mat-slide-toggle [(ngModel)]="isCurretnLanguageChecked" (change)="checkLanguage()"></mat-slide-toggle>
+    <mat-slide-toggle [(ngModel)]="isCurretnLanguageChecked" (change)="checkLanguage()" color="primary"></mat-slide-toggle>
     <span class="lang">ENG</span>
+  </div>
+
+  <div class="profile-block" title="user">
+    <mat-icon>person</mat-icon>
   </div>
 
   <div class="auth-block">

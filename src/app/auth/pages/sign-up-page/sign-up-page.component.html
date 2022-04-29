@@ -4,7 +4,7 @@
       <h2>Sign Up</h2>
       <mat-form-field class="py-3">
         <input matInput placeholder="Name" name="username" formControlName="name">
-        <mat-error>
+        <mat-error *ngIf="signUpForm.get('name')?.hasError('required')">
           Please provide your name
         </mat-error>
       </mat-form-field>

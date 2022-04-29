@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  AbstractControl,
   FormControl,
   FormGroup,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { login } from '../../store/auth.actions';

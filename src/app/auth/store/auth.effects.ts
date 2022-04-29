@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { act, Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, tap, catchError, of } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { login, loginError, loginSuccess, signup, signupError, signupSuccess } from './auth.actions';
@@ -80,11 +80,22 @@ export class AuthEffects {
     { dispatch: false }
   )
 
+  showSnackbarWhenSignUpSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(signupSuccess),
+      tap(() => {
+        this.matSnackBar.open(`Congrats! You are registered! Let's login`, 'Hide', {
+          duration: 5000
+        })
+      })
+    )
+  }, { dispatch: false })
+
   navigateToMainPageWhenLoginSuccess$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(loginSuccess),
       tap(() => {
-        this.router.navigate(['boards'])
+        this.router.navigate(['board'])
       }))
   },
     { dispatch: false }

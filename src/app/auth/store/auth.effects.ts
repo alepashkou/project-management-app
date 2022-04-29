@@ -23,12 +23,14 @@ export class AuthEffects {
       ofType(login),
       switchMap(
         (action) => this.authService.signIn({ login: action.login, password: action.password }).pipe(
-          map((result) => loginSuccess({
-            authInfo: {
-              login: action.login,
-              token: result.token
-            }
-          })),
+          map((result) => loginSuccess(
+            {
+              authInfo: {
+                login: action.login,
+                token: result.token
+              }
+            }),
+          ),
           catchError(() => of(loginError()))
         )
       ),
@@ -99,5 +101,17 @@ export class AuthEffects {
       }))
   },
     { dispatch: false }
+  )
+
+  saveTokenToLocalStorage$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(login),
+      switchMap(
+        (action) => this.authService.signIn({ login: action.login, password: action.password }).pipe(
+          map((result) => {
+            localStorage.setItem('token', JSON.stringify(result.token));
+          })
+        )))
+  }, { dispatch: false }
   )
 }

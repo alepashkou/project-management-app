@@ -15,7 +15,7 @@
 .developer-link {
   transition: 0.5s;
   text-decoration: none;
-  color: #000;
+  color: #fff;
   &:hover {
     color: red;
   }
@@ -25,8 +25,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
-.main-footer {
-  padding: 20px 0px;
+.mat-toolbar {
+  height: 100px;
 }

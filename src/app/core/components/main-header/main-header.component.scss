@@ -2,18 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0px;
-}
-
-.auth-block {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 15%;
+  width: 100%;
 }
 
 .lang {
   margin-right: 10px;
+
   &:last-child {
     margin-right: 0;
     margin-left: 10px;
@@ -30,9 +24,31 @@
   border-radius: 0;
 }
 
+.mat-toolbar {
+  height: 100px;
+}
+
 .profile-block {
   height: 25px;
   border-radius: 50%;
   border: 1px solid gray;
   cursor: pointer;
+}
+
+.therm-block {
+  align-items: center;
+  display: flex;
+}
+
+.setting-block,
+.user-block,
+.auth-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.auth-block {
+  gap: 15px;
 }

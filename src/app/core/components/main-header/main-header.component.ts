@@ -10,6 +10,7 @@ export class MainHeaderComponent implements OnInit {
   public curretnTheme: string | null = 'light';
   public curretnLanguage: string | null = '';
   public isCurretnLanguageChecked: boolean | null = false;
+  public isDarkTheme: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -30,7 +31,8 @@ export class MainHeaderComponent implements OnInit {
 
   toggleTheme(theme: string) {
       this.curretnTheme = theme;
-      localStorage.setItem('theme', theme);    
+      localStorage.setItem('theme', theme);
+      this.isDarkTheme = !this.isDarkTheme;
   }
 
   checkLanguage() {

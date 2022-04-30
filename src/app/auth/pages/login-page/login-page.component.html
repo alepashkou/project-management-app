@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <h2>Log In</h2>
+      <mat-form-field>
+        <input matInput placeholder="Login" name="username" formControlName="login">
+        <mat-error>
+          Please provide your login
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" name="password" formControlName="password">
+        <mat-error>
+          Please provide your password
+        </mat-error>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary" [disabled]="isLoginInProgress$ | async">Login</button>
+    </form>
+  </mat-card-content>
+</mat-card>

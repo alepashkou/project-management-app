@@ -4,23 +4,41 @@
       <h2>Sign Up</h2>
       <mat-form-field>
         <input matInput placeholder="Name" name="username" formControlName="name">
-        <mat-error>
+        <mat-error *ngIf="signUpForm.get('name')?.hasError('required')">
           Please provide your name
         </mat-error>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="py-3">
         <input matInput placeholder="Login" name="login" formControlName="login">
-        <mat-error>
+        <mat-error *ngIf="signUpForm.get('login')?.hasError('minlength')">
+          Your login must be at least 4 characters long
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">
           Please provide your login
         </mat-error>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field class="py-1">
         <input matInput type="password" placeholder="Password" name="password" formControlName="password">
-        <mat-error>
-          Please provide your password
+        <mat-error *ngIf="!signUpForm.valid">
+          Password should contain:
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('smallLetter')">
+          - small letter
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('capitalLetter')">
+          - capital letter
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('number')">
+          - number
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('symbol')">
+          - special symbol
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('password')?.hasError('minlength')">
+          - min 8 characters
         </mat-error>
       </mat-form-field>
-      <button type="submit" mat-raised-button color="primary">Create Account</button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">Create Account</button>
     </form>
   </mat-card-content>
 </mat-card>

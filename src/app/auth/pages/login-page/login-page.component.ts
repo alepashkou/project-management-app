@@ -7,12 +7,12 @@ import {
 } from '@angular/forms';
 import { login } from '../../store/auth.actions';
 import { selectIsLoginInProgress } from '../../store/auth.selectors';
-
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
+
 export class LoginPageComponent {
 
   isLoginInProgress$ = this.store.select(selectIsLoginInProgress);
@@ -30,8 +30,12 @@ export class LoginPageComponent {
   }
 
   loginForm = new FormGroup({
-    login: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
+    login: new FormControl('', [
+      Validators.required
+    ]),
+    password: new FormControl('', [
+      Validators.required
+    ])
   })
 
   login() {
@@ -40,3 +44,5 @@ export class LoginPageComponent {
     }
   }
 }
+
+

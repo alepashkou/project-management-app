@@ -8,7 +8,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { MatOptionModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [],
   imports: [
@@ -20,9 +24,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatFormFieldModule,
     MatSlideToggleModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule,
+    MatTableModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatSnackBarModule,
   ],
-  exports:[
+  exports: [
+    CommonModule,
     MatCardModule,
     MatIconModule,
     MatDialogModule,
@@ -30,7 +40,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatFormFieldModule,
     MatSlideToggleModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatMenuModule,
+    MatTableModule,
+    MatSlideToggleModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatSnackBarModule,
   ]
 })
 export class MaterialModule { }

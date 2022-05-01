@@ -4,10 +4,10 @@
 
 @include mat.core();
 
-$angular-primary: mat.define-palette(mat.$pink-palette);
+$angular-primary: mat.define-palette(mat.$gray-palette, 100, 400, 900);
 $angular-accent: mat.define-palette(mat.$blue-palette);
 
-$angular-primary-dark: mat.define-palette(mat.$indigo-palette);
+$angular-primary-dark: mat.define-palette(mat.$indigo-palette, 100, 400, 900);
 $angular-accent-dark: mat.define-palette(mat.$pink-palette);
 
 
@@ -35,7 +35,22 @@ $angular-default-theme: mat.define-light-theme(
   )
 );
 
+.light-mode {
+  & .mat-card {
+    background: #f2f8f9 !important;
+  }
+  @include mat.all-component-colors($angular-dark-theme);
+}
+
 .dark-mode {
-  background-color: #28304e;
+  & .mat-card {
+    background: #f2f8f9 !important;
+    color: #000000 !important;
+  }& .mat-card-subtitle {
+    color: #000000 !important;
+  }
+  .board-card:hover {
+    box-shadow: 0px 4px 8px rgb(255 255 255 / 45%) !important;
+  }
   @include mat.all-component-colors($angular-dark-theme);
 }

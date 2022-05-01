@@ -4,8 +4,8 @@
   <div class="setting-block">
 
     <div class="therm-block">
-      <mat-icon *ngIf="curretnTheme === 'light'" (click)="toggleTheme('dark')">brightness_7</mat-icon>
-      <mat-icon *ngIf="curretnTheme === 'dark' " (click)="toggleTheme('light')">brightness_3</mat-icon>
+      <mat-icon *ngIf="curretnTheme === 'light'" (click)="changeTheme('dark-mode')">brightness_7</mat-icon>
+      <mat-icon *ngIf="curretnTheme === 'dark-mode' " (click)="changeTheme('light')">brightness_3</mat-icon>
     </div>
 
     <div class="language-block">

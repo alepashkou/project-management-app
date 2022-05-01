@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { themeMode, ThemeService } from '../../services/theme.service';
+
 
 @Component({
   selector: 'app-main-header',
@@ -10,10 +12,10 @@ export class MainHeaderComponent implements OnInit {
   public curretnTheme: string | null = 'light';
   public curretnLanguage: string | null = '';
   public isCurretnLanguageChecked: boolean | null = false;
-  public isDarkTheme: boolean = false;
-  constructor() { }
+  constructor(public themeService: ThemeService) { }
 
   ngOnInit(): void {
+    this.themeService.initTheme();
     
     if (!localStorage.getItem('theme')) {
       localStorage.setItem('theme', 'light');
@@ -26,13 +28,6 @@ export class MainHeaderComponent implements OnInit {
     if (localStorage.getItem('language') === 'ENG') {
       this.isCurretnLanguageChecked = true;
     }
-
-  }
-
-  toggleTheme(theme: string) {
-      this.curretnTheme = theme;
-      localStorage.setItem('theme', theme);
-      this.isDarkTheme = !this.isDarkTheme;
   }
 
   checkLanguage() {
@@ -47,4 +42,10 @@ export class MainHeaderComponent implements OnInit {
       this.isCurretnLanguageChecked = false;
   }
 
+  public changeTheme(theme: string) {
+    if (theme === 'dark-mode') {
+      this.curretnTheme = 'dark-mode';
+    } else this.curretnTheme = 'light';
+    this.themeService.toggleTheme(theme);
+  }
 }

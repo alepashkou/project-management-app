@@ -20,7 +20,7 @@
   <div class="add-new-board">
     <button class="add-new-board__button" mat-icon-button>
       <mat-icon>add</mat-icon>
-      <span>Ann new board</span>
+      <span>{{'header.board' | translate }}</span>
     </button>
   </div>
 
@@ -31,8 +31,8 @@
     </div>
 
     <div class="auth-block">
-      <button mat-raised-button color="primary" [routerLink]="'/login'">Sign in</button>
-      <button mat-raised-button color="primary" [routerLink]="'/signup'">Sign up</button>
+      <button mat-raised-button color="primary" [routerLink]="'/login'">{{'header.signIn' | translate }}</button>
+      <button mat-raised-button color="primary" [routerLink]="'/signup'">{{'header.signUp' | translate }}</button>
     </div>
 
   </div>

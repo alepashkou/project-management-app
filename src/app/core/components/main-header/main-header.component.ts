@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { themeMode, ThemeService } from '../../services/theme.service';
+import { ThemeService } from '../../services/theme.service';
+import { TranslateService } from '@ngx-translate/core';
+
 
 
 @Component({
@@ -12,7 +14,10 @@ export class MainHeaderComponent implements OnInit {
   public curretnTheme: string | null = 'light';
   public curretnLanguage: string | null = '';
   public isCurretnLanguageChecked: boolean | null = false;
-  constructor(public themeService: ThemeService) { }
+  constructor(public themeService: ThemeService, public translate: TranslateService) {
+    translate.addLangs(['en', 'ru']);
+    translate.setDefaultLang(localStorage.getItem('language')!);
+  }
 
   ngOnInit(): void {
     this.themeService.initTheme();
@@ -23,21 +28,21 @@ export class MainHeaderComponent implements OnInit {
     
     if (localStorage.getItem('language')) {
       this.curretnLanguage = localStorage.getItem('language');
-    } else localStorage.setItem('language', 'ENG');
+    } else localStorage.setItem('language', 'en');
 
-    if (localStorage.getItem('language') === 'ENG') {
+    if (localStorage.getItem('language') === 'en') {
       this.isCurretnLanguageChecked = true;
     }
   }
 
   checkLanguage() {
     if (this.isCurretnLanguageChecked) {
-      localStorage.setItem('language', 'ENG');
-      this.curretnLanguage = 'ENG';
+      localStorage.setItem('language', 'en');
+      this.curretnLanguage = 'en';
     } if (!this.isCurretnLanguageChecked) {
       this.isCurretnLanguageChecked = true;
-      localStorage.setItem('language', 'RU');
-      this.curretnLanguage = 'RU';
+      localStorage.setItem('language', 'ru');
+      this.curretnLanguage = 'ru';
     }
       this.isCurretnLanguageChecked = false;
   }

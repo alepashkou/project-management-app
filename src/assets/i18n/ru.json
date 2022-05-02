@@ -1,0 +1,14 @@
+{
+  "header": {
+    "board": "Добавить доску",
+    "signIn": "Войти",
+    "signUp": "Зарегистрироваться"
+  },
+  "login": {
+    "login": "Войти",
+    "loginPlaceholder": "Логин",
+    "passworPlaceholder": "Пароль",
+    "loginRequired": "Пожалуйста, введите ваш логин",
+    "passwordRequired": "Пожалуйста, введите ваш пароль"
+  }
+}

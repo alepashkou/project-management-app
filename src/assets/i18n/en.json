@@ -1,0 +1,14 @@
+{
+  "header": {
+    "board": "Add new board",
+    "signIn": "sign in",
+    "signUp": "sign up"
+  },
+  "login": {
+    "login": "Log In",
+    "loginPlaceholder": "Log In",
+    "passworPlaceholder": "Password",
+    "loginRequired": "Please provide your login",
+    "passwordRequired": "Please provide your password"
+  }
+}

@@ -12,11 +12,11 @@ import { TranslateService } from '@ngx-translate/core';
 export class MainHeaderComponent implements OnInit {
 
   public curretnTheme: string | null = 'light';
-  public curretnLanguage: string | null = '';
+  public curretnLanguage: string = 'en';
   public isCurretnLanguageChecked: boolean | null = false;
   constructor(public themeService: ThemeService, public translate: TranslateService) {
     translate.addLangs(['en', 'ru']);
-    translate.setDefaultLang(localStorage.getItem('language')!);
+    translate.setDefaultLang(localStorage.getItem('language') || 'en');
   }
 
   ngOnInit(): void {
@@ -27,7 +27,7 @@ export class MainHeaderComponent implements OnInit {
     } else this.curretnTheme = localStorage.getItem('theme');
     
     if (localStorage.getItem('language')) {
-      this.curretnLanguage = localStorage.getItem('language');
+      this.curretnLanguage = localStorage.getItem('language')!;
     } else localStorage.setItem('language', 'en');
 
     if (localStorage.getItem('language') === 'en') {
@@ -44,6 +44,7 @@ export class MainHeaderComponent implements OnInit {
       localStorage.setItem('language', 'ru');
       this.curretnLanguage = 'ru';
     }
+    this.translate.use(this.curretnLanguage);
       this.isCurretnLanguageChecked = false;
   }
 

@@ -1,5 +1,9 @@
 <div class="control-container">
-  <button mat-raised-button color="primary" (click)="openDialog('Create')">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="openDialog('Create', 'colum', '')"
+  >
     Create colum
   </button>
   <button mat-raised-button color="accent">Export excel</button>
@@ -27,6 +31,14 @@
           {{ task.title }}
         </div>
       </div>
+      <button
+        mat-raised-button
+        color="primary"
+        class="task-btn"
+        (click)="openDialog('Create', 'Task', colum.id)"
+      >
+        Create Task
+      </button>
     </div>
   </div>
 </div>

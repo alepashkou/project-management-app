@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Board } from '../../models/boards.model';
 import { BoardService } from '../../services/board.service';
 import { DialogColumComponent } from '../../components/dialog-colum/dialog-colum.component';
+import { DialogTaskComponent } from '../../components/dialog-task/dialog-task.component';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -36,7 +37,7 @@ export class BoardComponent implements OnInit {
     });
   }
 
-  drop(event: CdkDragDrop<any>) {
+  drop(event: CdkDragDrop<any>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -52,7 +53,7 @@ export class BoardComponent implements OnInit {
       );
     }
   }
-  dropColum(event: CdkDragDrop<string[]>) {
+  dropColum(event: CdkDragDrop<string[]>): void {
     if (this.board.columns)
       moveItemInArray(
         this.board.columns,
@@ -60,20 +61,51 @@ export class BoardComponent implements OnInit {
         event.currentIndex
       );
   }
-  openDialog(action: string): void {
-    const dialog = this.dialog.open(DialogColumComponent, {
-      width: '300px',
-      data: { action },
-    });
-    dialog.afterClosed().subscribe((result) => {
-      if (result.event === 'Create') {
-        this.createColum(result.data.title);
-      }
-    });
+  openDialog(action: string, type: string, columId: string): void {
+    if (type === 'colum') {
+      const dialog = this.dialog.open(DialogColumComponent, {
+        width: '300px',
+        data: { action },
+      });
+      dialog.afterClosed().subscribe((result) => {
+        if (result.event === 'Create') {
+          this.createColum(result.data.title);
+        }
+      });
+    } else {
+      const dialog = this.dialog.open(DialogTaskComponent, {
+        width: '300px',
+        data: { action },
+      });
+      dialog.afterClosed().subscribe((result) => {
+        if (result.event === 'Create') {
+          console.log(result);
+          this.createTask(
+            result.data.title,
+            result.data.desc,
+            result.data.userId,
+            columId
+          );
+        }
+      });
+    }
   }
-  createColum(title: string) {
+  createColum(title: string): void {
     this.boardService
       .createColum(title, this.board.id, this.board.columns?.length)
       .subscribe((colum) => this.board.columns?.push(colum));
+  }
+  createTask(title: string, desc: string, userId: string, columId: string) {
+    const findColum = this.board.columns?.find((el) => el.id === columId);
+    this.boardService
+      .createTask(
+        title,
+        desc,
+        userId,
+        columId,
+        this.board.id,
+        findColum?.tasks?.length
+      )
+      .subscribe((task) => findColum?.tasks?.push(task));
   }
 }

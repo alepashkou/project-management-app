@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { concatMap, Observable } from 'rxjs';
 import { Board, Colum } from '../models/boards.model';
-
+import { UserResponce } from '../models/dialog.model';
+import { Task } from '../models/boards.model';
 @Injectable()
 export class BoardService {
   constructor(private http: HttpClient) {}
@@ -24,5 +25,23 @@ export class BoardService {
       title: title,
       order: lenght + 1,
     });
+  }
+  createTask(
+    title: string,
+    desc: string,
+    userId: string,
+    columId: string,
+    boardId: string,
+    lenght: number = 0
+  ) {
+    return this.http.post<Task>(`boards/${boardId}/columns/${columId}/tasks`, {
+      title: title,
+      order: lenght + 1,
+      description: desc,
+      userId: userId,
+    });
+  }
+  getAllUsers() {
+    return this.http.get<UserResponce[]>(`users`);
   }
 }

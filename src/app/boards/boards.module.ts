@@ -10,6 +10,7 @@ import { DialogBoxComponent } from './components/dialog-box/dialog-box.component
 import { BoardComponent } from './pages/board/board.component';
 import { BoardService } from './services/board.service';
 import { DialogColumComponent } from './components/dialog-colum/dialog-colum.component';
+import { DialogTaskComponent } from './components/dialog-task/dialog-task.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
     DialogBoxComponent,
     BoardComponent,
     DialogColumComponent,
+    DialogTaskComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
   providers: [MainBoardService, BoardService],

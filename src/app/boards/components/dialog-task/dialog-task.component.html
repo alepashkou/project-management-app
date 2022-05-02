@@ -1,0 +1,31 @@
+<form [formGroup]="param">
+  <mat-dialog-content *ngIf="action === 'Create'">
+    <mat-form-field class="dialog-field" appearance="fill">
+      <mat-label>Task name</mat-label>
+      <input matInput required formControlName="title" />
+      <mat-error *ngIf="param.get('title')?.hasError('minlength')"
+        >Too short (min 3)</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field class="dialog-field" appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput required formControlName="description" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>User</mat-label>
+      <mat-select formControlName="userId">
+        <mat-option *ngFor="let user of userList" [value]="user.id">
+          {{ user.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+  <div mat-dialog-actions class="dialog-buttons">
+    <button mat-flat-button (click)="doAction()" [disabled]="param.invalid">
+      {{ action }}
+    </button>
+    <button mat-flat-button color="warn" mat-dialog-close="false">
+      Cancel
+    </button>
+  </div>
+</form>

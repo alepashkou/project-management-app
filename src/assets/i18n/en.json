@@ -10,5 +10,21 @@
     "passworPlaceholder": "Password",
     "loginRequired": "Please provide your login",
     "passwordRequired": "Please provide your password"
+  },
+  "signup": {
+    "signup": "Sign Up",
+    "userNamePlaceholder": "Name",
+    "userNameRequired": "Please provide your name",
+    "loginPlaceholder": "Login",
+    "loginMinLengthError": "Your login must be at least 4 characters long",
+    "loginRequired": "Please provide your login",
+    "passworPlaceholder": "Password",
+    "passworContains": "Password should contain:",
+    "passworContainsSmallLetters": "- small letter",
+    "passworContainsCapitalLetters": "- capital letter",
+    "passworContainsNumbers": "- number",
+    "passworContainsSymbol": "- special symbol",
+    "passworLength": "- min 8 characters",
+    "create": "Create Account"
   }
 }

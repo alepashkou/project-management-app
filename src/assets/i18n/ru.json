@@ -26,5 +26,18 @@
     "passworContainsSymbol": "- специальные символы",
     "passworLength": "- минимум 8 символов",
     "create": "Зарегистрировать"
-  }
+  },
+  "board": {
+    "addBoard": "Добавть доску",
+    "board": "Доска"
+  },  
+  "boardDialog": {
+    "boardName": "Название доски",
+    "minLengthError": "Слишком коротко (минимум 3)",
+    "maxLengthError": "Слишком длинно (максимум 15)",
+    "sureToDelete": "Вы уверены, что хотите удалить эту доску?",
+    "cancel": "Отмена"
+  },
+  "Create": "Создать",
+  "Delete": "Удалить"
 }

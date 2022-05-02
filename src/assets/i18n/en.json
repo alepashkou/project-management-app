@@ -26,5 +26,18 @@
     "passworContainsSymbol": "- special symbol",
     "passworLength": "- min 8 characters",
     "create": "Create Account"
-  }
+  },
+  "board": {
+    "addBoard": "Add Board",
+    "board": "Board"
+  },
+  "boardDialog": {
+    "boardName": "Board Name",
+    "minLengthError": "Too short (min 3)",
+    "maxLengthError": "Too long (max 15)",
+    "sureToDelete": "Are you sure you want to delete this board?",
+    "cancel": "Cancel"
+  },
+  "Create": "Create",
+  "Delete": "Delete"
 }

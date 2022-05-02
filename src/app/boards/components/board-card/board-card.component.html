@@ -1,6 +1,6 @@
 <mat-card class="board-card" (click)="goToBoard()" appLeftBorderColor color="accent">
     <mat-card-title>{{board.title}}</mat-card-title>
-    <mat-card-subtitle>Board</mat-card-subtitle>
+    <mat-card-subtitle>{{'board.board' | translate }}</mat-card-subtitle>
     <mat-card-actions>
       <mat-icon (click)="editDialog.emit(board.id);$event.stopPropagation()">edit</mat-icon>
       <mat-icon (click)="deleteDialog.emit(board.id);$event.stopPropagation()">delete</mat-icon>

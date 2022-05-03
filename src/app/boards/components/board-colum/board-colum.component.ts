@@ -55,7 +55,9 @@ export class BoardColumComponent implements OnInit {
         this.boardId,
         this.colum.tasks?.length
       )
-      .subscribe((task) => this.colum?.tasks?.push(task));
+      .subscribe((task) => {
+        this.update.emit(task.id);
+      });
   }
   deleteColum() {
     this.boardService.deleteColum(this.boardId, this.colum.id).subscribe(() => {

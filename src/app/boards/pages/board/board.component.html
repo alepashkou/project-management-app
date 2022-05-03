@@ -22,7 +22,7 @@
       <app-board-colum
         [colum]="colum"
         [boardId]="board.id"
-        (deleteColumId)="updateBoard()"
+        (update)="updateBoard()"
       >
         <div
           cdkDropList
@@ -36,7 +36,7 @@
             [boardId]="board.id"
             [columId]="colum.id"
             [task]="task"
-            (deleteTaskId)="updateBoard()"
+            (update)="updateBoard()"
             cdkDrag
           >
           </app-board-task>

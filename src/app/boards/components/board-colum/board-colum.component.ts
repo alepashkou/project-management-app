@@ -12,7 +12,7 @@ import { DialogTaskComponent } from '../dialog-task/dialog-task.component';
 export class BoardColumComponent {
   @Input() colum: Colum;
   @Input() boardId: string;
-  @Output() deleteColumId = new EventEmitter<string>();
+  @Output() update = new EventEmitter<string>();
   constructor(private boardService: BoardService, private dialog: MatDialog) {}
   openDialog(action: string): void {
     const dialog = this.dialog.open(DialogTaskComponent, {
@@ -45,7 +45,7 @@ export class BoardColumComponent {
   }
   deleteColum() {
     this.boardService.deleteColum(this.boardId, this.colum.id).subscribe(() => {
-      this.deleteColumId.emit(this.colum.id);
+      this.update.emit(this.colum.id);
     });
   }
 }

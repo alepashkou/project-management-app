@@ -12,7 +12,7 @@ export class BoardTaskComponent {
   @Input() task: Task;
   @Input() columId: string;
   @Input() boardId: string;
-  @Output() deleteTaskId = new EventEmitter<string>();
+  @Output() update = new EventEmitter<string>();
 
   constructor(private dialog: MatDialog, private boardService: BoardService) {}
 
@@ -24,6 +24,8 @@ export class BoardTaskComponent {
     dialog.afterClosed().subscribe((result) => {
       if (result.event === 'Delete') {
         this.deleteTask();
+      } else if (result.event === 'Edit') {
+        this.updateTask(result.data);
       }
     });
   }
@@ -31,7 +33,14 @@ export class BoardTaskComponent {
     this.boardService
       .deleteTask(this.boardId, this.columId, this.task.id)
       .subscribe(() => {
-        this.deleteTaskId.emit(this.task.id);
+        this.update.emit(this.task.id);
+      });
+  }
+  updateTask(task: Task) {
+    this.boardService
+      .updateTask(this.boardId, this.columId, task)
+      .subscribe(() => {
+        this.update.emit(this.task.id);
       });
   }
 }

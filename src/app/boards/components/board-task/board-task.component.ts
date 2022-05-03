@@ -25,7 +25,7 @@ export class BoardTaskComponent {
       if (result.event === 'Delete') {
         this.deleteTask();
       } else if (result.event === 'Edit') {
-        this.updateTask(result.data);
+        this.updateTask(result.data.task);
       }
     });
   }

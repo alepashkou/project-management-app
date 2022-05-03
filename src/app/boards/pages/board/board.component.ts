@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Board } from '../../models/boards.model';
 import { BoardService } from '../../services/board.service';
 import { DialogColumComponent } from '../../components/dialog-colum/dialog-colum.component';
+import { Task } from '../../models/boards.model';
+
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -44,6 +46,15 @@ export class BoardComponent implements OnInit {
         event.currentIndex
       );
     } else {
+      const eventTask = event.previousContainer.data.find(
+        (el: Task) => el.id === event.item.element.nativeElement.id
+      );
+      console.log(eventTask);
+      this.chageTaskColum(
+        event.previousContainer.id,
+        event.container.id,
+        eventTask
+      );
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -60,7 +71,7 @@ export class BoardComponent implements OnInit {
         event.currentIndex
       );
   }
-  openDialog(action: string, type: string, id: string): void {
+  openDialog(action: string): void {
     const dialog = this.dialog.open(DialogColumComponent, {
       width: '300px',
       data: { action },
@@ -75,6 +86,11 @@ export class BoardComponent implements OnInit {
     this.boardService
       .createColum(title, this.board.id, this.board.columns?.length)
       .subscribe((colum) => this.board.columns?.push(colum));
+  }
+  chageTaskColum(columIdPrev: string, columIdNew: string, task: Task) {
+    this.boardService
+      .updateTask(this.board.id, columIdPrev, task, columIdNew)
+      .subscribe();
   }
   updateBoard() {
     this.ngOnInit();

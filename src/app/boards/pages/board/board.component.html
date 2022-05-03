@@ -1,9 +1,5 @@
 <div class="control-container">
-  <button
-    mat-raised-button
-    color="primary"
-    (click)="openDialog('Create', 'colum', '')"
-  >
+  <button mat-raised-button color="primary" (click)="openDialog('Create')">
     Create colum
     <mat-icon>dashboard</mat-icon>
   </button>
@@ -26,6 +22,7 @@
       >
         <div
           cdkDropList
+          [id]="colum.id"
           [cdkDropListData]="colum.tasks"
           class="task-list"
           (cdkDropListDropped)="drop($event)"
@@ -38,6 +35,7 @@
             [task]="task"
             (update)="updateBoard()"
             cdkDrag
+            [id]="task.id"
           >
           </app-board-task>
         </div>

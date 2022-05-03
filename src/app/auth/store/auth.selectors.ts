@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { State } from "./reducer";
+import { State } from "./auth.reducer";
 import jwt_decode from "jwt-decode";
 
 const selectState = createFeatureSelector<State>('auth');

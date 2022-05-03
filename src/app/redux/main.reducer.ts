@@ -1,5 +1,5 @@
 import { ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
-import * as fromAuth from '../auth/store/reducer';
+import * as fromAuth from '../auth/store/auth.reducer';
 import { environment } from 'src/environments/environment';
 export interface State {
   auth: fromAuth.State;

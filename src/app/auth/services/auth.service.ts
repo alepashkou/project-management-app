@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SignIn, SignUp, UserInfo } from '../models/auth.model';
+import { SignIn, SignUp } from '../models/auth.model';
 
 @Injectable({
   providedIn: 'root',
@@ -24,9 +24,5 @@ export class AuthService {
       "login": signUp.login,
       "password": signUp.password
     })
-  }
-
-  getUserById(id: string) {
-    return this.httpClient.get<UserInfo>(`${this.apiUrl}${id}`)
   }
 }

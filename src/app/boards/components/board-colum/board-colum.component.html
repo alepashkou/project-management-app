@@ -1,6 +1,23 @@
 <div class="colum-container">
   <div class="colum-title">
-    <mat-card-title>{{ colum.title }}</mat-card-title>
+    <mat-card-title *ngIf="!editTitle"
+      >{{ colum.title }}
+      <mat-icon class="colum-edit-icon" (click)="editTitle = true"
+        >edit</mat-icon
+      ></mat-card-title
+    >
+    <div *ngIf="editTitle" class="colum-edit">
+      <button mat-icon-button>
+        <mat-icon (click)="changeTitle()">done all icon</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon (click)="editTitle = false">cancel</mat-icon>
+      </button>
+      <mat-form-field class="dialog-field" appearance="outline">
+        <mat-label>Colum name</mat-label>
+        <input matInput required [formControl]="changeNameInput" />
+      </mat-form-field>
+    </div>
     <mat-card-subtitle>Colum </mat-card-subtitle>
   </div>
   <div class="task-delete">

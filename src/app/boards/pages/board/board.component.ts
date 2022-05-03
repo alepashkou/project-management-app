@@ -49,7 +49,6 @@ export class BoardComponent implements OnInit {
       const eventTask = event.previousContainer.data.find(
         (el: Task) => el.id === event.item.element.nativeElement.id
       );
-      console.log(eventTask);
       this.chageTaskColum(
         event.previousContainer.id,
         event.container.id,

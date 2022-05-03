@@ -70,4 +70,10 @@ export class BoardService {
       }
     );
   }
+  updateColum(boardId: string, columnId: string, title: string, order: number) {
+    return this.http.put(`boards/${boardId}/columns/${columnId}`, {
+      title: title,
+      order: order,
+    });
+  }
 }

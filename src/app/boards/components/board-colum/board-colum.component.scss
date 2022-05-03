@@ -32,3 +32,23 @@ mat-icon {
     opacity: 1;
   }
 }
+.colum-edit-icon {
+  font-size: 16px;
+}
+.colum-edit {
+  display: flex;
+  align-items: center;
+}
+:host ::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+:host ::ng-deep .mat-form-field-infix {
+  width: 200px;
+  padding: 7.5px 0 8px 0;
+}
+:host ::ng-deep .mat-form-field-label {
+  top: 1.7em;
+}
+:host ::ng-deep .mat-icon-button {
+  width: 25px;
+}

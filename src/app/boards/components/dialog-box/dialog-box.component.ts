@@ -1,4 +1,10 @@
-import { Component, Inject, Optional } from '@angular/core';
+import {
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  Optional,
+} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogBoxData } from '../../models/dialog.model';
@@ -8,7 +14,7 @@ import { DialogBoxData } from '../../models/dialog.model';
   templateUrl: './dialog-box.component.html',
   styleUrls: ['./dialog-box.component.scss'],
 })
-export class DialogBoxComponent {
+export class DialogBoxComponent implements AfterViewChecked {
   action: string;
 
   localData: DialogBoxData;
@@ -17,6 +23,7 @@ export class DialogBoxComponent {
 
   constructor(
     public dialog: MatDialogRef<DialogBoxComponent>,
+    private readonly changeDetectorRef: ChangeDetectorRef,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: DialogBoxData
   ) {
     this.localData = { ...data };
@@ -26,7 +33,9 @@ export class DialogBoxComponent {
       Validators.maxLength(15),
     ]);
   }
-
+  ngAfterViewChecked(): void {
+    this.changeDetectorRef.detectChanges();
+  }
   doAction() {
     this.localData.param = this.param.value;
     this.dialog.close({ event: this.action, data: this.localData });

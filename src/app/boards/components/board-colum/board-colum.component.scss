@@ -12,10 +12,17 @@
   align-items: center;
   margin: 10px;
 }
-.colum-title-container {
+.colum-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.colum-title {
+  display: flex;
+  flex-direction: column;
+  mat-card-title {
+    padding: 10px 0px 10px 0px;
+  }
 }
 mat-icon {
   cursor: pointer;

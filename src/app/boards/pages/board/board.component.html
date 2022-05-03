@@ -5,12 +5,11 @@
     (click)="openDialog('Create', 'colum', '')"
   >
     Create colum
+    <mat-icon>dashboard</mat-icon>
   </button>
-  <button mat-raised-button color="accent">Export excel</button>
-  <mat-form-field appearance="fill">
-    <mat-label>Search</mat-label>
-    <input matInput />
-  </mat-form-field>
+  <button mat-raised-button color="accent">
+    Export excel<mat-icon>description</mat-icon>
+  </button>
 </div>
 <div
   cdkDropList
@@ -20,7 +19,11 @@
 >
   <div class="div" cdkDropListGroup class="box-list">
     <div *ngFor="let colum of board?.columns" cdkDrag>
-      <app-board-colum [colum]="colum" [boardId]="board.id">
+      <app-board-colum
+        [colum]="colum"
+        [boardId]="board.id"
+        (deleteColumId)="updateBoard()"
+      >
         <div
           cdkDropList
           [cdkDropListData]="colum.tasks"
@@ -33,18 +36,11 @@
             [boardId]="board.id"
             [columId]="colum.id"
             [task]="task"
+            (deleteTaskId)="updateBoard()"
             cdkDrag
           >
           </app-board-task>
         </div>
-        <!-- <button
-          mat-raised-button
-          color="primary"
-          class="task-btn"
-          (click)="openDialog('Create', 'Task', colum.id)"
-        >
-          Create Task
-        </button> -->
       </app-board-colum>
     </div>
   </div>

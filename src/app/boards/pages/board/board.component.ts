@@ -9,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Board } from '../../models/boards.model';
 import { BoardService } from '../../services/board.service';
 import { DialogColumComponent } from '../../components/dialog-colum/dialog-colum.component';
-import { DialogTaskComponent } from '../../components/dialog-task/dialog-task.component';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
@@ -62,49 +61,22 @@ export class BoardComponent implements OnInit {
       );
   }
   openDialog(action: string, type: string, id: string): void {
-    if (type === 'colum') {
-      const dialog = this.dialog.open(DialogColumComponent, {
-        width: '300px',
-        data: { action },
-      });
-      dialog.afterClosed().subscribe((result) => {
-        if (result.event === 'Create') {
-          this.createColum(result.data.title);
-        }
-      });
-    } else {
-      const dialog = this.dialog.open(DialogTaskComponent, {
-        width: '300px',
-        data: { action, task: {} },
-      });
-      dialog.afterClosed().subscribe((result) => {
-        if (result.event === 'Create') {
-          this.createTask(
-            result.data.task.title,
-            result.data.task.description,
-            result.data.task.userId,
-            id
-          );
-        }
-      });
-    }
+    const dialog = this.dialog.open(DialogColumComponent, {
+      width: '300px',
+      data: { action },
+    });
+    dialog.afterClosed().subscribe((result) => {
+      if (result.event === 'Create') {
+        this.createColum(result.data.title);
+      }
+    });
   }
   createColum(title: string): void {
     this.boardService
       .createColum(title, this.board.id, this.board.columns?.length)
       .subscribe((colum) => this.board.columns?.push(colum));
   }
-  createTask(title: string, desc: string, userId: string, columId: string) {
-    const findColum = this.board.columns?.find((el) => el.id === columId);
-    this.boardService
-      .createTask(
-        title,
-        desc,
-        userId,
-        columId,
-        this.board.id,
-        findColum?.tasks?.length
-      )
-      .subscribe((task) => findColum?.tasks?.push(task));
+  updateBoard() {
+    this.ngOnInit();
   }
 }

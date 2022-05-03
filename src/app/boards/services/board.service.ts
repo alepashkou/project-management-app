@@ -49,4 +49,7 @@ export class BoardService {
       `boards/${boardId}/columns/${columId}/tasks/${taskId}`
     );
   }
+  deleteColum(boardId: string, columId: string) {
+    return this.http.delete(`boards/${boardId}/columns/${columId}`);
+  }
 }

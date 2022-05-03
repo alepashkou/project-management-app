@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Colum } from '../../models/boards.model';
 import { BoardService } from '../../services/board.service';
@@ -12,6 +12,7 @@ import { DialogTaskComponent } from '../dialog-task/dialog-task.component';
 export class BoardColumComponent {
   @Input() colum: Colum;
   @Input() boardId: string;
+  @Output() deleteColumId = new EventEmitter<string>();
   constructor(private boardService: BoardService, private dialog: MatDialog) {}
   openDialog(action: string): void {
     const dialog = this.dialog.open(DialogTaskComponent, {
@@ -25,6 +26,8 @@ export class BoardColumComponent {
           result.data.task.description,
           result.data.task.userId
         );
+      } else if (result.event === 'Delete') {
+        this.deleteColum();
       }
     });
   }
@@ -39,5 +42,10 @@ export class BoardColumComponent {
         this.colum.tasks?.length
       )
       .subscribe((task) => this.colum?.tasks?.push(task));
+  }
+  deleteColum() {
+    this.boardService.deleteColum(this.boardId, this.colum.id).subscribe(() => {
+      this.deleteColumId.emit(this.colum.id);
+    });
   }
 }

@@ -1,4 +1,11 @@
-<h2>{{ colum.title }}</h2>
+<div class="colum-title-container">
+  <h2>{{ colum.title }}</h2>
+  <div class="task-delete">
+    <mat-icon (click)="openDialog('Delete'); $event.stopPropagation()"
+      >delete</mat-icon
+    >
+  </div>
+</div>
 <ng-content></ng-content>
 <button
   mat-raised-button

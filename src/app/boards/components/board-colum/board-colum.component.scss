@@ -12,3 +12,16 @@
   align-items: center;
   margin: 10px;
 }
+.colum-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+mat-icon {
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.3s;
+  &:hover {
+    opacity: 1;
+  }
+}

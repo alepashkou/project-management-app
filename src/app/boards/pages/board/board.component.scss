@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding: 20px;
 }
 mat-form-field {
   width: 300px;
@@ -56,6 +57,7 @@ mat-form-field {
 .colum-list.cdk-drop-list-dragging .colum-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
 .task-list {
   border: solid 1px #ccc;
   min-height: 60px;

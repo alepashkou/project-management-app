@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Task } from '../../models/boards.model';
 import { DialogTaskComponent } from '../../components/dialog-task/dialog-task.component';
@@ -12,6 +12,7 @@ export class BoardTaskComponent {
   @Input() task: Task;
   @Input() columId: string;
   @Input() boardId: string;
+  @Output() deleteTaskId = new EventEmitter<string>();
 
   constructor(private dialog: MatDialog, private boardService: BoardService) {}
 
@@ -30,8 +31,7 @@ export class BoardTaskComponent {
     this.boardService
       .deleteTask(this.boardId, this.columId, this.task.id)
       .subscribe(() => {
-        //Удалить таск выше
-        console.log('delete');
+        this.deleteTaskId.emit(this.task.id);
       });
   }
 }

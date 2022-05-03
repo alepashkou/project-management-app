@@ -19,26 +19,33 @@
   (cdkDropListDropped)="dropColum($event)"
 >
   <div class="div" cdkDropListGroup class="box-list">
-    <div class="task-container" *ngFor="let colum of board?.columns" cdkDrag>
-      <h2>{{ colum.title }}</h2>
-      <div
-        cdkDropList
-        [cdkDropListData]="colum.tasks"
-        class="task-list"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div class="task-box" *ngFor="let task of colum.tasks" cdkDrag>
-          {{ task.title }}
+    <div *ngFor="let colum of board?.columns" cdkDrag>
+      <app-board-colum [colum]="colum" [boardId]="board.id">
+        <div
+          cdkDropList
+          [cdkDropListData]="colum.tasks"
+          class="task-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <app-board-task
+            class="task-box"
+            *ngFor="let task of colum.tasks"
+            [boardId]="board.id"
+            [columId]="colum.id"
+            [task]="task"
+            cdkDrag
+          >
+          </app-board-task>
         </div>
-      </div>
-      <button
-        mat-raised-button
-        color="primary"
-        class="task-btn"
-        (click)="openDialog('Create', 'Task', colum.id)"
-      >
-        Create Task
-      </button>
+        <!-- <button
+          mat-raised-button
+          color="primary"
+          class="task-btn"
+          (click)="openDialog('Create', 'Task', colum.id)"
+        >
+          Create Task
+        </button> -->
+      </app-board-colum>
     </div>
   </div>
 </div>

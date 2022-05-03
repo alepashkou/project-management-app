@@ -1,0 +1,14 @@
+:host {
+  min-width: 300px;
+  margin: 0px 15px 20px 15px;
+  display: inline-block;
+  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+}
+.task-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}

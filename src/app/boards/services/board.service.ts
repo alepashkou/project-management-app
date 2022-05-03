@@ -44,4 +44,9 @@ export class BoardService {
   getAllUsers() {
     return this.http.get<UserResponce[]>(`users`);
   }
+  deleteTask(boardId: string, columId: string, taskId: string) {
+    return this.http.delete(
+      `boards/${boardId}/columns/${columId}/tasks/${taskId}`
+    );
+  }
 }

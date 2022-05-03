@@ -1,3 +1,4 @@
+import { Task } from './boards.model';
 export interface DialogBoxData {
   action: string;
   id?: string;
@@ -9,9 +10,7 @@ export interface DialogColumData {
 }
 export interface DialogTaskData {
   action: string;
-  title: string;
-  desc: string;
-  userId: string;
+  task: Task;
 }
 export interface UserResponce {
   id: string;

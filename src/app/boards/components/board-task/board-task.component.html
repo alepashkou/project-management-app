@@ -1,0 +1,8 @@
+<div class="task-container" (click)="openDialog('Edit')">
+  <div class="task-title">{{ task.title }}</div>
+  <div class="task-delete">
+    <mat-icon (click)="openDialog('Delete'); $event.stopPropagation()"
+      >delete</mat-icon
+    >
+  </div>
+</div>

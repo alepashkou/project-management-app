@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   Inject,
+  OnInit,
   Optional,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -20,7 +21,7 @@ import { DialogColumComponent } from '../dialog-colum/dialog-colum.component';
   templateUrl: './dialog-task.component.html',
   styleUrls: ['./dialog-task.component.scss'],
 })
-export class DialogTaskComponent implements AfterViewChecked {
+export class DialogTaskComponent implements AfterViewChecked, OnInit {
   action: string;
 
   localData: DialogTaskData;
@@ -45,17 +46,28 @@ export class DialogTaskComponent implements AfterViewChecked {
       description: new FormControl('', [Validators.required]),
       userId: new FormControl('', [Validators.required]),
     });
-    this.boardService
-      .getAllUsers()
-      .subscribe((users) => (this.userList = users));
+  }
+  ngOnInit(): void {
+    if (this.action === 'Create' || this.action === 'Edit') {
+      this.boardService
+        .getAllUsers()
+        .subscribe((users) => (this.userList = users));
+    }
+    if (this.action === 'Edit') {
+      this.param.setValue({
+        title: this.localData.task?.title,
+        description: this.localData.task?.description,
+        userId: this.localData.task?.userId,
+      });
+    }
   }
   ngAfterViewChecked(): void {
     this.changeDetectorRef.detectChanges();
   }
   doAction() {
-    this.localData.title = this.param.get('title')?.value;
-    this.localData.desc = this.param.get('description')?.value;
-    this.localData.userId = this.param.get('userId')?.value;
+    this.localData.task.title = this.param.get('title')?.value;
+    this.localData.task.description = this.param.get('description')?.value;
+    this.localData.task.userId = this.param.get('userId')?.value;
     this.dialog.close({ event: this.action, data: this.localData });
   }
 

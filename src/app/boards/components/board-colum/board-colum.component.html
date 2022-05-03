@@ -1,0 +1,10 @@
+<h2>{{ colum.title }}</h2>
+<ng-content></ng-content>
+<button
+  mat-raised-button
+  color="primary"
+  class="task-btn"
+  (click)="openDialog('Create')"
+>
+  Create Task <mat-icon>note_add</mat-icon>
+</button>

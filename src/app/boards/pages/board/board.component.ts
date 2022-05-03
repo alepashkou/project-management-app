@@ -61,7 +61,7 @@ export class BoardComponent implements OnInit {
         event.currentIndex
       );
   }
-  openDialog(action: string, type: string, columId: string): void {
+  openDialog(action: string, type: string, id: string): void {
     if (type === 'colum') {
       const dialog = this.dialog.open(DialogColumComponent, {
         width: '300px',
@@ -75,16 +75,15 @@ export class BoardComponent implements OnInit {
     } else {
       const dialog = this.dialog.open(DialogTaskComponent, {
         width: '300px',
-        data: { action },
+        data: { action, task: {} },
       });
       dialog.afterClosed().subscribe((result) => {
         if (result.event === 'Create') {
-          console.log(result);
           this.createTask(
-            result.data.title,
-            result.data.desc,
-            result.data.userId,
-            columId
+            result.data.task.title,
+            result.data.task.description,
+            result.data.task.userId,
+            id
           );
         }
       });

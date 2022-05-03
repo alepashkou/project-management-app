@@ -11,6 +11,8 @@ import { BoardComponent } from './pages/board/board.component';
 import { BoardService } from './services/board.service';
 import { DialogColumComponent } from './components/dialog-colum/dialog-colum.component';
 import { DialogTaskComponent } from './components/dialog-task/dialog-task.component';
+import { BoardTaskComponent } from './components/board-task/board-task.component';
+import { BoardColumComponent } from './components/board-colum/board-colum.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -26,6 +28,8 @@ const routes: Routes = [
     BoardComponent,
     DialogColumComponent,
     DialogTaskComponent,
+    BoardTaskComponent,
+    BoardColumComponent,
   ],
   imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
   providers: [MainBoardService, BoardService],

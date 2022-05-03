@@ -1,0 +1,24 @@
+<pre>
+  {{token$ | async | json}}
+</pre>
+
+<mat-card>
+  <mat-card-content>
+    <form>
+      <h2>Edit Profile</h2>
+      <label for="username" class="text-left">Name</label>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Name" name="username" formControlName="login" class="border-solid">
+      </mat-form-field>
+      <label for="login" class="text-left">Login</label>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Login" name="username" formControlName="login" class="border-solid">
+      </mat-form-field>
+      <label for="password" class="text-left">Password</label>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Password" name="username" formControlName="login" class="border-solid">
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary">Save Changes</button>
+    </form>
+  </mat-card-content>
+</mat-card>

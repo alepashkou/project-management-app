@@ -15,7 +15,7 @@ import { ApiInterceptor } from './core/services/api.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './shared/material/material.module';
 import { SignUpPageComponent } from './auth/pages/sign-up-page/sign-up-page.component';
-import { ProfilePageComponent } from './auth/pages/profile-page/profile-page.component';
+import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [

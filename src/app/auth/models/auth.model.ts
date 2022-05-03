@@ -14,3 +14,9 @@ export interface SignUp {
   login: string;
   password: string;
 }
+
+export interface UserInfo {
+  id: string;
+  name: string;
+  login: string;
+}

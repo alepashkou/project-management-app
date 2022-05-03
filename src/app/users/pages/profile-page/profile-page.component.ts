@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectParseToken } from '../../store/auth.selectors';
+import { selectParseToken } from '../../../auth/store/auth.selectors';
 
 @Component({
   selector: 'app-profile-page',

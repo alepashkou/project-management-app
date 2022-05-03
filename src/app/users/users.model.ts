@@ -3,3 +3,9 @@ export interface UserInfo {
   name: string;
   login: string;
 }
+
+export interface UpdateUser {
+  name: string;
+  login: string;
+  password: string;
+}

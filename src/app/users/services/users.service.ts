@@ -1,17 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserInfo } from '../users.model';
+import { UpdateUser, UserInfo } from '../users.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class UsersService {
   private apiUrl = '';
   constructor(
     private httpClient: HttpClient
   ) { }
 
-  getUserById(id: string) {
-    return this.httpClient.get<UserInfo>(`${this.apiUrl}${id}`)
+  getUserById(userId: string) {
+    return this.httpClient.get<UserInfo>(`${this.apiUrl}/users/${userId}`)
+  }
+
+  updateUser(userData: UpdateUser, userId: string) {
+    return this.httpClient.put<UserInfo>(`${this.apiUrl}/users/${userId}`, userData)
   }
 }

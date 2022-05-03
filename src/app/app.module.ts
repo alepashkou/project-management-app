@@ -16,6 +16,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './shared/material/material.module';
 import { SignUpPageComponent } from './auth/pages/sign-up-page/sign-up-page.component';
 import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
+import { UsersEffects } from './users/store/users.effects';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { ProfilePageComponent } from './users/pages/profile-page/profile-page.co
     }),
     FormsModule,
     ReactiveFormsModule,
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects, UsersEffects])
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
   bootstrap: [AppComponent]

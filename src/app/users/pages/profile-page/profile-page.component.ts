@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectParseToken } from '../../../auth/store/auth.selectors';
+import { loadCurrentUser, updateUser } from '../../store/users.actions';
+import { selectActiveUser } from '../../store/users.selectors';
 
 @Component({
   selector: 'app-profile-page',
@@ -10,5 +13,11 @@ import { selectParseToken } from '../../../auth/store/auth.selectors';
 export class ProfilePageComponent {
 
   token$ = this.store.select(selectParseToken);
-  constructor(private store: Store) { }
+  user$ = this.store.select(selectActiveUser);
+  constructor(private store: Store) {
+    this.store.dispatch(loadCurrentUser())
+  }
+
+  updateProfile() {
+  }
 }

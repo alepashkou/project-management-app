@@ -1,5 +1,5 @@
 <pre>
-  {{token$ | async | json}}
+  {{user$ | async | json}}
 </pre>
 
 <mat-card>
@@ -8,17 +8,20 @@
       <h2>Edit Profile</h2>
       <label for="username" class="text-left">Name</label>
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Name" name="username" formControlName="login" class="border-solid">
+        <input matInput placeholder="Name" name="username" class="border-solid" [ngModel]="(user$ | async)?.name">
       </mat-form-field>
       <label for="login" class="text-left">Login</label>
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Login" name="username" formControlName="login" class="border-solid">
+        <input matInput placeholder="Login" name="login" class="border-solid" [ngModel]="(user$ | async)?.login">
       </mat-form-field>
       <label for="password" class="text-left">Password</label>
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Password" name="username" formControlName="login" class="border-solid">
+        <input matInput placeholder="Password" name="password" class="border-solid">
       </mat-form-field>
-      <button type="submit" mat-raised-button color="primary">Save Changes</button>
+      <div class="buttons flex justify-around">
+        <button type="submit" mat-raised-button color="primary">Save Changes</button>
+        <button mat-raised-button class="bg-[#f92c2cd9]">Delete Account</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

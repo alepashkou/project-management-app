@@ -7,7 +7,7 @@ import { filter, map, switchMap, tap, withLatestFrom } from 'rxjs';
 import { selectCurrentUserId } from 'src/app/auth/store/auth.selectors';
 import { isNotNull } from 'src/app/core/utils';
 import { UsersService } from '../services/users.service';
-import { loadCurrentUser, loadUserSuccess } from './users.actions';
+import { loadCurrentUser, loadUserSuccess, updateUser, updateUserSuccess } from './users.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -17,8 +17,6 @@ export class UsersEffects {
   constructor(
     private actions$: Actions,
     private usersService: UsersService,
-    private matSnackBar: MatSnackBar,
-    private router: Router,
     private store: Store,
   ) { }
 
@@ -36,4 +34,18 @@ export class UsersEffects {
       })
     )
   })
-}
+
+  updateUser$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(updateUser),
+      withLatestFrom(
+        this.store.select(selectCurrentUserId).pipe(filter(isNotNull))
+      ),
+      switchMap(([action, userId]) => {
+        return this.usersService.updateUser(action.updateUser, userId).pipe(
+          map(() => updateUserSuccess({ updateUser: action.updateUser }))
+        )
+      })
+    )
+  })
+} 

@@ -16,5 +16,6 @@ export const updateUser = createAction(
 )
 
 export const updateUserSuccess = createAction(
-  '[Profile] updateUserSuccess'
+  '[Profile] updateUserSuccess',
+  props<{ updateUser: UpdateUser }>()
 )

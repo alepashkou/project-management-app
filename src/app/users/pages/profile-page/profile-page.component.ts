@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { passwordDifficulty } from 'src/app/auth/pages/sign-up-page/sign-up-page.component';
 import { selectParseToken } from '../../../auth/store/auth.selectors';
@@ -17,7 +18,7 @@ export class ProfilePageComponent {
 
   token$ = this.store.select(selectParseToken);
   user$ = this.store.select(selectActiveUser);
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     this.store.dispatch(loadCurrentUser())
   }
 
@@ -39,6 +40,8 @@ export class ProfilePageComponent {
 
   editProfile() {
     if (this.profileForm.valid) {
+      this.store.dispatch(updateUser({ updateUser: this.profileForm.value }))
+      // this.router.navigate(['login'])
     }
   }
 }

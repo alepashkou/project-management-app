@@ -16,6 +16,6 @@ export class UsersService {
   }
 
   updateUser(userData: UpdateUser, userId: string) {
-    return this.httpClient.put<UserInfo>(`${this.apiUrl}/users/${userId}`, userData)
+    return this.httpClient.put<UserInfo>(`${this.apiUrl}users/${userId}`, userData)
   }
 }

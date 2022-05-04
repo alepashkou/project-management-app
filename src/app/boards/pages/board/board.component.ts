@@ -10,6 +10,7 @@ import { Board } from '../../models/boards.model';
 import { BoardService } from '../../services/board.service';
 import { DialogColumComponent } from '../../components/dialog-colum/dialog-colum.component';
 import { Task } from '../../models/boards.model';
+import { UserResponce } from '../../models/dialog.model';
 
 @Component({
   selector: 'app-board',
@@ -20,6 +21,8 @@ export class BoardComponent implements OnInit {
   board: Board;
 
   id: string;
+
+  allUsers: UserResponce[];
 
   constructor(
     private route: ActivatedRoute,
@@ -32,10 +35,10 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.boardService.getBoard(this.id).subscribe((board) => {
       this.board = board;
-      this.board.columns = this.board.columns?.sort(
-        (a, b) => a.order - b.order
-      );
     });
+    this.boardService
+      .getAllUsers()
+      .subscribe((users) => (this.allUsers = users));
   }
 
   drop(event: CdkDragDrop<any>): void {

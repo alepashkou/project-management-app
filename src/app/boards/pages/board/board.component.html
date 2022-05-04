@@ -1,7 +1,15 @@
 <div class="control-container">
+  <button mat-raised-button color="primary" [routerLink]="'/boards'">
+    <mat-icon>keyboard_backspace</mat-icon>
+    Go to boards
+  </button>
   <button mat-raised-button color="primary" (click)="openDialog('Create')">
     Create column
     <mat-icon>dashboard</mat-icon>
+  </button>
+  <button mat-raised-button color="primary" [routerLink]="'/'">
+    Go to main
+    <mat-icon>home</mat-icon>
   </button>
 </div>
 <div
@@ -34,6 +42,7 @@
             (update)="updateBoard()"
             cdkDrag
             [id]="task.id"
+            appLeftBorderColor
           >
           </app-board-task>
         </div>

@@ -1,0 +1,43 @@
+{
+  "header": {
+    "board": "Добавить доску",
+    "signIn": "Войти",
+    "signUp": "Зарегистрироваться"
+  },
+  "login": {
+    "login": "Войти",
+    "loginPlaceholder": "Логин",
+    "passworPlaceholder": "Пароль",
+    "loginRequired": "Пожалуйста, введите ваш логин",
+    "passwordRequired": "Пожалуйста, введите ваш пароль"
+  },
+  "signup": {
+    "signup": "Регистрация",
+    "userNamePlaceholder": "Имя",
+    "userNameRequired": "Пожалуйста, введите ваше имя",
+    "loginPlaceholder": "Логин",
+    "loginMinLengthError": " Ваш логин должен быть не менее чем 4 символа",
+    "loginRequired": "Пожалуйста, введите ваш логин",
+    "passworPlaceholder": "Пароль",
+    "passworContains": "Пароль должен включать:",
+    "passworContainsSmallLetters": "- строчные буквы",
+    "passworContainsCapitalLetters": "- заглавные буквы",
+    "passworContainsNumbers": "- числа",
+    "passworContainsSymbol": "- специальные символы",
+    "passworLength": "- минимум 8 символов",
+    "create": "Зарегистрировать"
+  },
+  "board": {
+    "addBoard": "Добавть доску",
+    "board": "Доска"
+  },  
+  "boardDialog": {
+    "boardName": "Название доски",
+    "minLengthError": "Слишком коротко (минимум 3)",
+    "maxLengthError": "Слишком длинно (максимум 15)",
+    "sureToDelete": "Вы уверены, что хотите удалить эту доску?",
+    "cancel": "Отмена"
+  },
+  "Create": "Создать",
+  "Delete": "Удалить"
+}

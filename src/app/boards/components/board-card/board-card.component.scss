@@ -3,7 +3,6 @@
   top: 0px;
   position: relative;
   width: 264px;
-  background-color: #f2f8f9;
   border-radius: 4px;
   margin: 12px;
   text-decoration: none;
@@ -18,6 +17,9 @@
     background-color: white;
     cursor: pointer;
   }
+}
+mat-icon {
+  padding: 5px;
 }
 
 mat-icon:hover {

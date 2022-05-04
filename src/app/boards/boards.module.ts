@@ -13,6 +13,7 @@ import { DialogColumComponent } from './components/dialog-colum/dialog-colum.com
 import { DialogTaskComponent } from './components/dialog-task/dialog-task.component';
 import { BoardTaskComponent } from './components/board-task/board-task.component';
 import { BoardColumComponent } from './components/board-colum/board-colum.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -31,7 +32,12 @@ const routes: Routes = [
     BoardTaskComponent,
     BoardColumComponent,
   ],
-  imports: [CommonModule, SharedModule, RouterModule.forChild(routes)],
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterModule.forChild(routes),
+    TranslateModule,
+  ],
   providers: [MainBoardService, BoardService],
 })
 export class BoardsModule {}

@@ -1,44 +1,44 @@
 <mat-card>
   <mat-card-content>
     <form [formGroup]="signUpForm" (ngSubmit)="signup()">
-      <h2>Sign Up</h2>
+      <h2>{{'signup.signup' | translate }}</h2>
       <mat-form-field>
-        <input matInput placeholder="Name" name="username" formControlName="name">
+        <input matInput placeholder="{{'signup.userNamePlaceholder' | translate }}" name="username" formControlName="name">
         <mat-error *ngIf="signUpForm.get('name')?.hasError('required')">
-          Please provide your name
+          {{'signup.userNameRequired' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="py-3">
-        <input matInput placeholder="Login" name="login" formControlName="login">
+        <input matInput placeholder="{{'signup.loginPlaceholder' | translate }}" name="login" formControlName="login">
         <mat-error *ngIf="signUpForm.get('login')?.hasError('minlength')">
-          Your login must be at least 4 characters long
+          {{'signup.loginMinLengthError' | translate }}
         </mat-error>
         <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">
-          Please provide your login
+          {{'signup.loginRequired' | translate }}
         </mat-error>
       </mat-form-field>
       <mat-form-field class="py-1">
-        <input matInput type="password" placeholder="Password" name="password" formControlName="password">
+        <input matInput type="password" placeholder="{{'signup.passworPlaceholder' | translate }}" name="password" formControlName="password">
         <mat-error *ngIf="!signUpForm.valid">
-          Password should contain:
+          {{'signup.passworContains' | translate }}
         </mat-error>
         <mat-error *ngIf="signUpForm.get('password')?.hasError('smallLetter')">
-          - small letter
+          {{'signup.passworContainsSmallLetters' | translate }}
         </mat-error>
         <mat-error *ngIf="signUpForm.get('password')?.hasError('capitalLetter')">
-          - capital letter
+          {{'signup.passworContainsCapitalLetters' | translate }}
         </mat-error>
         <mat-error *ngIf="signUpForm.get('password')?.hasError('number')">
-          - number
+          {{'signup.passworContainsNumbers' | translate }}
         </mat-error>
         <mat-error *ngIf="signUpForm.get('password')?.hasError('symbol')">
-          - special symbol
+          {{'signup.passworContainsSymbol' | translate }}
         </mat-error>
         <mat-error *ngIf="signUpForm.get('password')?.hasError('minlength')">
-          - min 8 characters
+          {{'signup.passworLength' | translate }}
         </mat-error>
       </mat-form-field>
-      <button type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">Create Account</button>
+      <button type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">{{'signup.create' | translate }}</button>
     </form>
   </mat-card-content>
 </mat-card>

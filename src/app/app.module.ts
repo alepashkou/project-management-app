@@ -12,17 +12,28 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthEffects } from './auth/store/auth.effects';
 import { EffectsModule } from '@ngrx/effects';
 import { ApiInterceptor } from './core/services/api.interceptor';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpBackend, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
+import { MainFooterComponent } from './core/components/main-footer/main-footer.component';
+import { MainHeaderComponent } from './core/components/main-header/main-header.component';
 import { MaterialModule } from './shared/material/material.module';
 import { SignUpPageComponent } from './auth/pages/sign-up-page/sign-up-page.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
+import { UsersEffects } from './users/store/users.effects';
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainFooterComponent,
+    MainHeaderComponent,
     LoginPageComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
+    ProfilePageComponent
   ],
-  imports: [
+  imports: [SharedModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -44,11 +55,22 @@ import { SignUpPageComponent } from './auth/pages/sign-up-page/sign-up-page.comp
       logOnly: environment.production,
       autoPause: true,
     }),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpBackend]
+      }
+    }),
     FormsModule,
     ReactiveFormsModule,
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects, UsersEffects])
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function httpTranslateLoader(http: HttpBackend) {
+  return new TranslateHttpLoader(new HttpClient(http));
+}

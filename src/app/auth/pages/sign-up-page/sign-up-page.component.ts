@@ -40,7 +40,7 @@ export class SignUpPageComponent {
   }
 }
 
-const passwordDifficulty: ValidatorFn = (control: AbstractControl) => {
+export const passwordDifficulty: ValidatorFn = (control: AbstractControl) => {
   const strongRegex = new RegExp(
     '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])'
   );

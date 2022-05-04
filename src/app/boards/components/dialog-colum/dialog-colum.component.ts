@@ -26,6 +26,7 @@ export class DialogColumComponent implements AfterViewChecked {
     private readonly changeDetectorRef: ChangeDetectorRef,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: DialogColumData
   ) {
+    this.dialog.disableClose = true;
     this.localData = { ...data };
     this.action = this.localData.action;
     this.param = new FormControl('', [

@@ -14,11 +14,11 @@
         <mat-icon (click)="editTitle = false">cancel</mat-icon>
       </button>
       <mat-form-field class="dialog-field" appearance="outline">
-        <mat-label>Colum name</mat-label>
+        <mat-label>Column name</mat-label>
         <input matInput required [formControl]="changeNameInput" />
       </mat-form-field>
     </div>
-    <mat-card-subtitle>Colum </mat-card-subtitle>
+    <mat-card-subtitle>Column </mat-card-subtitle>
   </div>
   <div class="task-delete">
     <mat-icon (click)="openDialog('Delete'); $event.stopPropagation()"

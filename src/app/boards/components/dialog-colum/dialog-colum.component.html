@@ -1,16 +1,16 @@
-<mat-dialog-content>
+<mat-dialog-content [mat-dialog-close]="closeDialog()">
   <mat-form-field
     class="dialog-field"
     appearance="fill"
     *ngIf="action === 'Create'"
   >
-    <mat-label>Colum name</mat-label>
+    <mat-label>Column name</mat-label>
     <input matInput [formControl]="param" required />
     <mat-error *ngIf="param.hasError('minlength')">Too short (min 3)</mat-error>
     <mat-error *ngIf="param.hasError('maxlength')">Too long (max 15)</mat-error>
   </mat-form-field>
   <mat-dialog-content *ngIf="action === 'Delete'">
-    <h3>Are you sure you want to delete the colum</h3>
+    <h3>Are you sure you want to delete the column</h3>
   </mat-dialog-content>
 </mat-dialog-content>
 <div mat-dialog-actions class="dialog-buttons">

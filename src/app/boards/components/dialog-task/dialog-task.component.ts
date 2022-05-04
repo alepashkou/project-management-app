@@ -32,6 +32,7 @@ export class DialogTaskComponent implements AfterViewChecked, OnInit {
     private boardService: BoardService,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: DialogTaskData
   ) {
+    this.dialog.disableClose = true;
     this.localData = { ...data };
     this.action = this.localData.action;
     this.param = new FormGroup({

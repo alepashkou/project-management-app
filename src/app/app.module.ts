@@ -17,13 +17,15 @@ import { MaterialModule } from './shared/material/material.module';
 import { SignUpPageComponent } from './auth/pages/sign-up-page/sign-up-page.component';
 import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 import { UsersEffects } from './users/store/users.effects';
+import { DialogComponent } from './core/dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     SignUpPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

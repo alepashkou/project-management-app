@@ -21,6 +21,9 @@ import { SignUpPageComponent } from './auth/pages/sign-up-page/sign-up-page.comp
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
+import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
+import { UsersEffects } from './users/store/users.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +31,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     MainHeaderComponent,
     LoginPageComponent,
     SignUpPageComponent,
+    ProfilePageComponent
   ],
   imports: [SharedModule,
     BrowserModule,
@@ -60,7 +64,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     }),
     FormsModule,
     ReactiveFormsModule,
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects, UsersEffects])
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }],
   bootstrap: [AppComponent]

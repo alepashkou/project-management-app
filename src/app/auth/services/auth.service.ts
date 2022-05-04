@@ -13,13 +13,13 @@ export class AuthService {
 
   signIn(signIn: SignIn) {
     return this.httpClient.post<{ token: string }>(`${this.apiUrl}signin`, {
-      "login": signIn.login,
+      login: signIn.login,
       "password": signIn.password,
     })
   }
 
   signUp(signUp: SignUp) {
-    return this.httpClient.post<{ signUp: SignUp }>(`${this.apiUrl}signup`, {
+    return this.httpClient.post<SignUp>(`${this.apiUrl}signup`, {
       "name": signUp.name,
       "login": signUp.login,
       "password": signUp.password

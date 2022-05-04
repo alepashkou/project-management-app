@@ -1,0 +1,53 @@
+<!-- <pre>
+  {{user$ | async | json}}
+</pre> -->
+
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="profileForm" (ngSubmit)="editProfile()">
+      <h2>Edit Profile</h2>
+      <label for="username" class="text-left">Name</label>
+      <mat-form-field appearance="outline">
+        <input formControlName="name" matInput placeholder="Name" name="username" class="border-solid"
+          [ngModel]="(user$ | async)?.name">
+      </mat-form-field>
+      <label for="login" class="text-left">Login</label>
+      <mat-form-field appearance="outline">
+        <input formControlName="login" matInput placeholder="Login" name="login" class="border-solid"
+          [ngModel]="(user$ | async)?.login">
+      </mat-form-field>
+      <mat-error *ngIf="profileForm.get('login')?.hasError('minlength')">
+        Your login must be at least 4 characters long
+      </mat-error>
+      <label for="password" class="text-left">Password</label>
+      <mat-form-field appearance="outline">
+        <input formControlName="password" matInput type="password" placeholder="Password" name="password"
+          class="border-solid">
+      </mat-form-field>
+      <mat-error *ngIf="profileForm.get('password')?.dirty">
+        <mat-error *ngIf="!profileForm.valid">
+          Password should contain:
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('password')?.hasError('smallLetter')">
+          - small letter
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('password')?.hasError('capitalLetter')">
+          - capital letter
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('password')?.hasError('number')">
+          - number
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('password')?.hasError('symbol')">
+          - special symbol
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('password')?.hasError('minlength')">
+          - min 8 characters
+        </mat-error>
+      </mat-error>
+      <div class="buttons flex justify-around">
+        <button type="submit" mat-raised-button color="primary">Save Changes</button>
+        <button mat-raised-button class="bg-[#f92c2cd9]">Delete Account</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

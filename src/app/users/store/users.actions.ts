@@ -19,3 +19,12 @@ export const updateUserSuccess = createAction(
   '[Profile] updateUserSuccess',
   props<{ updateUser: UpdateUser }>()
 )
+
+export const deleteUser = createAction(
+  '[Profile] DeleteUser',
+  props<{ userId: string }>()
+)
+
+export const deleteUserSuccess = createAction(
+  '[Profile] DeleteUser'
+)

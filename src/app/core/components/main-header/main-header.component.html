@@ -1,0 +1,41 @@
+<mat-toolbar class="" color="accent">
+<header class="container main-header">
+
+  <div class="setting-block">
+
+    <div class="therm-block">
+      <mat-icon *ngIf="curretnTheme === 'light'" (click)="changeTheme('dark-mode')">brightness_7</mat-icon>
+      <mat-icon *ngIf="curretnTheme === 'dark-mode' " (click)="changeTheme('light')">brightness_3</mat-icon>
+    </div>
+
+    <div class="language-block">
+      <span class="lang">RU</span>
+      <mat-slide-toggle [(ngModel)]="isCurretnLanguageChecked" (change)="checkLanguage()" color="primary">
+      </mat-slide-toggle>
+      <span class="lang">ENG</span>
+    </div>
+
+  </div>
+
+  <div class="add-new-board">
+    <button class="add-new-board__button" mat-icon-button>
+      <mat-icon>add</mat-icon>
+      <span>{{'header.board' | translate }}</span>
+    </button>
+  </div>
+
+  <div class="user-block">
+
+    <div class="profile-block" title="user">
+      <mat-icon color="primary">person</mat-icon>
+    </div>
+
+    <div class="auth-block">
+      <button mat-raised-button color="primary" [routerLink]="'/login'">{{'header.signIn' | translate }}</button>
+      <button mat-raised-button color="primary" [routerLink]="'/signup'">{{'header.signUp' | translate }}</button>
+    </div>
+
+  </div>
+  
+</header>
+</mat-toolbar>

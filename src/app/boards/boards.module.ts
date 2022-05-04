@@ -8,6 +8,7 @@ import { BoardCardComponent } from './components/board-card/board-card.component
 import { LeftBorderColorDirective } from './directives/left-border-color.directive';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { BoardComponent } from './pages/board/board.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   { path: '', component: MainComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
+    TranslateModule
   ],
   providers:[MainBoardService]
 })

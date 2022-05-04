@@ -1,0 +1,54 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.lang {
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+    margin-left: 10px;
+  }
+}
+
+.add-new-board__button {
+  border: 1px solid;
+}
+
+.mat-icon-button {
+  width: auto;
+  padding: 0px 100px 0px 5px;
+  border-radius: 0;
+}
+
+.mat-toolbar {
+  height: 100px;
+}
+
+.profile-block {
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+
+.therm-block {
+  align-items: center;
+  display: flex;
+}
+
+.setting-block,
+.user-block,
+.auth-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.auth-block {
+  gap: 15px;
+}

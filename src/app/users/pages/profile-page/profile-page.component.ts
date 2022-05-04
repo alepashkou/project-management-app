@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
 import { passwordDifficulty } from 'src/app/auth/pages/sign-up-page/sign-up-page.component';
+import { DialogComponent } from 'src/app/core/dialog/dialog.component';
 import { selectCurrentUserId, selectParseToken } from '../../../auth/store/auth.selectors';
 import { UsersService } from '../../services/users.service';
 import { loadCurrentUser, updateUser } from '../../store/users.actions';
@@ -63,5 +64,18 @@ export class ProfilePageComponent {
         duration: 5000
       })
     }
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {
+        message: 'Are you sure you want to delete your account?'
+      },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteUser()
+      }
+    });
   }
 }

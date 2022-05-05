@@ -46,4 +46,13 @@ export class UsersEffects {
       })
     )
   })
+
+  loadUserInfo$ = createEffect(() => {
+    return this.store.select(selectCurrentUserId).pipe(filter(isNotNull),
+      switchMap((userId: string) => {
+        return this.usersService.getUserById(userId).pipe(
+          map((result) => loadUserSuccess({ userInfo: result })),
+        )
+      }));
+  })
 } 

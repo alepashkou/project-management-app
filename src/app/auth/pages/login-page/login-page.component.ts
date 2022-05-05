@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { login } from '../../store/auth.actions';
 import { selectIsLoginInProgress } from '../../store/auth.selectors';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -19,6 +20,7 @@ export class LoginPageComponent {
 
   constructor(
     private store: Store,
+    private router: Router
   ) {
     this.isLoginInProgress$.subscribe((value) => {
       if (value) {
@@ -42,6 +44,10 @@ export class LoginPageComponent {
     if (this.loginForm.valid) {
       this.store.dispatch(login(this.loginForm.value))
     }
+  }
+
+  goToSingUp() {
+    this.router.navigate(['signup'])
   }
 }
 

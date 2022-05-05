@@ -9,7 +9,8 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field class="py-3">
-        <input matInput type="password" placeholder="{{'login.passworPlaceholder' | translate }}" name="password" formControlName="password">
+        <input matInput type="password" placeholder="{{'login.passworPlaceholder' | translate }}" name="password"
+          formControlName="password">
         <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
           {{'login.passwordRequired' | translate }}
         </mat-error>
@@ -17,5 +18,6 @@
       <button type="submit" mat-raised-button color="accent"
         [disabled]="!loginForm.valid || (isLoginInProgress$ | async)">{{'login.login' | translate }}</button>
     </form>
+    <a class="hover:text-red-800 cursor-pointer" (click)="goToSingUp()">Don't have an account yet?</a>
   </mat-card-content>
 </mat-card>

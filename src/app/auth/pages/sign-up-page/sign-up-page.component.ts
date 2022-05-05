@@ -18,7 +18,8 @@ const PASSWORD_MIN_LENGTH = 8;
 })
 export class SignUpPageComponent {
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+  }
 
   signUpForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -30,6 +31,16 @@ export class SignUpPageComponent {
       Validators.required,
       Validators.minLength(PASSWORD_MIN_LENGTH),
       passwordDifficulty,
+    ]),
+    passwordRepeat: new FormControl('', [
+      Validators.required,
+      (passwordRepeatForm) => {
+        console.log(this.signUpForm?.value.password)
+        if (passwordRepeatForm.value !== this.signUpForm?.value.password) {
+          return { notMatch: 'Passwords do not match' }
+        }
+        return null
+      }
     ])
   })
 

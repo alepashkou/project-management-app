@@ -3,7 +3,8 @@
     <form [formGroup]="signUpForm" (ngSubmit)="signup()">
       <h2>{{'signup.signup' | translate }}</h2>
       <mat-form-field>
-        <input matInput placeholder="{{'signup.userNamePlaceholder' | translate }}" name="username" formControlName="name">
+        <input matInput placeholder="{{'signup.userNamePlaceholder' | translate }}" name="username"
+          formControlName="name">
         <mat-error *ngIf="signUpForm.get('name')?.hasError('required')">
           {{'signup.userNameRequired' | translate }}
         </mat-error>
@@ -18,27 +19,41 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field class="py-1">
-        <input matInput type="password" placeholder="{{'signup.passworPlaceholder' | translate }}" name="password" formControlName="password">
+        <input matInput type="password" placeholder="{{'signup.passworPlaceholder' | translate }}" name="password"
+          formControlName="password">
         <mat-error *ngIf="!signUpForm.valid">
           {{'signup.passworContains' | translate }}
         </mat-error>
-        <mat-error *ngIf="signUpForm.get('password')?.hasError('smallLetter')">
-          {{'signup.passworContainsSmallLetters' | translate }}
-        </mat-error>
-        <mat-error *ngIf="signUpForm.get('password')?.hasError('capitalLetter')">
-          {{'signup.passworContainsCapitalLetters' | translate }}
-        </mat-error>
-        <mat-error *ngIf="signUpForm.get('password')?.hasError('number')">
-          {{'signup.passworContainsNumbers' | translate }}
-        </mat-error>
-        <mat-error *ngIf="signUpForm.get('password')?.hasError('symbol')">
-          {{'signup.passworContainsSymbol' | translate }}
-        </mat-error>
-        <mat-error *ngIf="signUpForm.get('password')?.hasError('minlength')">
-          {{'signup.passworLength' | translate }}
+        <mat-error>
+          <ng-container *ngIf="signUpForm.get('password')?.hasError('capitalLetter')">
+            {{'signup.passworContainsCapitalLetters' | translate }}
+          </ng-container>
+          <ng-container *ngIf="signUpForm.get('password')?.hasError('smallLetter')">
+            {{'signup.passworContainsSmallLetters' | translate }}
+          </ng-container>
+          <ng-container *ngIf="signUpForm.get('password')?.hasError('number')">
+            {{'signup.passworContainsNumbers' | translate }}
+          </ng-container>
+          <ng-container *ngIf="signUpForm.get('password')?.hasError('symbol')">
+            {{'signup.passworContainsSymbol' | translate }}
+          </ng-container>
+          <ng-container *ngIf="signUpForm.get('password')?.hasError('minlength')">
+            {{'signup.passworLength' | translate }}
+          </ng-container>
         </mat-error>
       </mat-form-field>
-      <button type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">{{'signup.create' | translate }}</button>
+      <mat-form-field class="py-2">
+        <input matInput type="password" placeholder="Re-enter password" name="passwordRepeat"
+          formControlName="passwordRepeat">
+        <mat-error *ngIf="signUpForm.get('passwordRepeat')?.hasError('notMatch')">
+          Passwords do not match
+        </mat-error>
+        <mat-error *ngIf="signUpForm.get('passwordRepeat')?.hasError('required')">
+          Please repeat your password
+        </mat-error>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">{{'signup.create' |
+        translate }}</button>
     </form>
   </mat-card-content>
 </mat-card>

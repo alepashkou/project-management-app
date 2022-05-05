@@ -1,5 +1,3 @@
-import { state } from "@angular/animations"
-import { act } from "@ngrx/effects"
 import { createReducer, on } from "@ngrx/store"
 import { UserInfo } from "../users.model"
 import { loadCurrentUser, loadUserSuccess, updateUser, updateUserSuccess } from "./users.actions"
@@ -25,5 +23,5 @@ export const reducer = createReducer(
       return state;
     }
     return { ...state, user: { login: action.updateUser.login, name: action.updateUser.name, id: userId } }
-  }
-  ))
+  }),
+)

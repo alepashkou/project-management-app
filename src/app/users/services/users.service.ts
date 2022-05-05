@@ -18,4 +18,8 @@ export class UsersService {
   updateUser(userData: UpdateUser, userId: string) {
     return this.httpClient.put<UserInfo>(`${this.apiUrl}users/${userId}`, userData)
   }
+
+  deleteUser(userId: string) {
+    return this.httpClient.delete(`${this.apiUrl}users/${userId}`)
+  }
 }

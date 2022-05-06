@@ -23,6 +23,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 import { UsersEffects } from './users/store/users.effects';
+import { DialogComponent } from './core/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UsersEffects } from './users/store/users.effects';
     MainHeaderComponent,
     LoginPageComponent,
     SignUpPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    DialogComponent
   ],
   imports: [SharedModule,
     BrowserModule,

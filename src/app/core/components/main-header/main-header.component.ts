@@ -5,9 +5,7 @@ import { Store } from '@ngrx/store';
 import { State } from 'src/app/users/store/users.reducer';
 import { selectActiveUser } from 'src/app/users/store/users.selectors';
 import { logoutUser } from 'src/app/users/store/users.actions';
-import { UserInfo } from 'src/app/users/users.model';
-
-
+import { UsersService } from 'src/app/users/services/users.service';
 
 @Component({
   selector: 'app-main-header',
@@ -21,17 +19,25 @@ export class MainHeaderComponent implements OnInit {
   public isCurretnLanguageChecked: boolean | null = false;
 
   public activeUserName: string | undefined;
-  public isUserActive: boolean = false;
+  public isUserActive: boolean;
 
-  
-  constructor(public themeService: ThemeService, public translate: TranslateService, private store: Store<State>) {
+  constructor(
+    public themeService: ThemeService,
+    public translate: TranslateService,
+    private store: Store<State>,
+    private usersService: UsersService
+  ) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang(localStorage.getItem('language') || 'en');
   }
 
   ngOnInit(): void {
 
-    this.isUserLogin();
+    if (localStorage.getItem('token')) {
+      this.usersService.updateUserLoginStatus(true);
+    }
+
+    this.activeUser();
     this.themeService.initTheme();
     
     if (!localStorage.getItem('theme')) {
@@ -68,20 +74,18 @@ export class MainHeaderComponent implements OnInit {
   }
 
   public activeUser() {
-    this.store.select(selectActiveUser).subscribe(user => {
-      this.activeUserName = user?.name;
-    })
-    return this.activeUserName;
-  }
-
-  public isUserLogin() {
-    this.isUserActive = this.activeUserName ? true : false;
-    return this.isUserActive;
+    this.store.select(selectActiveUser).subscribe((userName) => {
+      this.activeUserName = userName?.name;
+    });
   }
 
   public logout() {
     this.store.dispatch(logoutUser({ userInfo: { login: '', name: '', id: '' } }));
     localStorage.removeItem('token');
-    this.isUserActive = false;
+    this.usersService.updateUserLoginStatus(false);
+  }
+
+  public chekUserStatus() {
+    return this.usersService.getUserStatus();
   }
 }

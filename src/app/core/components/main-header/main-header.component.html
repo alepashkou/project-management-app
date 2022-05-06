@@ -26,16 +26,16 @@
 
   <div class="user-block">
 
-    <div class="profile-block" title={{activeUser()}}>
+    <div class="profile-block" *ngIf="chekUserStatus()" title={{activeUserName}}>
       <mat-icon color="primary">person</mat-icon>
     </div>
 
-    <div class="auth-block" *ngIf="!isUserLogin()">
+    <div class="auth-block" *ngIf="!chekUserStatus()">
       <button mat-raised-button color="primary" [routerLink]="'/login'">{{'header.signIn' | translate }}</button>
       <button mat-raised-button color="primary" [routerLink]="'/signup'">{{'header.signUp' | translate }}</button>
     </div>
 
-    <div class="auth-block" *ngIf="isUserLogin()">
+    <div class="auth-block" *ngIf="chekUserStatus()">
       <button mat-raised-button color="primary" (click)="logout()">Logout</button>
     </div>
 

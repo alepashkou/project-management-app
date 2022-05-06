@@ -7,6 +7,7 @@ import { UpdateUser, UserInfo } from '../users.model';
 })
 export class UsersService {
   private apiUrl = '';
+  private isUserActive = false; 
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -22,4 +23,13 @@ export class UsersService {
   deleteUser(userId: string) {
     return this.httpClient.delete(`${this.apiUrl}users/${userId}`)
   }
+
+  updateUserLoginStatus(isLogin: boolean) {
+    this.isUserActive = isLogin;
+  }
+
+  getUserStatus() {
+    return this.isUserActive;
+  }
+
 }

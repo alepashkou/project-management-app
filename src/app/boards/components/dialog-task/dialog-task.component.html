@@ -1,8 +1,8 @@
 <form [formGroup]="param">
-  <mat-dialog-content *ngIf="action === 'Delete'">
+  <mat-dialog-content class="dialog-item" *ngIf="action === 'Delete'">
     <h3>Are you sure you want to delete the task?</h3>
   </mat-dialog-content>
-  <mat-dialog-content *ngIf="action === 'Create' || action === 'Edit'">
+  <mat-dialog-content class="dialog-item" *ngIf="action === 'Create' || action === 'Edit'">
     <mat-form-field class="dialog-field" appearance="fill">
       <mat-label>Task name</mat-label>
       <input matInput required formControlName="title" />
@@ -25,6 +25,7 @@
   </mat-dialog-content>
   <div mat-dialog-actions class="dialog-buttons">
     <button
+      color="accent"
       *ngIf="action !== 'Delete'"
       mat-flat-button
       (click)="doAction()"

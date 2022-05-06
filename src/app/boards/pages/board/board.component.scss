@@ -132,3 +132,14 @@ mat-form-field {
 app-board-task {
   border-left-width: 3px;
 }
+.drag-handle {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+  transition: all 0.3s;
+  opacity: 0.8;
+  cursor: move;
+  &:hover {
+    opacity: 1;
+  }
+}

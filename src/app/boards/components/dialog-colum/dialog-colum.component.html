@@ -4,18 +4,26 @@
     appearance="fill"
     *ngIf="action === 'Create'"
   >
-    <mat-label>Column name</mat-label>
+    <mat-label>{{ "column.columnName" | translate }}</mat-label>
     <input matInput [formControl]="param" required />
-    <mat-error *ngIf="param.hasError('minlength')">Too short (min 3)</mat-error>
-    <mat-error *ngIf="param.hasError('maxlength')">Too long (max 15)</mat-error>
+    <mat-error *ngIf="param.hasError('minlength')">{{
+      "boardDialog.maxLengthError" | translate
+    }}</mat-error>
+    <mat-error *ngIf="param.hasError('maxlength')">{{
+      "boardDialog.minLengthError" | translate
+    }}</mat-error>
   </mat-form-field>
-  <mat-dialog-content *ngIf="action === 'Delete'">
-    <h3>Are you sure you want to delete the column</h3>
-  </mat-dialog-content>
 </mat-dialog-content>
 <div mat-dialog-actions class="dialog-buttons">
-  <button color="accent" mat-flat-button (click)="doAction()" [disabled]="param.invalid">
-    {{ action }}
+  <button
+    color="accent"
+    mat-flat-button
+    (click)="doAction()"
+    [disabled]="param.invalid"
+  >
+    {{ "Create" | translate }}
   </button>
-  <button mat-flat-button color="warn" mat-dialog-close="false">Cancel</button>
+  <button mat-flat-button color="warn" mat-dialog-close="false">
+    {{ "boardDialog.cancel" | translate }}
+  </button>
 </div>

@@ -29,7 +29,20 @@
   },
   "board": {
     "addBoard": "Add Board",
-    "board": "Board"
+    "addColumn": "Add Column",
+    "board": "Board",
+    "column": "Column",
+    "goToBoard": "Go to board",
+    "goToMain": "Go to main"
+  },
+  "column": {
+    "columnName": "Column name",
+    "addTask": "Create Task"
+  },
+  "task": {
+    "taskName": "Task name",
+    "taskDesc": "Description",
+    "user": "User"
   },
   "boardDialog": {
     "boardName": "Board Name",
@@ -39,5 +52,6 @@
     "cancel": "Cancel"
   },
   "Create": "Create",
-  "Delete": "Delete"
+  "Delete": "Delete",
+  "Edit": "Edit"
 }

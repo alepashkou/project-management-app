@@ -14,11 +14,11 @@
         <mat-icon (click)="editTitle = false">cancel</mat-icon>
       </button>
       <mat-form-field class="dialog-field" appearance="outline">
-        <mat-label>Column name</mat-label>
+        <mat-label>{{ "column.columnName" | translate }}</mat-label>
         <input matInput required [formControl]="changeNameInput" />
       </mat-form-field>
     </div>
-    <mat-card-subtitle>Column </mat-card-subtitle>
+    <mat-card-subtitle>{{ "board.column" | translate }}</mat-card-subtitle>
   </div>
   <div class="task-delete">
     <mat-icon (click)="openDialog('Delete'); $event.stopPropagation()"
@@ -33,5 +33,5 @@
   class="task-btn"
   (click)="openDialog('Create')"
 >
-  Create Task <mat-icon>note_add</mat-icon>
+  {{ "column.addTask" | translate }} <mat-icon>note_add</mat-icon>
 </button>

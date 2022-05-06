@@ -1,21 +1,21 @@
 <form [formGroup]="param">
-  <mat-dialog-content class="dialog-item" *ngIf="action === 'Delete'">
-    <h3>Are you sure you want to delete the task?</h3>
-  </mat-dialog-content>
-  <mat-dialog-content class="dialog-item" *ngIf="action === 'Create' || action === 'Edit'">
+  <mat-dialog-content
+    class="dialog-item"
+    *ngIf="action === 'Create' || action === 'Edit'"
+  >
     <mat-form-field class="dialog-field" appearance="fill">
-      <mat-label>Task name</mat-label>
+      <mat-label>{{ "task.taskName" | translate }}</mat-label>
       <input matInput required formControlName="title" />
-      <mat-error *ngIf="param.get('title')?.hasError('minlength')"
-        >Too short (min 3)</mat-error
-      >
+      <mat-error *ngIf="param.get('title')?.hasError('minlength')">{{
+        "boardDialog.minLengthError" | translate
+      }}</mat-error>
     </mat-form-field>
     <mat-form-field class="dialog-field" appearance="fill">
-      <mat-label>Description</mat-label>
+      <mat-label>{{ "task.taskDesc" | translate }}</mat-label>
       <input matInput required formControlName="description" />
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>User</mat-label>
+      <mat-label>{{ "task.user" | translate }}</mat-label>
       <mat-select formControlName="userId">
         <mat-option *ngFor="let user of userList" [value]="user.id">
           {{ user.name }}
@@ -31,13 +31,10 @@
       (click)="doAction()"
       [disabled]="param.invalid"
     >
-      {{ action }}
-    </button>
-    <button mat-flat-button *ngIf="action === 'Delete'" (click)="doAction()">
-      {{ action }}
+      {{ action | translate }}
     </button>
     <button mat-flat-button color="warn" mat-dialog-close="false">
-      Cancel
+      {{ "boardDialog.cancel" | translate }}
     </button>
   </div>
 </form>

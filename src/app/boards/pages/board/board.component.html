@@ -1,14 +1,14 @@
 <div class="control-container">
   <button mat-raised-button color="primary" [routerLink]="'/boards'">
     <mat-icon>keyboard_backspace</mat-icon>
-    Go to boards
+    {{ "board.goToBoard" | translate }}
   </button>
   <button mat-raised-button color="primary" (click)="openDialog('Create')">
-    Create column
+    {{ "board.addColumn" | translate }}
     <mat-icon>dashboard</mat-icon>
   </button>
   <button mat-raised-button color="primary" [routerLink]="'/'">
-    Go to main
+    {{ "board.goToMain" | translate }}
     <mat-icon>home</mat-icon>
   </button>
 </div>

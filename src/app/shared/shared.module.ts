@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -11,8 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ],
-  exports: [MaterialModule, FormsModule, ReactiveFormsModule]
+  exports: [MaterialModule, FormsModule, ReactiveFormsModule, DragDropModule]
 })
 export class SharedModule { }

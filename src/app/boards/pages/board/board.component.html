@@ -20,8 +20,8 @@
 >
   <div cdkDropListGroup class="box-list">
     <div *ngFor="let colum of board?.columns" cdkDrag>
-      <div class="drag-handle">
-        <mat-icon cdkDragHandle>open_with</mat-icon>
+      <div class="drag-handle-container">
+        <mat-icon class="drag-handle" cdkDragHandle>open_with</mat-icon>
       </div>
       <app-board-colum
         [colum]="colum"

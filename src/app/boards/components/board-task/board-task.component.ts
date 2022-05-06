@@ -4,6 +4,7 @@ import { Task } from '../../models/boards.model';
 import { DialogTaskComponent } from '../../components/dialog-task/dialog-task.component';
 import { BoardService } from '../../services/board.service';
 import { UserResponce } from '../../models/dialog.model';
+import { DialogComponent } from 'src/app/core/dialog/dialog.component';
 @Component({
   selector: 'app-board-task',
   templateUrl: './board-task.component.html',
@@ -25,17 +26,28 @@ export class BoardTaskComponent implements OnInit {
   }
 
   openDialog(action: string): void {
-    const dialog = this.dialog.open(DialogTaskComponent, {
-      width: '300px',
-      data: { action, task: this.task },
-    });
-    dialog.afterClosed().subscribe((result) => {
-      if (result.event === 'Delete') {
-        this.deleteTask();
-      } else if (result.event === 'Edit') {
-        this.updateTask(result.data.task);
-      }
-    });
+    if (action !== 'Delete') {
+      const dialog = this.dialog.open(DialogTaskComponent, {
+        width: '300px',
+        data: { action, task: this.task },
+      });
+      dialog.afterClosed().subscribe((result) => {
+        if (result.event === 'Edit') {
+          this.updateTask(result.data.task);
+        }
+      });
+    } else {
+      const dialogRef = this.dialog.open(DialogComponent, {
+        data: {
+          message: 'Are you sure you want to delete task?',
+        },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.deleteTask();
+        }
+      });
+    }
   }
   deleteTask() {
     this.boardService

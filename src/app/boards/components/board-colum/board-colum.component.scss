@@ -44,11 +44,14 @@ mat-icon {
 }
 :host ::ng-deep .mat-form-field-infix {
   width: 200px;
-  padding: 7.5px 0 8px 0;
+  padding: 6.5px 0 8px 0;
 }
 :host ::ng-deep .mat-form-field-label {
   top: 1.7em;
 }
 :host ::ng-deep .mat-icon-button {
   width: 25px;
+}
+:host ::ng-deep .mat-form-field-label-wrapper {
+  top: -0.54375em;
 }

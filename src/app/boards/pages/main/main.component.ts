@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { DialogComponent } from 'src/app/core/dialog/dialog.component';
 import { DialogBoxComponent } from '../../components/dialog-box/dialog-box.component';
 import { Board } from '../../models/boards.model';
 import { MainBoardService } from '../../services/main-board.service';
@@ -30,19 +31,32 @@ export class MainComponent implements OnInit {
     });
   }
   openDialog(action: string, id?: string): void {
-    const dialog = this.dialog.open(DialogBoxComponent, {
-      width: '300px',
-      data: { action, id },
-    });
-    dialog.afterClosed().subscribe((result) => {
-      if (result.event === 'Delete') {
-        this.deleteBoard(result.data.id);
-      } else if (result.event === 'Create') {
-        this.createBoard(result.data.param);
-      } else if (result.event === 'Edit') {
-        this.editBoard(result.data.param, result.data.id);
-      }
-    });
+    if (action !== 'Delete') {
+      const dialog = this.dialog.open(DialogBoxComponent, {
+        width: '300px',
+        data: { action, id },
+      });
+      dialog.afterClosed().subscribe((result) => {
+        if (result.event === 'Delete') {
+          this.deleteBoard(result.data.id);
+        } else if (result.event === 'Create') {
+          this.createBoard(result.data.param);
+        } else if (result.event === 'Edit') {
+          this.editBoard(result.data.param, result.data.id);
+        }
+      });
+    } else {
+      const dialogRef = this.dialog.open(DialogComponent, {
+        data: {
+          message: 'Are you sure you want to delete board?',
+        },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result && id) {
+          this.deleteBoard(id);
+        }
+      });
+    }
   }
   deleteBoard(id: string): void {
     this.allBoards = this.allBoards.filter((board) => {

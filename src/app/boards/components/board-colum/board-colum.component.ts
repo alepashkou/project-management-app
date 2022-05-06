@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/core/dialog/dialog.component';
 import { Colum } from '../../models/boards.model';
 import { BoardService } from '../../services/board.service';
 import { DialogTaskComponent } from '../dialog-task/dialog-task.component';
@@ -29,21 +30,32 @@ export class BoardColumComponent implements OnInit {
     this.changeNameInput.setValue(this.colum.title);
   }
   openDialog(action: string): void {
-    const dialog = this.dialog.open(DialogTaskComponent, {
-      width: '300px',
-      data: { action, task: {} },
-    });
-    dialog.afterClosed().subscribe((result) => {
-      if (result.event === 'Create') {
-        this.createTask(
-          result.data.task.title,
-          result.data.task.description,
-          result.data.task.userId
-        );
-      } else if (result.event === 'Delete') {
-        this.deleteColum();
-      }
-    });
+    if (action === 'Create') {
+      const dialog = this.dialog.open(DialogTaskComponent, {
+        width: '300px',
+        data: { action, task: {} },
+      });
+      dialog.afterClosed().subscribe((result) => {
+        if (result.event === 'Create') {
+          this.createTask(
+            result.data.task.title,
+            result.data.task.description,
+            result.data.task.userId
+          );
+        }
+      });
+    } else {
+      const dialogRef = this.dialog.open(DialogComponent, {
+        data: {
+          message: 'Are you sure you want to delete column?',
+        },
+      });
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result) {
+          this.deleteColum();
+        }
+      });
+    }
   }
   createTask(title: string, desc: string, userId: string) {
     this.boardService

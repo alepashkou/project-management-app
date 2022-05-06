@@ -36,7 +36,7 @@
     </div>
 
     <div class="auth-block" *ngIf="isUserLogin()">
-      <button mat-raised-button color="primary">Logout</button>
+      <button mat-raised-button color="primary" (click)="logout()">Logout</button>
     </div>
 
   </div>

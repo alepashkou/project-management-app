@@ -4,6 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/users/store/users.reducer';
 import { selectActiveUser } from 'src/app/users/store/users.selectors';
+import { logoutUser } from 'src/app/users/store/users.actions';
+import { UserInfo } from 'src/app/users/users.model';
 
 
 
@@ -75,5 +77,11 @@ export class MainHeaderComponent implements OnInit {
   public isUserLogin() {
     this.isUserActive = this.activeUserName ? true : false;
     return this.isUserActive;
+  }
+
+  public logout() {
+    this.store.dispatch(logoutUser({ userInfo: { login: '', name: '', id: '' } }));
+    localStorage.removeItem('token');
+    this.isUserActive = false;
   }
 }

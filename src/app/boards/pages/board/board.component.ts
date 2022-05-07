@@ -48,6 +48,7 @@ export class BoardComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+      this.updateOrderTask(event.container.id);
     } else {
       const eventTask = event.previousContainer.data.find(
         (el: Task) => el.id === event.item.element.nativeElement.id
@@ -87,22 +88,45 @@ export class BoardComponent implements OnInit {
   }
   createColum(title: string): void {
     this.boardService
-      .createColum(title, this.board.id, this.board.columns?.length)
+      .createColum(
+        title,
+        this.board.id,
+        this.generateRandomOrder(this.board.columns?.length)
+      )
       .subscribe((colum) => this.board.columns?.push(colum));
   }
   chageTaskColum(columIdPrev: string, columIdNew: string, task: Task) {
     this.boardService
       .updateTask(this.board.id, columIdPrev, task, columIdNew)
-      .subscribe();
+      .subscribe(() => {
+        this.updateOrderTask(columIdPrev);
+        this.updateOrderTask(columIdNew);
+      });
+  }
+  generateRandomOrder(lenght: number = 0) {
+    return (
+      Math.floor(Math.random() * ((lenght + 1) * 10000 - lenght * 10000)) +
+      lenght * 10000
+    );
   }
   updateOrderColum() {
     this.board.columns?.forEach((column, index) => {
-      const random =
-        Math.floor(Math.random() * ((index + 1) * 1000 - index * 1000)) +
-        index * 1000;
       this.boardService
-        .updateColum(this.board.id, column.id, column.title, random)
+        .updateColum(
+          this.board.id,
+          column.id,
+          column.title,
+          this.generateRandomOrder(index)
+        )
         .subscribe();
+    });
+  }
+  updateOrderTask(id: string) {
+    const currentColum = this.board.columns?.find((colum) => colum.id === id);
+    currentColum?.tasks?.forEach((el, index) => {
+      const taskClone = el;
+      taskClone.order = index;
+      this.boardService.updateTask(this.board.id, id, taskClone).subscribe();
     });
   }
   updateBoard() {

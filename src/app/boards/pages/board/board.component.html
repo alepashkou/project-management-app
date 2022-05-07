@@ -37,7 +37,7 @@
         >
           <app-board-task
             class="task-box"
-            *ngFor="let task of colum.tasks"
+            *ngFor="let task of colum.tasks | sortTask"
             [boardId]="board.id"
             [columId]="colum.id"
             [task]="task"

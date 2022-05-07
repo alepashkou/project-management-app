@@ -93,7 +93,10 @@ export class BoardComponent implements OnInit {
         this.board.id,
         this.generateRandomOrder(this.board.columns?.length)
       )
-      .subscribe((colum) => this.board.columns?.push(colum));
+      .subscribe((colum) => {
+        colum.tasks = [];
+        this.board.columns?.push(colum);
+      });
   }
   chageTaskColum(columIdPrev: string, columIdNew: string, task: Task) {
     this.boardService

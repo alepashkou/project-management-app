@@ -19,7 +19,7 @@
   (cdkDropListDropped)="dropColum($event)"
 >
   <div cdkDropListGroup class="box-list">
-    <div *ngFor="let colum of board?.columns" cdkDrag>
+    <div *ngFor="let colum of board?.columns | sortColumns" cdkDrag>
       <div class="drag-handle-container">
         <mat-icon class="drag-handle" cdkDragHandle>open_with</mat-icon>
       </div>

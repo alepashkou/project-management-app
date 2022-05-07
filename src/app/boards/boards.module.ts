@@ -14,6 +14,7 @@ import { DialogTaskComponent } from './components/dialog-task/dialog-task.compon
 import { BoardTaskComponent } from './components/board-task/board-task.component';
 import { BoardColumComponent } from './components/board-colum/board-colum.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { SortColumnsPipe } from './pipes/sort-columns.pipe';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
     DialogTaskComponent,
     BoardTaskComponent,
     BoardColumComponent,
+    SortColumnsPipe,
   ],
   imports: [
     CommonModule,

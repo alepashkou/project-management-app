@@ -72,6 +72,7 @@ export class BoardComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+    this.updateOrderColum();
   }
   openDialog(action: string): void {
     const dialog = this.dialog.open(DialogColumComponent, {
@@ -93,6 +94,16 @@ export class BoardComponent implements OnInit {
     this.boardService
       .updateTask(this.board.id, columIdPrev, task, columIdNew)
       .subscribe();
+  }
+  updateOrderColum() {
+    this.board.columns?.forEach((column, index) => {
+      const random =
+        Math.floor(Math.random() * ((index + 1) * 1000 - index * 1000)) +
+        index * 1000;
+      this.boardService
+        .updateColum(this.board.id, column.id, column.title, random)
+        .subscribe();
+    });
   }
   updateBoard() {
     this.ngOnInit();

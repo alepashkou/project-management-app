@@ -4,13 +4,13 @@
     <div class="setting-block">
 
       <div class="therm-block">
-        <mat-icon *ngIf="curretnTheme === 'light'" (click)="changeTheme('dark-mode')">brightness_7</mat-icon>
-        <mat-icon *ngIf="curretnTheme === 'dark-mode' " (click)="changeTheme('light')">brightness_3</mat-icon>
+        <mat-icon *ngIf="currentTheme === 'light'" (click)="changeTheme('dark-mode')">brightness_7</mat-icon>
+        <mat-icon *ngIf="currentTheme === 'dark-mode' " (click)="changeTheme('light')">brightness_3</mat-icon>
       </div>
 
       <div class="language-block">
         <span class="lang">RU</span>
-        <mat-slide-toggle [(ngModel)]="isCurretnLanguageChecked" (change)="checkLanguage()" color="primary">
+        <mat-slide-toggle [(ngModel)]="isCurrentLanguageChecked" (change)="checkLanguage()" color="primary">
         </mat-slide-toggle>
         <span class="lang">ENG</span>
       </div>
@@ -36,6 +36,16 @@
           }}</button>
       </div>
 
+    </div>
+
+    <div class="search-block">
+      <input matInput aria-label="Task" [matAutocomplete]="auto" [formControl]="searchTextControl" type="text"
+        placeholder="search" class="px-3 text-black">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let task of filteredTasks | async" [value]="task.title">
+          <span>{{task.title}}</span>
+        </mat-option>
+      </mat-autocomplete>
     </div>
 
   </header>

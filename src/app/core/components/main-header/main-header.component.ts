@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
-
+import { Task } from '../../../boards/models/boards.model';
+import { FormControl } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
 
 
 @Component({
@@ -11,47 +13,87 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class MainHeaderComponent implements OnInit {
 
-  public curretnTheme: string | null = 'light';
-  public curretnLanguage: string = 'en';
-  public isCurretnLanguageChecked: boolean | null = false;
+  searchTextControl = new FormControl();
+  filteredTasks: Observable<Task[]>;
+
+  tasks: Task[] = [
+    {
+      id: '12345',
+      title: 'Login',
+      order: 1,
+      description: 'Add login page',
+      userId: '1234567'
+    },
+    {
+      id: 'd73905g893f',
+      title: 'Logout',
+      order: 2,
+      description: 'Add logout component',
+      userId: 'Sdg^43fj%'
+    },
+    {
+      id: '5F3Gh53',
+      title: 'Routing',
+      order: 3,
+      description: 'Update routing',
+      userId: 'd$g67-fgh-5'
+    },
+  ]
+
+  public currentTheme: string | null = 'light';
+  public currentLanguage: string = 'en';
+  public isCurrentLanguageChecked: boolean | null = false;
   constructor(public themeService: ThemeService, public translate: TranslateService) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang(localStorage.getItem('language') || 'en');
+
+    //search 
+
+    this.filteredTasks = this.searchTextControl.valueChanges.pipe(
+      startWith(''),
+      map((task) => (task ? this._filterTasks(task) : this.tasks.slice())));
+  }
+
+  private _filterTasks(value: string): Task[] {
+    const filterValue = value.toLowerCase();
+    return this.tasks.filter((task) => task.title.toLowerCase().includes(filterValue))
   }
 
   ngOnInit(): void {
     this.themeService.initTheme();
-    
+
     if (!localStorage.getItem('theme')) {
       localStorage.setItem('theme', 'light');
-    } else this.curretnTheme = localStorage.getItem('theme');
-    
+    } else this.currentTheme = localStorage.getItem('theme');
+
     if (localStorage.getItem('language')) {
-      this.curretnLanguage = localStorage.getItem('language')!;
+      this.currentLanguage = localStorage.getItem('language')!;
     } else localStorage.setItem('language', 'en');
 
     if (localStorage.getItem('language') === 'en') {
-      this.isCurretnLanguageChecked = true;
+      this.isCurrentLanguageChecked = true;
     }
   }
 
   checkLanguage() {
-    if (this.isCurretnLanguageChecked) {
+    if (this.isCurrentLanguageChecked) {
       localStorage.setItem('language', 'en');
-      this.curretnLanguage = 'en';
-    } if (!this.isCurretnLanguageChecked) {
-      this.isCurretnLanguageChecked = true;
+      this.currentLanguage = 'en';
+    } if (!this.isCurrentLanguageChecked) {
+      this.isCurrentLanguageChecked = true;
       localStorage.setItem('language', 'ru');
-      this.curretnLanguage = 'ru';
+      this.currentLanguage = 'ru';
     }
-    this.translate.use(this.curretnLanguage);
-      this.isCurretnLanguageChecked = false;
+    this.translate.use(this.currentLanguage);
+    this.isCurrentLanguageChecked = false;
   }
 
   public changeTheme(theme: string) {
     if (theme === 'dark-mode') {
-      this.curretnTheme = 'dark-mode';
-    } else this.curretnTheme = 'light';
+      this.currentTheme = 'dark-mode';
+    } else this.currentTheme = 'light';
     this.themeService.toggleTheme(theme);
   }
+
+
 }

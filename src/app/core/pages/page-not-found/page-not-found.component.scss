@@ -24,7 +24,9 @@
 }
 
 .back {
-  position: absolute;
-  top: 15%;
-  transform: translate(-50%);
+  position: absolute !important;
+  top: 15% !important;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  pointer-events: all!important;
 }

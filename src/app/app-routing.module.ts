@@ -8,19 +8,23 @@ const routes: Routes = [{
   path: 'boards', loadChildren: () => import('./boards/boards.module')
     .then((m) => m.BoardsModule),
   canActivate: [AuthGuard],
+  data: { animation: 'boards' },
 },
 {
   path: 'auth', loadChildren: () => import('./auth/auth.module')
     .then((m) => m.AuthModule),
+    data: { animation: 'auth' },
 },
 {
   path: 'profile',
   component: ProfilePageComponent,
   canActivate: [AuthGuard],
+  data: { animation: 'profile' },
 },
 {
   path: '**',
   component: PageNotFoundComponent,
+  data: { animation: '404' },
 }
 ];
 

@@ -17,8 +17,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     ReactiveFormsModule,
     TranslateModule,
     RouterModule.forChild([
-      { path: 'login', component: LoginPageComponent },
-      { path: 'signup', component: SignUpPageComponent },
+      { path: 'login', component: LoginPageComponent,  data: { animation: 'login' } },
+      { path: 'signup', component: SignUpPageComponent,  data: { animation: 'signup' }, },
     ]),
   ],
   exports: [RouterModule],

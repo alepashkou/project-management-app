@@ -42,7 +42,7 @@
       <input matInput aria-label="Task" [matAutocomplete]="auto" [formControl]="searchTextControl" type="text"
         placeholder="search" class="px-3 text-black">
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let task of filteredTasks | async" [value]="task.title">
+        <mat-option *ngFor="let task of filteredTasks$ | async" [value]="task.title">
           <span>{{task.title}}</span>
         </mat-option>
       </mat-autocomplete>

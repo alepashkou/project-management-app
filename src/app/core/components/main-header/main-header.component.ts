@@ -3,7 +3,7 @@ import { ThemeService } from '../../services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Task } from '../../../boards/models/boards.model';
 import { FormControl } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable, startWith } from 'rxjs';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { map, Observable, startWith } from 'rxjs';
 export class MainHeaderComponent implements OnInit {
 
   searchTextControl = new FormControl();
-  filteredTasks: Observable<Task[]>;
+
 
   tasks: Task[] = [
     {
@@ -39,6 +39,22 @@ export class MainHeaderComponent implements OnInit {
       userId: 'd$g67-fgh-5'
     },
   ]
+  tasks$ = new BehaviorSubject<Task[]>(this.tasks)
+
+  // tasks2$ =
+  filteredTasks$ = combineLatest([this.tasks$, this.searchTextControl.valueChanges]).pipe(
+    map(([tasks, searchText]) => {
+      if (searchText) {
+        return this._filterTasks(searchText, tasks)
+      }
+      return []
+    })
+  )
+
+
+  // filteredTasks = this.searchTextControl.valueChanges.pipe(
+  //   startWith(''),
+  //   map((task) => (task ? this._filterTasks(task, this.tasks) : this.tasks.slice())));
 
   public currentTheme: string | null = 'light';
   public currentLanguage: string = 'en';
@@ -46,17 +62,11 @@ export class MainHeaderComponent implements OnInit {
   constructor(public themeService: ThemeService, public translate: TranslateService) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang(localStorage.getItem('language') || 'en');
-
-    //search 
-
-    this.filteredTasks = this.searchTextControl.valueChanges.pipe(
-      startWith(''),
-      map((task) => (task ? this._filterTasks(task) : this.tasks.slice())));
   }
 
-  private _filterTasks(value: string): Task[] {
+  private _filterTasks(value: string, tasks: Task[]): Task[] {
     const filterValue = value.toLowerCase();
-    return this.tasks.filter((task) => task.title.toLowerCase().includes(filterValue))
+    return tasks.filter((task) => task.title.toLowerCase().includes(filterValue))
   }
 
   ngOnInit(): void {

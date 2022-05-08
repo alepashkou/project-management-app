@@ -1,4 +1,23 @@
 .welcome-container {
   display: flex;
   justify-content: space-between;
+  padding: 50px 0px;
+}
+
+.info {
+  width: 50%;
+}
+
+.title {
+  margin-bottom: 50px;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.app-info {
+  font-size: 20px;
+}
+
+.dark-mode .title {
+  color: red !important;
 }

@@ -3,11 +3,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { switchMap, map, tap, catchError, of, filter } from 'rxjs';
+import { switchMap, map, tap, catchError, of, filter, timer } from 'rxjs';
 import { isNotNull } from 'src/app/core/utils';
 import { AuthService } from '../services/auth.service';
-import { loadToken, login, loginError, loginSuccess, signup, signupError, signupSuccess } from './auth.actions';
-import { selectToken } from './auth.selectors';
+import { loadToken, login, loginError, loginSuccess, signup, signupError, signupSuccess, tokenExpired } from './auth.actions';
+import { selectIsLoginInProgress, selectToken, selectTokenIat } from './auth.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -121,4 +121,26 @@ export class AuthEffects {
     )
   }, { dispatch: false }
   )
+
+  // navigateToMainRouteIfToken$ = createEffect(() => {
+  //   return this.store.select(selectToken).pipe(
+  //     tap(() => {
+  //       this.router.navigate(['boards'])
+  //     })
+  //   )
+  // }, { dispatch: false })
+
+  checkTokenExpiration$ = createEffect(() => {
+    return this.store.select(selectTokenIat).pipe(
+      filter(isNotNull),
+      switchMap((iat) => {
+        const now = new Date().getTime()
+        const lifeTime = now - iat
+        const timeExpired = 3600
+        return timer(timeExpired - lifeTime).pipe(
+          map(() => tokenExpired()),
+        )
+      })
+    )
+  })
 }

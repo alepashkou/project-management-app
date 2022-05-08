@@ -66,7 +66,6 @@ export class ProfilePageComponent {
     const result = await firstValueFrom(this.store.select(selectCurrentUserId));
     if (result) {
       await firstValueFrom(this.service.deleteUser(result))
-      // localStorage.clear()
       this.router.navigate(['login'])
     }
     else {

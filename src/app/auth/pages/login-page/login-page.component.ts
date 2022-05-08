@@ -47,7 +47,7 @@ export class LoginPageComponent {
   }
 
   goToSingUp() {
-    this.router.navigate(['signup'])
+    this.router.navigate(['auth/signup'])
   }
 }
 

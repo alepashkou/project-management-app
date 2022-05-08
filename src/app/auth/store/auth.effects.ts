@@ -7,7 +7,9 @@ import { switchMap, map, tap, catchError, of, filter, timer } from 'rxjs';
 import { isNotNull } from 'src/app/core/utils';
 import { AuthService } from '../services/auth.service';
 import { loadToken, login, loginError, loginSuccess, signup, signupError, signupSuccess, tokenExpired } from './auth.actions';
-import { selectIsLoginInProgress, selectToken, selectTokenIat } from './auth.selectors';
+import { selectToken, selectTokenIat } from './auth.selectors';
+
+const TOKEN_EXPIRED = 86400_000
 
 @Injectable({
   providedIn: 'root',
@@ -122,25 +124,26 @@ export class AuthEffects {
   }, { dispatch: false }
   )
 
-  // navigateToMainRouteIfToken$ = createEffect(() => {
-  //   return this.store.select(selectToken).pipe(
-  //     tap(() => {
-  //       this.router.navigate(['boards'])
-  //     })
-  //   )
-  // }, { dispatch: false })
-
   checkTokenExpiration$ = createEffect(() => {
     return this.store.select(selectTokenIat).pipe(
       filter(isNotNull),
       switchMap((iat) => {
         const now = new Date().getTime()
-        const lifeTime = now - iat
-        const timeExpired = 3600
-        return timer(timeExpired - lifeTime).pipe(
+        const lifeTime = now - iat * 1000
+        return timer(TOKEN_EXPIRED - lifeTime).pipe(
           map(() => tokenExpired()),
         )
       })
     )
   })
+
+  deleteTokenIfExpired$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(tokenExpired),
+      tap(() => {
+        localStorage.removeItem('token')
+        this.router.navigate(['auth/login'])
+      })
+    )
+  }, { dispatch: false })
 }

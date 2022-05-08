@@ -2,11 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   height: 100%;
 }
 
 .error-container {
-  position: relative;
   text-align: center;
 }
 
@@ -16,14 +16,15 @@
 
 .error-text {
   position: absolute;
-  top: 75%;
-  left: 30%;
+  top: 70%;
+  left: 50%;
   font-size: 45px;
   font-weight: bold;
+  transform: translate(-50%, -50%);
 }
 
 .back {
   position: absolute;
-  top: 10%;
+  top: 15%;
   transform: translate(-50%);
 }

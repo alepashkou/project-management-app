@@ -25,6 +25,7 @@ import { ProfilePageComponent } from './users/pages/profile-page/profile-page.co
 import { UsersEffects } from './users/store/users.effects';
 import { DialogComponent } from './core/dialog/dialog.component';
 import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
+import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-foun
     SignUpPageComponent,
     ProfilePageComponent,
     DialogComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    WelcomePageComponent
   ],
   imports: [SharedModule,
     BrowserModule,

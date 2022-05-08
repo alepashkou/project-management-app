@@ -4,8 +4,13 @@ import { LoginPageComponent } from './auth/pages/login-page/login-page.component
 import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 import { SignUpPageComponent } from './auth/pages/sign-up-page/sign-up-page.component';
 import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
+import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: WelcomePageComponent
+  },
   {
     path: 'boards',
     loadChildren: () =>

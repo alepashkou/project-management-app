@@ -3,11 +3,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { switchMap, map, tap, catchError, of, filter } from 'rxjs';
+import { switchMap, map, tap, catchError, of, filter, timer } from 'rxjs';
 import { isNotNull } from 'src/app/core/utils';
 import { AuthService } from '../services/auth.service';
-import { loadToken, login, loginError, loginSuccess, signup, signupError, signupSuccess } from './auth.actions';
-import { selectToken } from './auth.selectors';
+import { loadToken, login, loginError, loginSuccess, signup, signupError, signupSuccess, tokenExpired } from './auth.actions';
+import { selectToken, selectTokenIat } from './auth.selectors';
+
+const TOKEN_EXPIRED = 86400_000
 
 @Injectable({
   providedIn: 'root',
@@ -106,7 +108,7 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(loginSuccess),
       tap(() => {
-        this.router.navigate(['board'])
+        this.router.navigate(['boards'])
       }))
   },
     { dispatch: false }
@@ -121,4 +123,27 @@ export class AuthEffects {
     )
   }, { dispatch: false }
   )
+
+  checkTokenExpiration$ = createEffect(() => {
+    return this.store.select(selectTokenIat).pipe(
+      filter(isNotNull),
+      switchMap((iat) => {
+        const now = new Date().getTime()
+        const lifeTime = now - iat * 1000
+        return timer(TOKEN_EXPIRED - lifeTime).pipe(
+          map(() => tokenExpired()),
+        )
+      })
+    )
+  })
+
+  deleteTokenIfExpired$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(tokenExpired),
+      tap(() => {
+        localStorage.removeItem('token')
+        this.router.navigate(['auth/login'])
+      })
+    )
+  }, { dispatch: false })
 }

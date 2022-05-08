@@ -1,0 +1,32 @@
+.main-error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+
+.error-container {
+  text-align: center;
+}
+
+.image-block {
+  margin-bottom: 50px;
+}
+
+.error-text {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  font-size: 45px;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+}
+
+.back {
+  position: absolute !important;
+  top: 15% !important;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+  pointer-events: all!important;
+}

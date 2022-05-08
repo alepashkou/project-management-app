@@ -7,9 +7,10 @@
   "login": {
     "login": "Войти",
     "loginPlaceholder": "Логин",
-    "passworPlaceholder": "Пароль",
+    "passwordPlaceholder": "Пароль",
     "loginRequired": "Пожалуйста, введите ваш логин",
-    "passwordRequired": "Пожалуйста, введите ваш пароль"
+    "passwordRequired": "Пожалуйста, введите ваш пароль",
+    "accountQuestion": "Пока не зарегистрированы?"
   },
   "signup": {
     "signup": "Регистрация",
@@ -18,14 +19,17 @@
     "loginPlaceholder": "Логин",
     "loginMinLengthError": " Ваш логин должен быть не менее чем 4 символа",
     "loginRequired": "Пожалуйста, введите ваш логин",
-    "passworPlaceholder": "Пароль",
-    "passworContains": "Пароль должен включать:",
-    "passworContainsSmallLetters": "- строчные буквы",
-    "passworContainsCapitalLetters": "- заглавные буквы",
-    "passworContainsNumbers": "- числа",
-    "passworContainsSymbol": "- специальные символы",
-    "passworLength": "- минимум 8 символов",
-    "create": "Зарегистрировать"
+    "passwordPlaceholder": "Пароль",
+    "passwordContains": "Пароль должен включать:",
+    "passwordContainsSmallLetters": "- строчные буквы",
+    "passwordContainsCapitalLetters": "- заглавные буквы",
+    "passwordContainsNumbers": "- числа",
+    "passwordContainsSymbol": "- специальные символы",
+    "passwordLength": "- минимум 8 символов",
+    "create": "Зарегистрировать",
+    "passwordRepeatPlaceholder": "Повторите пароль",
+    "passwordRepeatRequired": "Пожалуйста, повторите пароль",
+    "passwordRepeatMatch": "Пароли не совпадают"
   },
   "board": {
     "addBoard": "Добавить доску",
@@ -50,6 +54,10 @@
     "maxLengthError": "Слишком длинно (максимум 15)",
     "sureToDelete": "Вы уверены, что хотите удалить эту доску?",
     "cancel": "Отмена"
+  },
+  "404": {
+    "notFound": "Страница не найдена",
+    "back": "На главную"
   },
   "Create": "Создать",
   "Delete": "Удалить",

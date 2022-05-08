@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/services/auth.guard';
+import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
 import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 
 const routes: Routes = [{
@@ -19,7 +20,7 @@ const routes: Routes = [{
 },
 {
   path: '**',
-  redirectTo: 'boards',
+  component: PageNotFoundComponent,
 }
 ];
 

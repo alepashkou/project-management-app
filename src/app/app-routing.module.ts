@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 
 const routes: Routes = [{
   path: 'boards', loadChildren: () => import('./boards/boards.module')
@@ -8,7 +9,11 @@ const routes: Routes = [{
 {
   path: 'auth', loadChildren: () => import('./auth/auth.module')
     .then((m) => m.AuthModule),
-}
+},
+{
+  path: 'profile',
+  component: ProfilePageComponent,
+},
 ];
 
 @NgModule({

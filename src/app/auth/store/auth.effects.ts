@@ -106,7 +106,7 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(loginSuccess),
       tap(() => {
-        this.router.navigate(['board'])
+        this.router.navigate(['boards'])
       }))
   },
     { dispatch: false }

@@ -58,7 +58,7 @@ export class ProfilePageComponent {
   editProfile() {
     if (this.profileForm.valid) {
       this.store.dispatch(updateUser({ updateUser: this.profileForm.value }))
-      this.router.navigate(['board'])
+      this.router.navigate(['boards'])
     }
   }
 

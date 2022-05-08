@@ -21,13 +21,15 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { UsersEffects } from './users/store/users.effects';
 import { DialogComponent } from './core/dialog/dialog.component';
+import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainFooterComponent,
     MainHeaderComponent,
-    DialogComponent
+    DialogComponent,
+    ProfilePageComponent
   ],
   imports: [SharedModule,
     BrowserModule,

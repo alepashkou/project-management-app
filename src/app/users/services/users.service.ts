@@ -16,7 +16,12 @@ export class UsersService {
   }
 
   updateUser(userData: UpdateUser, userId: string) {
-    return this.httpClient.put<UserInfo>(`${this.apiUrl}users/${userId}`, userData)
+    const data: UpdateUser = {
+      name: userData.name,
+      login: userData.login,
+      password: userData.password
+    }
+    return this.httpClient.put<UserInfo>(`${this.apiUrl}users/${userId}`, data)
   }
 
   deleteUser(userId: string) {

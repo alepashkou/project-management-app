@@ -24,6 +24,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 import { UsersEffects } from './users/store/users.effects';
 import { DialogComponent } from './core/dialog/dialog.component';
+import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DialogComponent } from './core/dialog/dialog.component';
     LoginPageComponent,
     SignUpPageComponent,
     ProfilePageComponent,
-    DialogComponent
+    DialogComponent,
+    PageNotFoundComponent
   ],
   imports: [SharedModule,
     BrowserModule,

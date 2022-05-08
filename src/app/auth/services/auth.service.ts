@@ -14,7 +14,7 @@ export class AuthService {
   signIn(signIn: SignIn) {
     return this.httpClient.post<{ token: string }>(`${this.apiUrl}signin`, {
       login: signIn.login,
-      "password": signIn.password,
+      password: signIn.password,
     })
   }
 

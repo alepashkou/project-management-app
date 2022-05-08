@@ -17,8 +17,8 @@
 
   </div>
 
-  <div class="add-new-board">
-    <button class="add-new-board__button" mat-icon-button>
+  <div class="add-new-board" >
+    <button class="add-new-board__button" mat-icon-button [routerLink]="'/boards'" [queryParams]="{action: 'Create'}">
       <mat-icon>add</mat-icon>
       <span>{{'header.board' | translate }}</span>
     </button>
@@ -36,6 +36,6 @@
     </div>
 
   </div>
-  
+
 </header>
 </mat-toolbar>

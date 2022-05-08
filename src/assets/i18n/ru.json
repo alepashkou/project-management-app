@@ -28,9 +28,22 @@
     "create": "Зарегистрировать"
   },
   "board": {
-    "addBoard": "Добавть доску",
-    "board": "Доска"
-  },  
+    "addBoard": "Добавить доску",
+    "addColumn": "Добавить колонку",
+    "board": "Доска",
+    "column": "Колонка",
+    "goToBoard": "К доскам",
+    "goToMain": "На главную"
+  },
+  "column": {
+    "columnName": "Имя колонки",
+    "addTask": "Создать задачу"
+  },
+  "task": {
+    "taskName": "Имя задачи",
+    "taskDesc": "Описание",
+    "user": "Пользователь"
+  },
   "boardDialog": {
     "boardName": "Название доски",
     "minLengthError": "Слишком коротко (минимум 3)",
@@ -39,5 +52,6 @@
     "cancel": "Отмена"
   },
   "Create": "Создать",
-  "Delete": "Удалить"
+  "Delete": "Удалить",
+  "Edit": "Изменить"
 }

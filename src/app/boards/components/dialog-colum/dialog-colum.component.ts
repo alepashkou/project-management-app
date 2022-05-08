@@ -7,24 +7,24 @@ import {
 } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogBoxData } from '../../models/dialog.model';
+import { DialogColumData } from '../../models/dialog.model';
 
 @Component({
-  selector: 'app-dialog-box',
-  templateUrl: './dialog-box.component.html',
-  styleUrls: ['./dialog-box.component.scss'],
+  selector: 'app-dialog-colum',
+  templateUrl: './dialog-colum.component.html',
+  styleUrls: ['./dialog-colum.component.scss'],
 })
-export class DialogBoxComponent implements AfterViewChecked {
+export class DialogColumComponent implements AfterViewChecked {
   action: string;
 
-  localData: DialogBoxData;
+  localData: DialogColumData;
 
   param: FormControl;
 
   constructor(
-    public dialog: MatDialogRef<DialogBoxComponent>,
+    public dialog: MatDialogRef<DialogColumComponent>,
     private readonly changeDetectorRef: ChangeDetectorRef,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: DialogBoxData
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: DialogColumData
   ) {
     this.dialog.disableClose = true;
     this.localData = { ...data };
@@ -38,7 +38,7 @@ export class DialogBoxComponent implements AfterViewChecked {
     this.changeDetectorRef.detectChanges();
   }
   doAction() {
-    this.localData.param = this.param.value;
+    this.localData.title = this.param.value;
     this.dialog.close({ event: this.action, data: this.localData });
   }
 

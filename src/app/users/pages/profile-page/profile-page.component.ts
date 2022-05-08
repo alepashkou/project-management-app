@@ -42,6 +42,16 @@ export class ProfilePageComponent {
       Validators.required,
       Validators.minLength(PASSWORD_MIN_LENGTH),
       passwordDifficulty,
+    ]),
+    passwordRepeat: new FormControl('', [
+      Validators.required,
+      (passwordRepeatForm) => {
+        console.log(this.profileForm?.value.password)
+        if (passwordRepeatForm.value !== this.profileForm?.value.password) {
+          return { notMatch: 'Passwords do not match' }
+        }
+        return null
+      }
     ])
   })
 

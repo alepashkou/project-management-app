@@ -18,8 +18,8 @@ import { SortColumnsPipe } from './pipes/sort-columns.pipe';
 import { SortTaskPipe } from './pipes/sort-task.pipe';
 
 const routes: Routes = [
-  { path: '', component: MainComponent },
-  { path: ':id', component: BoardComponent },
+  { path: '', component: MainComponent, data: { animation: 'board' }, },
+  { path: ':id', component: BoardComponent, data: { animation: 'id' },},
 ];
 
 @NgModule({

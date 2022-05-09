@@ -40,10 +40,11 @@
 
     <div class="search-block">
       <input matInput aria-label="Task" [matAutocomplete]="auto" [formControl]="searchTextControl" type="text"
-        placeholder="search" class="px-3 text-black">
+        placeholder="search" class="px-3 text-black bg-white">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let task of filteredTasks$ | async" [value]="task.title">
-          <span>{{task.title}}</span>
+          <span>{{task.title}}</span> |
+          <small>{{task.description}}</small>
         </mat-option>
       </mat-autocomplete>
     </div>

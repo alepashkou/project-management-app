@@ -3,7 +3,8 @@ import { ThemeService } from '../../services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Task } from '../../../boards/models/boards.model';
 import { FormControl } from '@angular/forms';
-import { BehaviorSubject, combineLatest, map, Observable, startWith } from 'rxjs';
+import { BehaviorSubject, combineLatest, firstValueFrom, map } from 'rxjs';
+import { SearchService } from '../../services/search.service';
 
 
 @Component({
@@ -39,7 +40,8 @@ export class MainHeaderComponent implements OnInit {
       userId: 'd$g67-fgh-5'
     },
   ]
-  tasks$ = new BehaviorSubject<Task[]>(this.tasks)
+
+  tasks$ = this.searchService.getAllTasks();
 
   // tasks2$ =
   filteredTasks$ = combineLatest([this.tasks$, this.searchTextControl.valueChanges]).pipe(
@@ -51,17 +53,17 @@ export class MainHeaderComponent implements OnInit {
     })
   )
 
-
-  // filteredTasks = this.searchTextControl.valueChanges.pipe(
-  //   startWith(''),
-  //   map((task) => (task ? this._filterTasks(task, this.tasks) : this.tasks.slice())));
-
   public currentTheme: string | null = 'light';
   public currentLanguage: string = 'en';
   public isCurrentLanguageChecked: boolean | null = false;
-  constructor(public themeService: ThemeService, public translate: TranslateService) {
+  constructor(public themeService: ThemeService, public translate: TranslateService, private searchService: SearchService) {
+
+
+
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang(localStorage.getItem('language') || 'en');
+
+
   }
 
   private _filterTasks(value: string, tasks: Task[]): Task[] {

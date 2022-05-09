@@ -14,10 +14,32 @@
   font-weight: bold;
 }
 
+.subtitle {
+  text-align: center;
+  font-size: 30px;
+}
+
 .app-info {
   font-size: 20px;
 }
 
-.dark-mode .title {
-  color: red !important;
+.about-text {
+  font-size: 20px;
+  text-align: center;
+}
+
+.opportunities-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.opportunities-item {
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+mat-icon {
+  font-weight: bold;
+  color: green;
 }

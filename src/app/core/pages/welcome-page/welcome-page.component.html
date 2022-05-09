@@ -1,19 +1,77 @@
-<div class="container welcome-container">
-  <div class="info">
-    <h1 class="title">Project management app</h1>
-    <p class="app-info">Приложение, которое поможет командам эффективно решать рабочие задачи. Оно поможет организовать
-      работу так, чтобы все знали, чем нужно заниматься. Отслеживайте прогресс выполнения задач, будте в курсе
-      происходящего. Правильно планируйте сроки и объем работы</p>
-    <!--     <p class="app-info">Оно поможет организовать работу так, чтобы все знали, чем нужно заниматься.</p>
-    <p class="app-info">Отслеживайте прогресс выполнения задач, будте в курсе происходящего. Правильно планируйте сроки и объем работы</p> -->
-    <p class="app-info">Достигайте ваши цели!</p>
-  </div>
-  <div>
+<div class="container">
+  <div class="welcome-container">
+    <div class="info">
+      <h1 class="title">{{'welcome.title' | translate }}</h1>
+      <p class="app-info">{{'welcome.discription' | translate }}</p>
+      <p class="app-info">{{'welcome.goals' | translate }}</p>
 
-    <div class="welcome-img">
-      <img src="assets/welcome.gif" alt="welcome">
+      <button mat-raised-button color="accent" routerLink="signup">{{'welcome.registration' | translate }}</button>
+
+    </div>
+    <div>
+      <div class="welcome-img">
+        <img src="assets/welcome.gif" alt="welcome">
+      </div>
     </div>
 
   </div>
+
+  <div class="about-project">
+    <div class="welcome-container">
+
+      <div>
+        <div>
+          <img src="assets/opportunities.png" alt="opportunities">
+        </div>
+      </div>
+
+      <div class="info">
+        <h2 class="subtitle">{{'welcome.opportunities' | translate }}</h2>
+        <ul class="opportunities-list">
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon> {{'welcome.boards' | translate }}
+          </li>
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.tasks' | translate }}
+          </li>
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.transfer' | translate }}
+          </li>
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.assign' | translate }}
+          </li>
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.done' | translate }}
+          </li>
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.search' | translate }}
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="welcome-container">
+    <div class="info">
+      <h2 class="subtitle">{{'welcome.about' | translate }}</h2>
+    </div>
+
+    <div>
+      <div class="welcome-img">
+        <img src="assets/team.png" alt="team">
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <h2 class="subtitle">{{'welcome.course' | translate }}</h2>
+    <p class="about-text">{{'welcome.courseInfo' | translate }}</p>
+  </div>
+
+
 
 </div>

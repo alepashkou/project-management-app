@@ -9,6 +9,8 @@ export class WelcomePageComponent implements OnInit {
 
   constructor() { }
 
+  public isOnline: boolean = Boolean(localStorage.getItem('token'));
+  
   ngOnInit(): void {
   }
 

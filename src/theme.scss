@@ -72,6 +72,9 @@ $angular-default-theme: mat.define-light-theme(
   & mat-card-title {
     color: #000000;
   }
+  & .sticky {
+    filter: hue-rotate(340deg) drop-shadow(2px 8px 6px #d91e97) !important;
+  }
   & .mat-app-background {
     color: rgba(0, 0, 0, 0.87) !important;
   }

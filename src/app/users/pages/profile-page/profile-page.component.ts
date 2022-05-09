@@ -66,7 +66,7 @@ export class ProfilePageComponent {
     const result = await firstValueFrom(this.store.select(selectCurrentUserId));
     if (result) {
       await firstValueFrom(this.service.deleteUser(result))
-      this.router.navigate(['login'])
+      this.router.navigate(['auth/login'])
     }
     else {
       this.matSnackBar.open(`Something went wrong`, 'Hide', {

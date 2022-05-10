@@ -1,5 +1,8 @@
 
 @import './theme.scss'; 
+@import '~swiper/scss';
+@import '~swiper/scss/navigation';
+@import '~swiper/scss/pagination';
 
 @tailwind base;
 @tailwind components;
@@ -19,4 +22,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+}
+
+.swiper-pagination-bullets {
+  bottom: -5px !important;
 }

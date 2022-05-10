@@ -26,7 +26,9 @@ import { UsersEffects } from './users/store/users.effects';
 import { DialogComponent } from './core/dialog/dialog.component';
 import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
 import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.component';
-
+import { SwiperComponent } from './core/components/swiper/swiper.component';
+import { SwiperModule } from 'swiper/angular';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +39,11 @@ import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.com
     ProfilePageComponent,
     DialogComponent,
     PageNotFoundComponent,
-    WelcomePageComponent
+    WelcomePageComponent,
+    SwiperComponent,
   ],
   imports: [SharedModule,
+    SwiperModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

@@ -78,6 +78,16 @@ $angular-default-theme: mat.define-light-theme(
   & .mat-app-background {
     color: rgba(0, 0, 0, 0.87) !important;
   }
+  & .swiper-button-next {
+    color: #e91e63 !important;
+  }
+  & .swiper-button-prev {
+    color: #e91e63 !important;
+  }
+  & .swiper-pagination-bullet-active {
+    background: #e91e63 !important;
+  }
+
 
   .board-card:hover {
     box-shadow: 0px 4px 8px rgb(255 255 255 / 45%) !important;

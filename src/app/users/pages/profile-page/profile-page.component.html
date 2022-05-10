@@ -10,43 +10,60 @@
       <mat-form-field appearance="outline">
         <input formControlName="name" matInput placeholder="Name" name="username" class="border-solid"
           [ngModel]="(user$ | async)?.name">
+        <mat-error *ngIf="profileForm.get('name')?.hasError('required')">
+          Enter your name
+        </mat-error>
       </mat-form-field>
       <label for="login" class="text-left">Login</label>
       <mat-form-field appearance="outline">
         <input formControlName="login" matInput placeholder="Login" name="login" class="border-solid"
           [ngModel]="(user$ | async)?.login">
+        <mat-error *ngIf="profileForm.get('login')?.hasError('minlength')">
+          Your login must be at least 4 characters long
+        </mat-error>
+        <mat-error *ngIf="profileForm.get('login')?.hasError('required')">
+          Enter your login
+        </mat-error>
       </mat-form-field>
-      <mat-error *ngIf="profileForm.get('login')?.hasError('minlength')">
-        Your login must be at least 4 characters long
-      </mat-error>
       <label for="password" class="text-left">Password</label>
       <mat-form-field appearance="outline">
         <input formControlName="password" matInput type="password" placeholder="Password" name="password"
           class="border-solid">
+        <mat-error *ngIf="profileForm.get('password')?.dirty">
+          <mat-error *ngIf="!profileForm.get('password')?.valid">
+            Password should contain:
+            <ng-container *ngIf="profileForm.get('password')?.hasError('smallLetter')">
+              - small letter
+            </ng-container>
+            <ng-container *ngIf="profileForm.get('password')?.hasError('capitalLetter')">
+              - capital letter
+            </ng-container>
+            <ng-container *ngIf="profileForm.get('password')?.hasError('number')">
+              - number
+            </ng-container>
+            <ng-container *ngIf="profileForm.get('password')?.hasError('symbol')">
+              - special symbol
+            </ng-container>
+            <ng-container *ngIf="profileForm.get('password')?.hasError('minlength')">
+              - min 8 characters
+            </ng-container>
+          </mat-error>
+        </mat-error>
       </mat-form-field>
-      <mat-error *ngIf="profileForm.get('password')?.dirty">
-        <mat-error *ngIf="!profileForm.valid">
-          Password should contain:
+      <label for="passwordRepeat" class="text-left">Re-enter password</label>
+      <mat-form-field appearance="outline">
+        <input formControlName="passwordRepeat" matInput type="password" placeholder="Confirm your password"
+          name="password" class="border-solid">
+        <mat-error *ngIf="profileForm.get('passwordRepeat')?.hasError('notMatch')">
+          Passwords do not match
         </mat-error>
-        <mat-error *ngIf="profileForm.get('password')?.hasError('smallLetter')">
-          - small letter
+        <mat-error *ngIf="profileForm.get('passwordRepeat')?.hasError('required') && profileForm.dirty">
+          Please repeat your password
         </mat-error>
-        <mat-error *ngIf="profileForm.get('password')?.hasError('capitalLetter')">
-          - capital letter
-        </mat-error>
-        <mat-error *ngIf="profileForm.get('password')?.hasError('number')">
-          - number
-        </mat-error>
-        <mat-error *ngIf="profileForm.get('password')?.hasError('symbol')">
-          - special symbol
-        </mat-error>
-        <mat-error *ngIf="profileForm.get('password')?.hasError('minlength')">
-          - min 8 characters
-        </mat-error>
-      </mat-error>
+      </mat-form-field>
       <div class="buttons flex justify-around">
         <button type="submit" mat-raised-button color="primary">Save Changes</button>
-        <button mat-raised-button color="accent" (click)="openDialog()">Delete Account</button>
+        <button mat-raised-button color="warn" (click)="openDialog()">Delete Account</button>
       </div>
     </form>
   </mat-card-content>

@@ -7,9 +7,10 @@
   "login": {
     "login": "Log In",
     "loginPlaceholder": "Log In",
-    "passworPlaceholder": "Password",
+    "passwordPlaceholder": "Password",
     "loginRequired": "Please provide your login",
-    "passwordRequired": "Please provide your password"
+    "passwordRequired": "Please provide your password",
+    "accountQuestion": "Don't have an account yet?"
   },
   "signup": {
     "signup": "Sign Up",
@@ -18,14 +19,17 @@
     "loginPlaceholder": "Login",
     "loginMinLengthError": "Your login must be at least 4 characters long",
     "loginRequired": "Please provide your login",
-    "passworPlaceholder": "Password",
-    "passworContains": "Password should contain:",
-    "passworContainsSmallLetters": "- small letter",
-    "passworContainsCapitalLetters": "- capital letter",
-    "passworContainsNumbers": "- number",
-    "passworContainsSymbol": "- special symbol",
-    "passworLength": "- min 8 characters",
-    "create": "Create Account"
+    "passwordPlaceholder": "Password",
+    "passwordContains": "Password should contain:",
+    "passwordContainsSmallLetters": "- small letter",
+    "passwordContainsCapitalLetters": "- capital letter",
+    "passwordContainsNumbers": "- number",
+    "passwordContainsSymbol": "- special symbol",
+    "passwordLength": "- min 8 characters",
+    "create": "Create Account",
+    "passwordRepeatPlaceholder": "Re-enter your password",
+    "passwordRepeatRequired": "Please, repeat your password",
+    "passwordRepeatMatch": "Passwords do not match"
   },
   "board": {
     "addBoard": "Add Board",

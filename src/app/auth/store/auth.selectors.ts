@@ -31,3 +31,8 @@ export const selectCurrentUserId = createSelector(
     return tokenData?.userId
   }
 )
+
+export const selectTokenIat = createSelector(
+  selectParseToken,
+  (token) => token?.iat
+)

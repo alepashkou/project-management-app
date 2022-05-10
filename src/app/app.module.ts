@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './redux/main.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -17,13 +16,11 @@ import { SharedModule } from './shared/shared.module';
 import { MainFooterComponent } from './core/components/main-footer/main-footer.component';
 import { MainHeaderComponent } from './core/components/main-header/main-header.component';
 import { MaterialModule } from './shared/material/material.module';
-import { SignUpPageComponent } from './auth/pages/sign-up-page/sign-up-page.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
-import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 import { UsersEffects } from './users/store/users.effects';
 import { DialogComponent } from './core/dialog/dialog.component';
+import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
 import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.component';
 import { SwiperComponent } from './core/components/swiper/swiper.component';
@@ -34,9 +31,6 @@ import { SwiperModule } from 'swiper/angular';
     AppComponent,
     MainFooterComponent,
     MainHeaderComponent,
-    LoginPageComponent,
-    SignUpPageComponent,
-    ProfilePageComponent,
     DialogComponent,
     PageNotFoundComponent,
     WelcomePageComponent,

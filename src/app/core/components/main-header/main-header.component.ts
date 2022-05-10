@@ -3,7 +3,7 @@ import { ThemeService } from '../../services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Task } from '../../../boards/models/boards.model';
 import { FormControl } from '@angular/forms';
-import { BehaviorSubject, combineLatest, firstValueFrom, map } from 'rxjs';
+import { combineLatest, map } from 'rxjs';
 import { SearchService } from '../../services/search.service';
 
 
@@ -43,7 +43,6 @@ export class MainHeaderComponent implements OnInit {
 
   tasks$ = this.searchService.getAllTasks();
 
-  // tasks2$ =
   filteredTasks$ = combineLatest([this.tasks$, this.searchTextControl.valueChanges]).pipe(
     map(([tasks, searchText]) => {
       if (searchText) {
@@ -106,6 +105,4 @@ export class MainHeaderComponent implements OnInit {
     } else this.currentTheme = 'light';
     this.themeService.toggleTheme(theme);
   }
-
-
 }

@@ -12,7 +12,7 @@ export class UsersService {
   ) { }
 
   getUserById(userId: string) {
-    return this.httpClient.get<UserInfo>(`${this.apiUrl}/users/${userId}`)
+    return this.httpClient.get<UserInfo>(`${this.apiUrl}users/${userId}`)
   }
 
   updateUser(userData: UpdateUser, userId: string) {
@@ -27,4 +27,4 @@ export class UsersService {
   deleteUser(userId: string) {
     return this.httpClient.delete(`${this.apiUrl}users/${userId}`)
   }
-}
+}  

@@ -4,33 +4,37 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse
+  HttpErrorResponse,
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
-
   //ПЕРЕДЕЛАТЬ ПОЛУЧЕНИЕ ТОКЕНА МБ СЕРВИС
   private readonly userToken = localStorage.getItem('token');
 
-  private readonly baseUrl = 'https://managment-app.ddns.net/';
+  private readonly baseUrl = 'https://management-app-team7.herokuapp.com/';
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
     const clonedRequest = request.clone({
-      headers: request.headers
-      .set('Authorization', this.userToken ? `Bearer ${this.userToken}` : ''),
-      url: this.baseUrl + request.url
+      headers: request.headers.set(
+        'Authorization',
+        this.userToken ? `Bearer ${this.userToken}` : ''
+      ),
+      url: this.baseUrl + request.url,
     });
     return next.handle(clonedRequest).pipe(
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
-          if (err.status === 401){
-      //ТУТ НУЖЕН РИДИРЕКТ НА ЛОГИН ЕСЛИ ОШИБКА АВТОРИЗАЦИИ
+          if (err.status === 401) {
+            //ТУТ НУЖЕН РИДИРЕКТ НА ЛОГИН ЕСЛИ ОШИБКА АВТОРИЗАЦИИ
           }
         }
         return throwError(() => err);
       })
-    )
+    );
   }
 }

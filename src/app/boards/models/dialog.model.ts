@@ -3,6 +3,8 @@ export interface DialogBoxData {
   action: string;
   id?: string;
   param?: string;
+  title: string;
+  description: string;
 }
 export interface DialogColumData {
   action: string;

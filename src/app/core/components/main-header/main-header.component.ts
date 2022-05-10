@@ -3,8 +3,10 @@ import { ThemeService } from '../../services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Task } from '../../../boards/models/boards.model';
 import { FormControl } from '@angular/forms';
-import { combineLatest, map } from 'rxjs';
+import { combineLatest, filter, map } from 'rxjs';
 import { SearchService } from '../../services/search.service';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,34 +18,13 @@ export class MainHeaderComponent implements OnInit {
 
   searchTextControl = new FormControl();
 
-
-  tasks: Task[] = [
-    {
-      id: '12345',
-      title: 'Login',
-      order: 1,
-      description: 'Add login page',
-      userId: '1234567'
-    },
-    {
-      id: 'd73905g893f',
-      title: 'Logout',
-      order: 2,
-      description: 'Add logout component',
-      userId: 'Sdg^43fj%'
-    },
-    {
-      id: '5F3Gh53',
-      title: 'Routing',
-      order: 3,
-      description: 'Update routing',
-      userId: 'd$g67-fgh-5'
-    },
-  ]
-
   tasks$ = this.searchService.getAllTasks();
 
-  filteredTasks$ = combineLatest([this.tasks$, this.searchTextControl.valueChanges]).pipe(
+  filteredTasks$ = combineLatest([this.tasks$,
+  this.searchTextControl.valueChanges.pipe(
+    filter((textOrTask) => typeof textOrTask === 'string')
+  )
+  ]).pipe(
     map(([tasks, searchText]) => {
       if (searchText) {
         return this._filterTasks(searchText, tasks)
@@ -55,19 +36,15 @@ export class MainHeaderComponent implements OnInit {
   public currentTheme: string | null = 'light';
   public currentLanguage: string = 'en';
   public isCurrentLanguageChecked: boolean | null = false;
-  constructor(public themeService: ThemeService, public translate: TranslateService, private searchService: SearchService) {
-
-
-
+  constructor(public themeService: ThemeService, public translate: TranslateService, private searchService: SearchService, private router: Router) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang(localStorage.getItem('language') || 'en');
-
-
   }
 
   private _filterTasks(value: string, tasks: Task[]): Task[] {
     const filterValue = value.toLowerCase();
-    return tasks.filter((task) => task.title.toLowerCase().includes(filterValue))
+    return tasks.filter((task) => task.title.toLowerCase().includes(filterValue) || task.description.toLowerCase().includes(filterValue) || task.user.name.toLowerCase().includes(filterValue)
+    )
   }
 
   ngOnInit(): void {
@@ -105,6 +82,20 @@ export class MainHeaderComponent implements OnInit {
     } else this.currentTheme = 'light';
     this.themeService.toggleTheme(theme);
   }
+
+  onSelectTask(task: MatAutocompleteSelectedEvent) {
+    console.log(task)
+    this.router.navigate([`boards/${task.option.value.boardId}`], {
+      queryParams: {
+        openTask: task.option.value.id
+      }
+    })
+  }
+
+  displayFn(task?: Task) {
+    return task?.title || ''
+  }
+
 }
 
 window.onscroll = () => {

@@ -32,7 +32,8 @@
 
       <div class="auth-block">
         <button mat-raised-button color="primary" [routerLink]="'/auth/login'">{{'header.signIn' | translate }}</button>
-        <button mat-raised-button color="primary" [routerLink]="'/auth/signup'">{{'header.signUp' | translate }}</button>
+        <button mat-raised-button color="primary" [routerLink]="'/auth/signup'">{{'header.signUp' | translate
+          }}</button>
       </div>
 
     </div>
@@ -40,10 +41,11 @@
     <div class="search-block">
       <input matInput aria-label="Task" [matAutocomplete]="auto" [formControl]="searchTextControl" type="text"
         placeholder="search" class="px-3 text-black bg-white">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let task of filteredTasks$ | async" [value]="task.title">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectTask($event)" [displayWith]="displayFn">
+        <mat-option *ngFor="let task of filteredTasks$ | async" [value]="task">
           <span>{{task.title}}</span> |
-          <small>{{task.description}}</small>
+          <small>{{task.description}}</small> |
+          <span>{{task.user.name}}</span>
         </mat-option>
       </mat-autocomplete>
     </div>

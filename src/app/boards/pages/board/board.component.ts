@@ -11,13 +11,14 @@ import { BoardService } from '../../services/board.service';
 import { DialogColumComponent } from '../../components/dialog-colum/dialog-colum.component';
 import { Task } from '../../models/boards.model';
 import { UserResponce } from '../../models/dialog.model';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
   board: Board;
 
   id: string;
@@ -29,10 +30,25 @@ export class BoardComponent implements OnInit {
     private boardService: BoardService,
     private dialog: MatDialog
   ) {
-    this.id = this.route.snapshot.params['id'];
+    //this.id = this.route.snapshot.params['id'];
+    route.params.pipe(
+      map((params) => params['id'])
+    ).subscribe(
+      (id) => {
+        this.id = id;
+        this.loadData()
+      }
+    )
+    route.queryParams.pipe(
+      map((queryParams) => queryParams['openTask'])
+    ).subscribe(
+      (openTask) => {
+        console.log(openTask)
+      }
+    )
   }
 
-  ngOnInit(): void {
+  loadData(): void {
     this.boardService.getBoard(this.id).subscribe((board) => {
       this.board = board;
     });
@@ -133,6 +149,6 @@ export class BoardComponent implements OnInit {
     });
   }
   updateBoard() {
-    this.ngOnInit();
+    this.loadData();
   }
 }

@@ -1,17 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-welcome-page',
   templateUrl: './welcome-page.component.html',
   styleUrls: ['./welcome-page.component.scss']
 })
-export class WelcomePageComponent implements OnInit {
+export class WelcomePageComponent {
 
   constructor() { }
 
   public isOnline: boolean = Boolean(localStorage.getItem('token'));
-  
-  ngOnInit(): void {
-  }
 
 }

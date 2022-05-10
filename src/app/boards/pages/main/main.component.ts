@@ -40,9 +40,13 @@ export class MainComponent implements OnInit {
         if (result.event === 'Delete') {
           this.deleteBoard(result.data.id);
         } else if (result.event === 'Create') {
-          this.createBoard(result.data.param);
+          this.createBoard(result.data.title, result.data.description);
         } else if (result.event === 'Edit') {
-          this.editBoard(result.data.param, result.data.id);
+          this.editBoard(
+            result.data.title,
+            result.data.id,
+            result.data.description
+          );
         }
       });
     } else {
@@ -64,16 +68,17 @@ export class MainComponent implements OnInit {
     });
     this.mainBoard.deleteBoard(id).subscribe();
   }
-  createBoard(name: string): void {
-    this.mainBoard.craeteBoard(name).subscribe((board) => {
+  createBoard(title: string, description: string): void {
+    this.mainBoard.craeteBoard(title, description).subscribe((board) => {
       this.allBoards.push(board);
     });
   }
-  editBoard(name: string, id: string): void {
-    this.mainBoard.editBoard(name, id).subscribe((board) => {
+  editBoard(title: string, id: string, description: string): void {
+    this.mainBoard.editBoard(title, id, description).subscribe((board) => {
       this.allBoards = this.allBoards.map((el) => {
         if (el.id === board.id) {
           el.title = board.title;
+          el.description = board.description;
         }
         return el;
       });

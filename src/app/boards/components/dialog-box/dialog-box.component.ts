@@ -19,7 +19,9 @@ export class DialogBoxComponent implements AfterViewChecked {
 
   localData: DialogBoxData;
 
-  param: FormControl;
+  title: FormControl;
+
+  description: FormControl;
 
   constructor(
     public dialog: MatDialogRef<DialogBoxComponent>,
@@ -29,7 +31,11 @@ export class DialogBoxComponent implements AfterViewChecked {
     this.dialog.disableClose = true;
     this.localData = { ...data };
     this.action = this.localData.action;
-    this.param = new FormControl('', [
+    this.title = new FormControl('', [
+      Validators.minLength(3),
+      Validators.maxLength(15),
+    ]);
+    this.description = new FormControl('', [
       Validators.minLength(3),
       Validators.maxLength(15),
     ]);
@@ -38,7 +44,8 @@ export class DialogBoxComponent implements AfterViewChecked {
     this.changeDetectorRef.detectChanges();
   }
   doAction() {
-    this.localData.param = this.param.value;
+    this.localData.title = this.title.value;
+    this.localData.description = this.description.value;
     this.dialog.close({ event: this.action, data: this.localData });
   }
 

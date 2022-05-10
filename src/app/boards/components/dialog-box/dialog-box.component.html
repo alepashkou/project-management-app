@@ -1,15 +1,30 @@
-<mat-dialog-content>
-  <mat-form-field class="dialog-field" appearance="fill" *ngIf="action === 'Create' || action === 'Edit'">
-    <mat-label>{{'boardDialog.boardName' | translate }}</mat-label>
-    <input matInput [formControl]="param" required>
-    <mat-error *ngIf="param.hasError('minlength')">{{'boardDialog.minLengthError' | translate }}</mat-error>
-    <mat-error *ngIf="param.hasError('maxlength')">{{'boardDialog.maxLengthError' | translate }}</mat-error>
+<mat-dialog-content *ngIf="action === 'Create' || action === 'Edit'">
+  <mat-form-field class="dialog-field" appearance="fill">
+    <mat-label>{{ "boardDialog.boardName" | translate }}</mat-label>
+    <input matInput [formControl]="title" required />
+    <mat-error *ngIf="title.hasError('minlength')">{{
+      "boardDialog.minLengthError" | translate
+    }}</mat-error>
+    <mat-error *ngIf="title.hasError('maxlength')">{{
+      "boardDialog.maxLengthError" | translate
+    }}</mat-error>
   </mat-form-field>
-  <mat-dialog-content *ngIf="action === 'Delete'">
-    <h3>{{'boardDialog.sureToDelete' | translate }}</h3>
-  </mat-dialog-content>
+  <mat-form-field class="dialog-field" appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput [formControl]="description" required />
+    <mat-error *ngIf="title.hasError('minlength')">{{
+      "boardDialog.minLengthError" | translate
+    }}</mat-error>
+    <mat-error *ngIf="title.hasError('maxlength')">{{
+      "boardDialog.maxLengthError" | translate
+    }}</mat-error>
+  </mat-form-field>
 </mat-dialog-content>
 <div mat-dialog-actions class="dialog-buttons">
-  <button mat-flat-button (click)="doAction()" [disabled]="param.invalid">{{ action | translate }}</button>
-  <button mat-flat-button color="warn" mat-dialog-close="false">{{'boardDialog.cancel' | translate }}</button>
+  <button mat-flat-button (click)="doAction()" [disabled]="title.invalid">
+    {{ action | translate }}
+  </button>
+  <button mat-flat-button color="warn" mat-dialog-close="false">
+    {{ "boardDialog.cancel" | translate }}
+  </button>
 </div>

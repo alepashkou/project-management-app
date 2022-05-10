@@ -39,6 +39,7 @@ export class BoardService {
       order: lenght + 1,
       description: desc,
       userId: userId,
+      done: false,
     });
   }
   getAllUsers() {
@@ -67,6 +68,7 @@ export class BoardService {
         title: task.title,
         description: task.description,
         order: task.order,
+        done: false,
       }
     );
   }

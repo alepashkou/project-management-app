@@ -22,17 +22,23 @@ import { UsersEffects } from './users/store/users.effects';
 import { DialogComponent } from './core/dialog/dialog.component';
 import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
-
+import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.component';
+import { SwiperComponent } from './core/components/swiper/swiper.component';
+import { SwiperModule } from 'swiper/angular';
+ 
 @NgModule({
   declarations: [
     AppComponent,
     MainFooterComponent,
     MainHeaderComponent,
     DialogComponent,
-    ProfilePageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    WelcomePageComponent,
+    SwiperComponent,
+    ProfilePageComponent
   ],
   imports: [SharedModule,
+    SwiperModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

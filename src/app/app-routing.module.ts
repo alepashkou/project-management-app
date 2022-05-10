@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/services/auth.guard';
 import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
+import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.component';
 import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
 
 const routes: Routes = [{
@@ -14,6 +15,11 @@ const routes: Routes = [{
   path: 'auth', loadChildren: () => import('./auth/auth.module')
     .then((m) => m.AuthModule),
     data: { animation: 'auth' },
+},
+{
+  path: '',
+  component: WelcomePageComponent,
+  canActivate: [AuthGuard]
 },
 {
   path: 'profile',

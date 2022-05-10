@@ -10,7 +10,7 @@
     }}</mat-error>
   </mat-form-field>
   <mat-form-field class="dialog-field" appearance="fill">
-    <mat-label>Description</mat-label>
+    <mat-label>{{ "board.desc" | translate }}</mat-label>
     <input matInput [formControl]="description" required />
     <mat-error *ngIf="title.hasError('minlength')">{{
       "boardDialog.minLengthError" | translate

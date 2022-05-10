@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://managment-app.ddns.net',
+  apiUrl: 'https://management-app-team7.herokuapp.com',
 };

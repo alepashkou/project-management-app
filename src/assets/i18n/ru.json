@@ -32,6 +32,7 @@
     "passwordRepeatMatch": "Пароли не совпадают"
   },
   "board": {
+    "desc": "Описание",
     "addBoard": "Добавить доску",
     "addColumn": "Добавить колонку",
     "board": "Доска",
@@ -58,6 +59,22 @@
   "404": {
     "notFound": "Страница не найдена",
     "back": "На главную"
+  },
+  "welcome": {
+    "title": "Project management app",
+    "discription": "Приложение, которое поможет командам эффективно решать рабочие задачи. Оно поможет организовать работу так, чтобы все знали, чем нужно заниматься. Отслеживайте прогресс выполнения задач, будьте в курсе происходящего. Правильно планируйте сроки и объем работы.",
+    "goals": "Достигайте ваши цели!",
+    "registration": "Начать",
+    "course": "О курсе",
+    "courseInfo": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste culpa aliquam dolore ipsum doloribus incidunt quas perspiciatis consequuntur molestias nam placeat in odit, dolor blanditiis. Optio sequi similique fuga quia!",
+    "opportunities": "Возможности приложения",
+    "boards": "Создавать доски",
+    "tasks": "Создавать задачи",
+    "transfer": "Перемещать задачи",
+    "assign": "Назначать исполнителей",
+    "done": "Отмечать выполненные",
+    "search": "Поиск по задачам доскам или исполнителям",
+    "about" : "О команде" 
   },
   "Create": "Создать",
   "Delete": "Удалить",

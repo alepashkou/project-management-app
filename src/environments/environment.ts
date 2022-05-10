@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://managment-app.ddns.net',
+  apiUrl: 'https://management-app-team7.herokuapp.com',
 };
 
 /*

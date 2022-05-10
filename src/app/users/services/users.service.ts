@@ -27,4 +27,4 @@ export class UsersService {
   deleteUser(userId: string) {
     return this.httpClient.delete(`${this.apiUrl}users/${userId}`)
   }
-}
+}  

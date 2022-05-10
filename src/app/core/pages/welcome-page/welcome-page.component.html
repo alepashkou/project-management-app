@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="welcome-container">
+    <div class="info">
+      <h1 class="title">{{'welcome.title' | translate }}</h1>
+      <h3 class="app-info">{{'welcome.discription' | translate }}</h3>
+      <p class="app-info">{{'welcome.goals' | translate }}</p>
+
+      <button mat-raised-button color="accent" routerLink="{{this.isOnline ? 'boards' : 'auth/signin'}}">{{'welcome.registration' | translate }}</button>
+
+    </div>
+    <div>
+      <div class="welcome-img">
+        <img src="assets/welcome.gif" alt="welcome">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="about-project">
+    <div class="welcome-container">
+
+      <div>
+        <div>
+          <img src="assets/opportunities.gif" alt="opportunities">
+        </div>
+      </div>
+
+      <div class="info">
+        <h2 class="subtitle">{{'welcome.opportunities' | translate }}</h2>
+        <ul class="opportunities-list">
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.boards' | translate }}
+          </li>
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.tasks' | translate }}
+          </li>
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.transfer' | translate }}
+          </li>
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.assign' | translate }}
+          </li>
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.done' | translate }}
+          </li>
+          <li class="opportunities-item">
+            <mat-icon>check</mat-icon>{{'welcome.search' | translate }}
+          </li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="welcome-container">
+    <div class="info about-team">
+      <h2 class="subtitle">{{'welcome.about' | translate }}</h2>
+      <div>
+        <app-swiper></app-swiper>
+      </div>
+    </div>
+
+    <div class="team-img-container">
+      <div class="welcome-img">
+        <img src="assets/team.gif" alt="team">
+      </div>
+    </div>
+
+  </div>
+
+  <div>
+    <h2 class="subtitle">{{'welcome.course' | translate }}</h2>
+    <p class="about-text">{{'welcome.courseInfo' | translate }}</p>
+  </div>
+
+
+
+</div>

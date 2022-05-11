@@ -29,7 +29,8 @@
   },
   "board": {
     "addBoard": "Add Board",
-    "board": "Board"
+    "board": "Board",
+    "boards": "Boards"
   },
   "boardDialog": {
     "boardName": "Board Name",

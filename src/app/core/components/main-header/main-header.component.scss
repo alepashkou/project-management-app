@@ -14,13 +14,23 @@
   }
 }
 
-.add-new-board__button {
-  border: 1px solid;
+.add-new-board {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.mat-icon-button {
+.add-new-board__button {
+  border: 1px solid;
   width: auto;
-  padding: 0px 100px 0px 5px;
+  padding: 0px 30px 0px 5px;
+  border-radius: 0;
+}
+
+.go-to-boards {
+  padding: 0px 5px 0px 30px;
+  width: auto;
+  border: 1px solid;
   border-radius: 0;
 }
 

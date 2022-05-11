@@ -29,7 +29,8 @@
   },
   "board": {
     "addBoard": "Добавть доску",
-    "board": "Доска"
+    "board": "Доска",
+    "boards": "Доски"
   },  
   "boardDialog": {
     "boardName": "Название доски",

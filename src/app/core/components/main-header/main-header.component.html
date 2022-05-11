@@ -33,7 +33,7 @@
 
   <div class="user-block">
 
-    <div class="profile-block" *ngIf="chekUserStatus()" title={{activeUserName}}>
+    <div class="profile-block" *ngIf="chekUserStatus()" title={{activeUserName}} [routerLink]="'/profile'">
       <mat-icon color="primary">person</mat-icon>
     </div>
 

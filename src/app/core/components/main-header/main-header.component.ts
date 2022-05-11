@@ -72,7 +72,7 @@ export class MainHeaderComponent implements OnInit {
     } else this.curretnTheme = 'light';
     this.themeService.toggleTheme(theme);
   }
-
+  
   public activeUser() {
     this.store.select(selectActiveUser).subscribe((userName) => {
       this.activeUserName = userName?.name;
@@ -87,5 +87,18 @@ export class MainHeaderComponent implements OnInit {
 
   public chekUserStatus() {
     return this.usersService.getUserStatus();
+}
+
+window.onscroll = () => {
+  addSticky();
+}
+
+function addSticky() {
+  const sticky: HTMLElement = document.querySelector('.page-header')!;
+  const stickyPosition = sticky.offsetTop;
+  if (stickyPosition > 1) {
+    sticky.classList.add('sticky');
+  } else {
+    sticky.classList.remove('sticky');
   }
 }

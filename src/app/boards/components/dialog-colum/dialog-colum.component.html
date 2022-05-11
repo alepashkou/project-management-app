@@ -1,0 +1,29 @@
+<mat-dialog-content class="dialog-item">
+  <mat-form-field
+    class="dialog-field"
+    appearance="fill"
+    *ngIf="action === 'Create'"
+  >
+    <mat-label>{{ "column.columnName" | translate }}</mat-label>
+    <input matInput [formControl]="param" required />
+    <mat-error *ngIf="param.hasError('minlength')">{{
+      "boardDialog.maxLengthError" | translate
+    }}</mat-error>
+    <mat-error *ngIf="param.hasError('maxlength')">{{
+      "boardDialog.minLengthError" | translate
+    }}</mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+<div mat-dialog-actions class="dialog-buttons">
+  <button
+    color="accent"
+    mat-flat-button
+    (click)="doAction()"
+    [disabled]="param.invalid"
+  >
+    {{ "Create" | translate }}
+  </button>
+  <button mat-flat-button color="warn" mat-dialog-close="false">
+    {{ "boardDialog.cancel" | translate }}
+  </button>
+</div>

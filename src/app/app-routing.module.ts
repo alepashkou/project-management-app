@@ -1,29 +1,41 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
+import { AuthGuard } from './auth/services/auth.guard';
+import { PageNotFoundComponent } from './core/pages/page-not-found/page-not-found.component';
+import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.component';
 import { ProfilePageComponent } from './users/pages/profile-page/profile-page.component';
-import { SignUpPageComponent } from './auth/pages/sign-up-page/sign-up-page.component';
 
 const routes: Routes = [{
-  path: 'board', loadChildren: () => import('./boards/boards.module')
+  path: 'boards', loadChildren: () => import('./boards/boards.module')
     .then((m) => m.BoardsModule),
+  canActivate: [AuthGuard],
+  data: { animation: 'boards' },
 },
 {
-  path: 'login',
-  component: LoginPageComponent,
+  path: 'auth', loadChildren: () => import('./auth/auth.module')
+    .then((m) => m.AuthModule),
+    data: { animation: 'auth' },
 },
 {
-  path: 'signup',
-  component: SignUpPageComponent,
+  path: '',
+  component: WelcomePageComponent,
+  canActivate: [AuthGuard]
 },
 {
   path: 'profile',
   component: ProfilePageComponent,
+  canActivate: [AuthGuard],
+  data: { animation: 'profile' },
 },
+{
+  path: '**',
+  component: PageNotFoundComponent,
+  data: { animation: '404' },
+}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

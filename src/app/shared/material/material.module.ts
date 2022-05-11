@@ -47,6 +47,6 @@ import { MatTableModule } from '@angular/material/table';
     MatSelectModule,
     MatOptionModule,
     MatSnackBarModule,
-  ]
+  ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

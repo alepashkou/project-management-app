@@ -1,0 +1,40 @@
+<form [formGroup]="param">
+  <mat-dialog-content
+    class="dialog-item"
+    *ngIf="action === 'Create' || action === 'Edit'"
+  >
+    <mat-form-field class="dialog-field" appearance="fill">
+      <mat-label>{{ "task.taskName" | translate }}</mat-label>
+      <input matInput required formControlName="title" />
+      <mat-error *ngIf="param.get('title')?.hasError('minlength')">{{
+        "boardDialog.minLengthError" | translate
+      }}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="dialog-field" appearance="fill">
+      <mat-label>{{ "task.taskDesc" | translate }}</mat-label>
+      <input matInput required formControlName="description" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{ "task.user" | translate }}</mat-label>
+      <mat-select formControlName="userId">
+        <mat-option *ngFor="let user of userList" [value]="user.id">
+          {{ user.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+  <div mat-dialog-actions class="dialog-buttons">
+    <button
+      color="accent"
+      *ngIf="action !== 'Delete'"
+      mat-flat-button
+      (click)="doAction()"
+      [disabled]="param.invalid"
+    >
+      {{ action | translate }}
+    </button>
+    <button mat-flat-button color="warn" mat-dialog-close="false">
+      {{ "boardDialog.cancel" | translate }}
+    </button>
+  </div>
+</form>

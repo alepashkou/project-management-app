@@ -42,13 +42,23 @@ export class ProfilePageComponent {
       Validators.required,
       Validators.minLength(PASSWORD_MIN_LENGTH),
       passwordDifficulty,
+    ]),
+    passwordRepeat: new FormControl('', [
+      Validators.required,
+      (passwordRepeatForm) => {
+        console.log(this.profileForm?.value.password)
+        if (passwordRepeatForm.value !== this.profileForm?.value.password) {
+          return { notMatch: 'Passwords do not match' }
+        }
+        return null
+      }
     ])
   })
 
   editProfile() {
     if (this.profileForm.valid) {
       this.store.dispatch(updateUser({ updateUser: this.profileForm.value }))
-      this.router.navigate(['board'])
+      this.router.navigate(['boards'])
     }
   }
 
@@ -56,8 +66,7 @@ export class ProfilePageComponent {
     const result = await firstValueFrom(this.store.select(selectCurrentUserId));
     if (result) {
       await firstValueFrom(this.service.deleteUser(result))
-      // localStorage.clear()
-      this.router.navigate(['login'])
+      this.router.navigate(['auth/login'])
     }
     else {
       this.matSnackBar.open(`Something went wrong`, 'Hide', {

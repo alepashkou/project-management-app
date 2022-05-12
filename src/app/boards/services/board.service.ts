@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { concatMap, Observable } from 'rxjs';
-import { Board, Colum } from '../models/boards.model';
+import { Board, Colum, Order } from '../models/boards.model';
 import { UserResponce } from '../models/dialog.model';
 import { Task } from '../models/boards.model';
 @Injectable()
@@ -77,5 +77,8 @@ export class BoardService {
       title: title,
       order: order,
     });
+  }
+  updateOrderTask(taskOrder?: Order[]) {
+    return this.http.put('order/tasks', { tasks: taskOrder });
   }
 }

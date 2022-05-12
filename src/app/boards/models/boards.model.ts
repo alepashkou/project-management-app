@@ -22,3 +22,7 @@ export interface Task {
 export interface Token {
   token: string;
 }
+export interface Order {
+  id: string;
+  order: number;
+}

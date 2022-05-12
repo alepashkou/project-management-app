@@ -46,7 +46,6 @@ export class LoginPageComponent {
   login() {
     if (this.loginForm.valid) {
       this.store.dispatch(login(this.loginForm.value));
-      this.usersService.updateUserLoginStatus(true);
     }
   }
 

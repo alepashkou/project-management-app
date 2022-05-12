@@ -126,11 +126,13 @@ export class BoardComponent implements OnInit {
   }
   updateOrderTask(id: string) {
     const currentColum = this.board.columns?.find((colum) => colum.id === id);
-    currentColum?.tasks?.forEach((el, index) => {
-      const taskClone = el;
-      taskClone.order = index;
-      this.boardService.updateTask(this.board.id, id, taskClone).subscribe();
+    const order = currentColum?.tasks?.map((el, index) => {
+      return {
+        id: el.id,
+        order: index,
+      };
     });
+    this.boardService.updateOrderTask(order).subscribe();
   }
   updateBoard() {
     this.ngOnInit();

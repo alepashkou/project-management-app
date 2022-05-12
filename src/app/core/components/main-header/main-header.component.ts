@@ -33,6 +33,10 @@ export class MainHeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
+    window.onscroll = () => {
+      this.addSticky();
+    }
+
     if (localStorage.getItem('token')) {
       this.usersService.updateUserLoginStatus(true);
     }
@@ -66,39 +70,37 @@ export class MainHeaderComponent implements OnInit {
       this.isCurretnLanguageChecked = false;
   }
 
-  public changeTheme(theme: string) {
+  public changeTheme(theme: string): void {
     if (theme === 'dark-mode') {
       this.curretnTheme = 'dark-mode';
     } else this.curretnTheme = 'light';
     this.themeService.toggleTheme(theme);
   }
 
-  public activeUser() {
+  public activeUser(): void {
     this.store.select(selectActiveUser).subscribe((userName) => {
       this.activeUserName = userName?.name;
     });
   }
 
-  public logout() {
+  public logout(): void {
     this.store.dispatch(logoutUser({ userInfo: { login: '', name: '', id: '' } }));
     localStorage.removeItem('token');
     this.usersService.updateUserLoginStatus(false);
   }
 
-  public chekUserStatus() {
+  public chekUserStatus(): boolean {
     return this.usersService.getUserStatus();
-}
-
-window.onscroll = () => {
-  addSticky();
-}
-
-function addSticky() {
-  const sticky: HTMLElement = document.querySelector('.page-header')!;
-  const stickyPosition = sticky.offsetTop;
-  if (stickyPosition > 1) {
-    sticky.classList.add('sticky');
-  } else {
-    sticky.classList.remove('sticky');
   }
+
+  public addSticky(): void {
+    const sticky: HTMLElement = document.querySelector('.page-header')!;
+    const stickyPosition = sticky.offsetTop;
+    if (stickyPosition > 1) {
+      sticky.classList.add('sticky');
+    } else {
+      sticky.classList.remove('sticky');
+    }
+  }
+
 }

@@ -32,13 +32,11 @@
     "passwordRepeatMatch": "Пароли не совпадают"
   },
   "board": {
+    "desc": "Описание",
     "addBoard": "Добавть доску",
     "board": "Доска",
-    "boards": "Доски"
-    "desc": "Описание",
-    "addBoard": "Добавить доску",
+    "boards": "Доски",
     "addColumn": "Добавить колонку",
-    "board": "Доска",
     "column": "Колонка",
     "goToBoard": "К доскам",
     "goToMain": "На главную"

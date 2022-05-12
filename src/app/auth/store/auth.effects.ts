@@ -5,6 +5,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { switchMap, map, tap, catchError, of, filter, timer } from 'rxjs';
 import { isNotNull } from 'src/app/core/utils';
+import { UsersService } from 'src/app/users/services/users.service';
 import { AuthService } from '../services/auth.service';
 import { loadToken, login, loginError, loginSuccess, signup, signupError, signupSuccess, tokenExpired } from './auth.actions';
 import { selectToken, selectTokenIat } from './auth.selectors';
@@ -22,6 +23,7 @@ export class AuthEffects {
     private matSnackBar: MatSnackBar,
     private router: Router,
     private store: Store,
+    private usersService: UsersService
   ) {
     const token = localStorage.getItem('token');
     if (token) {
@@ -34,14 +36,16 @@ export class AuthEffects {
       ofType(login),
       switchMap(
         (action) => this.authService.signIn({ login: action.login, password: action.password }).pipe(
-          map((result) => loginSuccess(
-            {
-              authInfo: {
-                login: action.login,
-                token: result.token
-              }
-            }),
-          ),
+          map((result) => {
+            this.usersService.updateUserLoginStatus(true);
+            return loginSuccess(
+              {
+                authInfo: {
+                  login: action.login,
+                  token: result.token
+                }
+              })
+          }),
           catchError(() => of(loginError()))
         )
       ),

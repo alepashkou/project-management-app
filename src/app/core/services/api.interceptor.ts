@@ -7,22 +7,22 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
-  //ПЕРЕДЕЛАТЬ ПОЛУЧЕНИЕ ТОКЕНА МБ СЕРВИС
-  private readonly userToken = localStorage.getItem('token');
-
+  constructor(private router:Router){}
   private readonly baseUrl = 'https://management-app-team7.herokuapp.com/';
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
+    const userToken = localStorage.getItem('token');
     const clonedRequest = request.clone({
       headers: request.headers.set(
         'Authorization',
-        this.userToken ? `Bearer ${this.userToken}` : ''
+        userToken ? `Bearer ${userToken}` : ''
       ),
       url: this.baseUrl + request.url,
     });
@@ -30,7 +30,7 @@ export class ApiInterceptor implements HttpInterceptor {
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            //ТУТ НУЖЕН РИДИРЕКТ НА ЛОГИН ЕСЛИ ОШИБКА АВТОРИЗАЦИИ
+            this.router.navigate(['auth', 'login'])
           }
         }
         return throwError(() => err);

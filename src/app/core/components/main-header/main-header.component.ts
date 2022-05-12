@@ -6,6 +6,7 @@ import { State } from 'src/app/users/store/users.reducer';
 import { selectActiveUser } from 'src/app/users/store/users.selectors';
 import { logoutUser } from 'src/app/users/store/users.actions';
 import { UsersService } from 'src/app/users/services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-header',
@@ -25,7 +26,8 @@ export class MainHeaderComponent implements OnInit {
     public themeService: ThemeService,
     public translate: TranslateService,
     private store: Store<State>,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private route: Router
   ) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang(localStorage.getItem('language') || 'en');
@@ -43,11 +45,11 @@ export class MainHeaderComponent implements OnInit {
 
     this.activeUser();
     this.themeService.initTheme();
-    
+
     if (!localStorage.getItem('theme')) {
       localStorage.setItem('theme', 'light');
     } else this.curretnTheme = localStorage.getItem('theme');
-    
+
     if (localStorage.getItem('language')) {
       this.curretnLanguage = localStorage.getItem('language')!;
     } else localStorage.setItem('language', 'en');
@@ -87,6 +89,7 @@ export class MainHeaderComponent implements OnInit {
     this.store.dispatch(logoutUser({ userInfo: { login: '', name: '', id: '' } }));
     localStorage.removeItem('token');
     this.usersService.updateUserLoginStatus(false);
+    this.route.navigate([''])
   }
 
   public chekUserStatus(): boolean {

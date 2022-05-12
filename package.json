@@ -29,7 +29,9 @@
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
     "jwt-decode": "^3.1.2",
+    "parallax-js": "^3.1.0",
     "rxjs": "~7.5.0",
+    "swiper": "^8.1.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
@@ -44,7 +46,7 @@
     "@angular/compiler-cli": "~13.2.0",
     "@ngneat/tailwind": "^7.0.3",
     "@types/jasmine": "~3.10.0",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.20.50",
     "@typescript-eslint/eslint-plugin": "5.17.0",
     "@typescript-eslint/parser": "5.17.0",
     "eslint": "^8.12.0",

@@ -32,3 +32,7 @@ export const loadToken = createAction(
   '[Auth] Load Token',
   props<{ token: string }>()
 )
+
+export const tokenExpired = createAction(
+  '[Auth] Token Expired',
+)

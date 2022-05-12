@@ -7,9 +7,10 @@
   "login": {
     "login": "Войти",
     "loginPlaceholder": "Логин",
-    "passworPlaceholder": "Пароль",
+    "passwordPlaceholder": "Пароль",
     "loginRequired": "Пожалуйста, введите ваш логин",
-    "passwordRequired": "Пожалуйста, введите ваш пароль"
+    "passwordRequired": "Пожалуйста, введите ваш пароль",
+    "accountQuestion": "Пока не зарегистрированы?"
   },
   "signup": {
     "signup": "Регистрация",
@@ -18,20 +19,39 @@
     "loginPlaceholder": "Логин",
     "loginMinLengthError": " Ваш логин должен быть не менее чем 4 символа",
     "loginRequired": "Пожалуйста, введите ваш логин",
-    "passworPlaceholder": "Пароль",
-    "passworContains": "Пароль должен включать:",
-    "passworContainsSmallLetters": "- строчные буквы",
-    "passworContainsCapitalLetters": "- заглавные буквы",
-    "passworContainsNumbers": "- числа",
-    "passworContainsSymbol": "- специальные символы",
-    "passworLength": "- минимум 8 символов",
-    "create": "Зарегистрировать"
+    "passwordPlaceholder": "Пароль",
+    "passwordContains": "Пароль должен включать:",
+    "passwordContainsSmallLetters": "- строчные буквы",
+    "passwordContainsCapitalLetters": "- заглавные буквы",
+    "passwordContainsNumbers": "- числа",
+    "passwordContainsSymbol": "- специальные символы",
+    "passwordLength": "- минимум 8 символов",
+    "create": "Зарегистрировать",
+    "passwordRepeatPlaceholder": "Повторите пароль",
+    "passwordRepeatRequired": "Пожалуйста, повторите пароль",
+    "passwordRepeatMatch": "Пароли не совпадают"
   },
   "board": {
     "addBoard": "Добавть доску",
     "board": "Доска",
     "boards": "Доски"
-  },  
+    "desc": "Описание",
+    "addBoard": "Добавить доску",
+    "addColumn": "Добавить колонку",
+    "board": "Доска",
+    "column": "Колонка",
+    "goToBoard": "К доскам",
+    "goToMain": "На главную"
+  },
+  "column": {
+    "columnName": "Имя колонки",
+    "addTask": "Создать задачу"
+  },
+  "task": {
+    "taskName": "Имя задачи",
+    "taskDesc": "Описание",
+    "user": "Пользователь"
+  },
   "boardDialog": {
     "boardName": "Название доски",
     "minLengthError": "Слишком коротко (минимум 3)",
@@ -39,6 +59,27 @@
     "sureToDelete": "Вы уверены, что хотите удалить эту доску?",
     "cancel": "Отмена"
   },
+  "404": {
+    "notFound": "Страница не найдена",
+    "back": "На главную"
+  },
+  "welcome": {
+    "title": "Project management app",
+    "discription": "Приложение, которое поможет командам эффективно решать рабочие задачи. Оно поможет организовать работу так, чтобы все знали, чем нужно заниматься. Отслеживайте прогресс выполнения задач, будьте в курсе происходящего. Правильно планируйте сроки и объем работы.",
+    "goals": "Достигайте ваши цели!",
+    "registration": "Начать",
+    "course": "О курсе",
+    "courseInfo": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste culpa aliquam dolore ipsum doloribus incidunt quas perspiciatis consequuntur molestias nam placeat in odit, dolor blanditiis. Optio sequi similique fuga quia!",
+    "opportunities": "Возможности приложения",
+    "boards": "Создавать доски",
+    "tasks": "Создавать задачи",
+    "transfer": "Перемещать задачи",
+    "assign": "Назначать исполнителей",
+    "done": "Отмечать выполненные",
+    "search": "Поиск по задачам доскам или исполнителям",
+    "about" : "О команде" 
+  },
   "Create": "Создать",
-  "Delete": "Удалить"
+  "Delete": "Удалить",
+  "Edit": "Изменить"
 }

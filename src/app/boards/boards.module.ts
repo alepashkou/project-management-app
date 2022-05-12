@@ -8,11 +8,18 @@ import { BoardCardComponent } from './components/board-card/board-card.component
 import { LeftBorderColorDirective } from './directives/left-border-color.directive';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { BoardComponent } from './pages/board/board.component';
+import { BoardService } from './services/board.service';
+import { DialogColumComponent } from './components/dialog-colum/dialog-colum.component';
+import { DialogTaskComponent } from './components/dialog-task/dialog-task.component';
+import { BoardTaskComponent } from './components/board-task/board-task.component';
+import { BoardColumComponent } from './components/board-colum/board-colum.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { SortColumnsPipe } from './pipes/sort-columns.pipe';
+import { SortTaskPipe } from './pipes/sort-task.pipe';
 
 const routes: Routes = [
-  { path: '', component: MainComponent},
-  { path: ':id', component: BoardComponent },
+  { path: '', component: MainComponent, data: { animation: 'board' }, },
+  { path: ':id', component: BoardComponent, data: { animation: 'id' },},
 ];
 
 @NgModule({
@@ -21,14 +28,20 @@ const routes: Routes = [
     BoardCardComponent,
     LeftBorderColorDirective,
     DialogBoxComponent,
-    BoardComponent
+    BoardComponent,
+    DialogColumComponent,
+    DialogTaskComponent,
+    BoardTaskComponent,
+    BoardColumComponent,
+    SortColumnsPipe,
+    SortTaskPipe,
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild(routes),
-    TranslateModule
+    TranslateModule,
   ],
-  providers:[MainBoardService]
+  providers: [MainBoardService, BoardService],
 })
-export class BoardsModule { }
+export class BoardsModule {}

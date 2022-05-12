@@ -7,7 +7,7 @@
 $angular-primary: mat.define-palette(mat.$gray-palette, 100, 400, 900);
 $angular-accent: mat.define-palette(mat.$blue-palette);
 
-$angular-primary-dark: mat.define-palette(mat.$indigo-palette, 100, 400, 900);
+$angular-primary-dark: mat.define-palette(mat.$indigo-palette, 300, 400, 900);
 $angular-accent-dark: mat.define-palette(mat.$pink-palette);
 
 
@@ -42,6 +42,10 @@ $angular-default-theme: mat.define-light-theme(
   @include mat.all-component-colors($angular-dark-theme);
 }
 
+.dialog-item .mat-form-field-label {
+  color: #000000 !important;
+}
+
 .dark-mode {
   & .mat-card {
     background: #f2f8f9 !important;
@@ -59,6 +63,32 @@ $angular-default-theme: mat.define-light-theme(
   & .mat-button-disabled {
     background: #c5cae9 !important;
   }
+  & button[disabled] {
+    color: #000000 !important;
+  }
+  & .dialog-item .mat-form-field-label {
+    color: #ffffff !important;
+  }
+  & mat-card-title {
+    color: #000000;
+  }
+  & .sticky {
+    filter: hue-rotate(340deg) drop-shadow(2px 8px 6px #d91e97) !important;
+  }
+  & .mat-app-background {
+    color: rgba(0, 0, 0, 0.87) !important;
+  }
+  & .swiper-button-next {
+    color: #e91e63 !important;
+  }
+  & .swiper-button-prev {
+    color: #e91e63 !important;
+  }
+  & .swiper-pagination-bullet-active {
+    background: #e91e63 !important;
+  }
+
+
   .board-card:hover {
     box-shadow: 0px 4px 8px rgb(255 255 255 / 45%) !important;
   }

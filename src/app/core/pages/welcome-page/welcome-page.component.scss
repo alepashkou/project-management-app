@@ -1,0 +1,58 @@
+.welcome-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0px;
+}
+
+.info {
+  width: 50%;
+  padding: 0 10px;
+}
+
+.title {
+  margin-bottom: 25px;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.app-info {
+  font-size: 20px;
+}
+
+.about-text {
+  font-size: 20px;
+  text-align: center;
+}
+
+.opportunities-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.opportunities-item {
+  position: relative;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.about-team {
+  width: 50%;
+}
+
+.team-img-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+mat-icon {
+  font-weight: bold;
+  color: green;
+}

@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store"
 import { UserInfo } from "../users.model"
-import { loadCurrentUser, loadUserSuccess, updateUser, updateUserSuccess } from "./users.actions"
+import { loadCurrentUser, loadUserSuccess, logoutUser, updateUser, updateUserSuccess } from "./users.actions"
 
 export interface State {
   user?: UserInfo
@@ -23,5 +23,8 @@ export const reducer = createReducer(
       return state;
     }
     return { ...state, user: { login: action.updateUser.login, name: action.updateUser.name, id: userId } }
+  }),
+  on(logoutUser, (state): State => {
+    return { ...state, user: { login: '', name: '', id: '' } }
   }),
 )

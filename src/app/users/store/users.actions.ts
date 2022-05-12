@@ -19,3 +19,8 @@ export const updateUserSuccess = createAction(
   '[Profile] updateUserSuccess',
   props<{ updateUser: UpdateUser }>()
 )
+
+export const logoutUser = createAction(
+  '[Profile] logoutUser',
+  props<{ userInfo: UserInfo }>()
+)

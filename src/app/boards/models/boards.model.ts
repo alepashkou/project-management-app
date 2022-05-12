@@ -27,3 +27,7 @@ export interface Token {
 export interface UserData {
   name: string;
 }
+export interface Order {
+  id: string;
+  order: number;
+}

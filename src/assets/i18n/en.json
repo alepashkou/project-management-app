@@ -34,8 +34,9 @@
   "board": {
     "desc": "Description",
     "addBoard": "Add Board",
-    "addColumn": "Add Column",
     "board": "Board",
+    "boards": "Boards",
+    "addColumn": "Add Column",
     "column": "Column",
     "goToBoard": "Go to board",
     "goToMain": "Go to main"

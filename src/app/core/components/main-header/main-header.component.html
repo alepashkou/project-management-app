@@ -22,18 +22,28 @@
         <mat-icon>add</mat-icon>
         <span>{{'header.board' | translate }}</span>
       </button>
+
+      <button class="go-to-boards" mat-icon-button [routerLink]="'/boards'">
+        <span>
+          {{'board.boards' | translate}}
+        </span>
+        <mat-icon>developer_board</mat-icon>
+      </button>
     </div>
 
     <div class="user-block">
 
-      <div class="profile-block" title="user">
+      <div class="profile-block" *ngIf="chekUserStatus()" title={{activeUserName}} [routerLink]="'/profile'">
         <mat-icon color="primary">person</mat-icon>
       </div>
 
-      <div class="auth-block">
-        <button mat-raised-button color="primary" [routerLink]="'/auth/login'">{{'header.signIn' | translate }}</button>
-        <button mat-raised-button color="primary" [routerLink]="'/auth/signup'">{{'header.signUp' | translate
-          }}</button>
+      <div class="auth-block" *ngIf="!chekUserStatus()">
+        <button mat-raised-button color="primary" [routerLink]="'auth/login'">{{'header.signIn' | translate }}</button>
+        <button mat-raised-button color="primary" [routerLink]="'auth/signup'">{{'header.signUp' | translate }}</button>
+      </div>
+
+      <div class="auth-block" *ngIf="chekUserStatus()">
+        <button mat-raised-button color="primary" (click)="logout()">Logout</button>
       </div>
 
     </div>

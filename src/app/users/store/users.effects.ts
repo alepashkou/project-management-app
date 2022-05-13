@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { filter, map, switchMap, tap, withLatestFrom } from 'rxjs';
@@ -16,6 +17,7 @@ export class UsersEffects {
     private actions$: Actions,
     private usersService: UsersService,
     private store: Store,
+    private matSnackBar: MatSnackBar
   ) { }
 
   loadCurrentUser$ = createEffect(() => {
@@ -43,6 +45,11 @@ export class UsersEffects {
         return this.usersService.updateUser(action.updateUser, userId).pipe(
           map(() => updateUserSuccess({ updateUser: action.updateUser }))
         )
+      }),
+      tap(() => {
+        this.matSnackBar.open('👍 Your profile is updated', 'Hide', {
+          duration: 5000
+        })
       })
     )
   })

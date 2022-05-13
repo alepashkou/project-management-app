@@ -68,7 +68,7 @@ export class ProfilePageComponent {
       this.router.navigate(['auth/login'])
     }
     else {
-      this.matSnackBar.open(`Something went wrong`, 'Hide', {
+      this.matSnackBar.open(`❌ Something went wrong`, 'Hide', {
         duration: 5000
       })
     }

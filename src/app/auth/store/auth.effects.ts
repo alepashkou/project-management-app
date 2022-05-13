@@ -49,6 +49,11 @@ export class AuthEffects {
           catchError(() => of(loginError()))
         )
       ),
+      tap(() => {
+        this.matSnackBar.open(`👍 You are login, let's start!`, 'Hide', {
+          duration: 5000
+        })
+      })
     )
   });
 
@@ -58,10 +63,10 @@ export class AuthEffects {
       tap((action) => {
         let message = '';
         if (action.type === loginError.type) {
-          message = 'The username and password were not recognized'
+          message = '❌ The username and password were not recognized'
         };
         if (action.type === signupError.type) {
-          message = `Impossible to create account`
+          message = `❌ Impossible to create account`
         };
         this.matSnackBar.open(message, 'Hide', {
           duration: 5000
@@ -101,7 +106,7 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(signupSuccess),
       tap(() => {
-        this.matSnackBar.open(`Congrats! You are registered! Let's login`, 'Hide', {
+        this.matSnackBar.open(`👍 Congrats! You are registered! Let's login`, 'Hide', {
           duration: 5000
         })
       })

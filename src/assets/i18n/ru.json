@@ -2,7 +2,9 @@
   "header": {
     "board": "Добавить доску",
     "signIn": "Войти",
-    "signUp": "Зарегистрироваться"
+    "signUp": "Зарегистрироваться",
+    "logout": "Выход",
+    "search": "Поиск"
   },
   "login": {
     "login": "Войти",
@@ -75,9 +77,33 @@
     "assign": "Назначать исполнителей",
     "done": "Отмечать выполненные",
     "search": "Поиск по задачам доскам или исполнителям",
-    "about" : "О команде" 
+    "about": "О команде"
+  },
+  "profile": {
+    "edit": "Редактировать профиль",
+    "name": "Имя",
+    "login": "Логин",
+    "loginSize": "Ваш логин должен быть не менее 4 символов",
+    "enterName": "Введите ваше имя",
+    "enetrLogin": "Введите логин",
+    "password": "Пароль",
+    "repeatPassword": "Повторите пароль",
+    "confirm": "Подтвердить пароль",
+    "save": "Сохранить изменеия",
+    "delete": "Удалить аккаунт",
+    "passwordContains": "Пароль должен включать:",
+    "passwordContainsSmallLetters": "- строчные буквы",
+    "passwordContainsCapitalLetters": "- заглавные буквы",
+    "passwordContainsNumbers": "- числа",
+    "passwordContainsSymbol": "- специальные символы",
+    "passwordLength": "- минимум 8 символов",
+    "PasswordsDoNotMatch" : "Пароли не совпадают",
+    "repeatPasswordRequired": "Пожалуйста, повторите пароль"
+
   },
   "Create": "Создать",
+  "Cancel": "Отмена",
+  "Ok" : "Приянть",
   "Delete": "Удалить",
   "Edit": "Изменить"
 }

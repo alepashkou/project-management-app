@@ -45,9 +45,15 @@ export class BoardColumComponent implements OnInit {
         }
       });
     } else {
+      let message = '';
+      if (localStorage.getItem('language') === 'en') {
+        message = 'Are you sure you want to delete column?'
+      } else {
+        message = 'Вы действительно хотите удалить колонку?'
+      }
       const dialogRef = this.dialog.open(DialogComponent, {
         data: {
-          message: 'Are you sure you want to delete column?',
+          message: message,
         },
       });
       dialogRef.afterClosed().subscribe((result) => {

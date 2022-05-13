@@ -48,7 +48,7 @@
 
     </div>
 
-    <div class="search-block">
+    <div class="search-block" *ngIf="chekUserStatus()">
       <input matInput aria-label="Task" [matAutocomplete]="auto" [formControl]="searchTextControl" type="text"
         placeholder="search" class="px-3 text-black bg-white">
       <mat-autocomplete class="search-list" panelWidth="auto" #auto="matAutocomplete"

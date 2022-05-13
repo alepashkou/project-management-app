@@ -179,7 +179,7 @@ export class BoardComponent {
       data: { action: 'Edit', task },
     });
     dialog.afterClosed().subscribe((result) => {
-      if (result.event === 'Create') {
+      if (result.event === 'Edit') {
         this.updateTask(result.data.task, column);
         this.loadData();
       }

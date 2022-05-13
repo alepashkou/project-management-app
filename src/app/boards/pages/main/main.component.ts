@@ -50,9 +50,15 @@ export class MainComponent implements OnInit {
         }
       });
     } else {
+      let message = '';
+      if (localStorage.getItem('language') === 'en') {
+        message = 'Are you sure you want to delete board?'
+      } else {
+        message = 'Вы действительно хотите удалить доску?'
+      }
       const dialogRef = this.dialog.open(DialogComponent, {
         data: {
-          message: 'Are you sure you want to delete board?',
+          message: message,
         },
       });
       dialogRef.afterClosed().subscribe((result) => {

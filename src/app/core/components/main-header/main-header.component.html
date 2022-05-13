@@ -41,14 +41,14 @@
       </div>
 
       <div class="auth-block" *ngIf="chekUserStatus()">
-        <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+        <button mat-raised-button color="primary" (click)="logout()">{{'header.logout' | translate }}</button>
       </div>
 
     </div>
 
     <div class="search-block" *ngIf="chekUserStatus()">
       <input matInput aria-label="Task" [matAutocomplete]="auto" [formControl]="searchTextControl" type="text"
-        placeholder="search" class="px-3 text-black bg-white">
+        placeholder="{{'header.search' | translate }}" class="px-3 text-black bg-white">
       <mat-autocomplete class="search-list" panelWidth="auto" #auto="matAutocomplete"
         (optionSelected)="onSelectTask($event)" [displayWith]="displayFn">
         <mat-option *ngFor="let task of filteredTasks$ | async" [value]="task">

@@ -37,9 +37,15 @@ export class BoardTaskComponent implements OnInit {
         }
       });
     } else {
+      let message = '';
+      if (localStorage.getItem('language') === 'en') {
+        message = 'Are you sure you want to delete task?'
+      } else {
+        message = 'Вы действительно хотите удалить задачу?'
+      }
       const dialogRef = this.dialog.open(DialogComponent, {
         data: {
-          message: 'Are you sure you want to delete task?',
+          message: message,
         },
       });
       dialogRef.afterClosed().subscribe((result) => {

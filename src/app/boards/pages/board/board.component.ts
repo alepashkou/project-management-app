@@ -3,21 +3,24 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Board } from '../../models/boards.model';
 import { BoardService } from '../../services/board.service';
 import { DialogColumComponent } from '../../components/dialog-colum/dialog-colum.component';
-import { Task } from '../../models/boards.model';
+import { Task, Colum } from '../../models/boards.model';
 import { UserResponce } from '../../models/dialog.model';
+import { map } from 'rxjs';
+import { DialogTaskComponent } from '../../components/dialog-task/dialog-task.component';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent {
+  @Output() update = new EventEmitter<string>();
   board: Board;
 
   id: string;
@@ -27,14 +30,32 @@ export class BoardComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private boardService: BoardService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {
-    this.id = this.route.snapshot.params['id'];
+    //this.id = this.route.snapshot.params['id'];
+    route.params.pipe(
+      map((params) => params['id'])
+    ).subscribe(
+      (id) => {
+        this.id = id;
+        this.loadData()
+      }
+    )
+    route.queryParams.pipe(
+      map((queryParams) => queryParams['openTask'])
+    ).subscribe(
+      (openTask) => {
+        this.tryOpenDialog(this.board, openTask)
+      }
+    )
   }
 
-  ngOnInit(): void {
+  loadData(): void {
     this.boardService.getBoard(this.id).subscribe((board) => {
       this.board = board;
+      const taskId = this.route.snapshot.queryParams['openTask'];
+      this.tryOpenDialog(this.board, taskId)
     });
     this.boardService
       .getAllUsers()
@@ -135,6 +156,53 @@ export class BoardComponent implements OnInit {
     this.boardService.updateOrderTask(order).subscribe();
   }
   updateBoard() {
-    this.ngOnInit();
+    this.loadData();
   }
+
+  tryOpenDialog(board?: Board, taskId?: string) {
+    if (board && taskId) {
+      const searchTask = findTask(board, taskId)
+      if (searchTask) {
+        this.openTaskDialog(searchTask.column, searchTask.task)
+        this.router.navigate(['.'], {
+          relativeTo: this.route,
+          queryParams: {
+          }
+        })
+      }
+    }
+  }
+
+  openTaskDialog(column: Colum, task: Task) {
+    const dialog = this.dialog.open(DialogTaskComponent, {
+      width: '300px',
+      data: { action: 'Edit', task },
+    });
+    dialog.afterClosed().subscribe((result) => {
+      this.updateTask(result.data.task, column);
+    });
+  }
+
+  updateTask(task: Task, column: Colum) {
+    this.boardService
+      .updateTask(this.id, column.id, task)
+      .subscribe(() => {
+        this.update.emit(task.id);
+      });
+  }
+}
+
+function findTask(board: Board, taskId: string) {
+  if (board.columns) {
+    for (let column of board.columns) {
+      if (column.tasks) {
+        for (let task of column.tasks) {
+          if (task.id === taskId) {
+            return { column, task }
+          }
+        }
+      }
+    }
+  }
+  return null
 }

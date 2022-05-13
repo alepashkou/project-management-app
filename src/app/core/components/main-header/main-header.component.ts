@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Task } from '../../../boards/models/boards.model';
+import { FormControl } from '@angular/forms';
+import { combineLatest, filter, map } from 'rxjs';
+import { SearchService } from '../../services/search.service';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/users/store/users.reducer';
 import { selectActiveUser } from 'src/app/users/store/users.selectors';
@@ -15,22 +20,46 @@ import { Router } from '@angular/router';
 })
 export class MainHeaderComponent implements OnInit {
 
-  public curretnTheme: string | null = 'light';
-  public curretnLanguage: string = 'en';
-  public isCurretnLanguageChecked: boolean | null = false;
+  searchTextControl = new FormControl();
 
+  tasks$ = this.searchService.getAllTasks();
+
+  filteredTasks$ = combineLatest([this.tasks$,
+  this.searchTextControl.valueChanges.pipe(
+    filter((textOrTask) => typeof textOrTask === 'string')
+  )
+  ]).pipe(
+    map(([tasks, searchText]) => {
+      if (searchText) {
+        return this._filterTasks(searchText, tasks)
+      }
+      return []
+    })
+  )
+
+  public currentTheme: string | null = 'light';
+  public currentLanguage: string = 'en';
+  public isCurrentLanguageChecked: boolean | null = false;
   public activeUserName: string | undefined;
-  public isUserActive: boolean;
+  public isUserActive: boolean
 
   constructor(
     public themeService: ThemeService,
     public translate: TranslateService,
+    private searchService: SearchService,
+    private router: Router,
+
     private store: Store<State>,
-    private usersService: UsersService,
-    private route: Router
+    private usersService: UsersService
   ) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang(localStorage.getItem('language') || 'en');
+  }
+
+  private _filterTasks(value: string, tasks: Task[]): Task[] {
+    const filterValue = value.toLowerCase();
+    return tasks.filter((task) => task.title.toLowerCase().includes(filterValue) || task.description.toLowerCase().includes(filterValue) || task.user.name.toLowerCase().includes(filterValue)
+    )
   }
 
   ngOnInit(): void {
@@ -48,35 +77,48 @@ export class MainHeaderComponent implements OnInit {
 
     if (!localStorage.getItem('theme')) {
       localStorage.setItem('theme', 'light');
-    } else this.curretnTheme = localStorage.getItem('theme');
+    } else this.currentTheme = localStorage.getItem('theme');
 
     if (localStorage.getItem('language')) {
-      this.curretnLanguage = localStorage.getItem('language')!;
+      this.currentLanguage = localStorage.getItem('language')!;
     } else localStorage.setItem('language', 'en');
 
     if (localStorage.getItem('language') === 'en') {
-      this.isCurretnLanguageChecked = true;
+      this.isCurrentLanguageChecked = true;
     }
   }
 
   checkLanguage() {
-    if (this.isCurretnLanguageChecked) {
+    if (this.isCurrentLanguageChecked) {
       localStorage.setItem('language', 'en');
-      this.curretnLanguage = 'en';
-    } if (!this.isCurretnLanguageChecked) {
-      this.isCurretnLanguageChecked = true;
+      this.currentLanguage = 'en';
+    } if (!this.isCurrentLanguageChecked) {
+      this.isCurrentLanguageChecked = true;
       localStorage.setItem('language', 'ru');
-      this.curretnLanguage = 'ru';
+      this.currentLanguage = 'ru';
     }
-    this.translate.use(this.curretnLanguage);
-      this.isCurretnLanguageChecked = false;
+    this.translate.use(this.currentLanguage);
+    this.isCurrentLanguageChecked = false;
   }
 
   public changeTheme(theme: string): void {
     if (theme === 'dark-mode') {
-      this.curretnTheme = 'dark-mode';
-    } else this.curretnTheme = 'light';
+      this.currentTheme = 'dark-mode';
+    } else this.currentTheme = 'light';
     this.themeService.toggleTheme(theme);
+  }
+
+  onSelectTask(task: MatAutocompleteSelectedEvent) {
+    console.log(task)
+    this.router.navigate([`boards/${task.option.value.boardId}`], {
+      queryParams: {
+        openTask: task.option.value.id
+      }
+    })
+  }
+
+  displayFn(task?: Task) {
+    return task?.title || ''
   }
 
   public activeUser(): void {
@@ -89,7 +131,7 @@ export class MainHeaderComponent implements OnInit {
     this.store.dispatch(logoutUser({ userInfo: { login: '', name: '', id: '' } }));
     localStorage.removeItem('token');
     this.usersService.updateUserLoginStatus(false);
-    this.route.navigate([''])
+    this.router.navigate([''])
   }
 
   public chekUserStatus(): boolean {
@@ -105,5 +147,4 @@ export class MainHeaderComponent implements OnInit {
       sticky.classList.remove('sticky');
     }
   }
-
 }

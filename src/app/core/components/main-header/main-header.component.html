@@ -4,30 +4,28 @@
     <div class="setting-block">
 
       <div class="therm-block">
-        <mat-icon *ngIf="curretnTheme === 'light'" (click)="changeTheme('dark-mode')">brightness_7</mat-icon>
-        <mat-icon *ngIf="curretnTheme === 'dark-mode' " (click)="changeTheme('light')">brightness_3</mat-icon>
+        <mat-icon *ngIf="currentTheme === 'light'" (click)="changeTheme('dark-mode')">brightness_7</mat-icon>
+        <mat-icon *ngIf="currentTheme === 'dark-mode' " (click)="changeTheme('light')">brightness_3</mat-icon>
       </div>
 
       <div class="language-block">
         <span class="lang">RU</span>
-        <mat-slide-toggle [(ngModel)]="isCurretnLanguageChecked" (change)="checkLanguage()" color="primary">
+        <mat-slide-toggle [(ngModel)]="isCurrentLanguageChecked" (change)="checkLanguage()" color="primary">
         </mat-slide-toggle>
         <span class="lang">ENG</span>
       </div>
 
     </div>
 
-    <div class="add-new-board">
-      <button class="add-new-board__button" mat-icon-button [routerLink]="'/boards'" [queryParams]="{action: 'Create'}">
-        <mat-icon>add</mat-icon>
-        <span>{{'header.board' | translate }}</span>
-      </button>
-
+    <div class="add-new-board" *ngIf="chekUserStatus()">
       <button class="go-to-boards" mat-icon-button [routerLink]="'/boards'">
+        <mat-icon>developer_board</mat-icon>
         <span>
           {{'board.boards' | translate}}
         </span>
-        <mat-icon>developer_board</mat-icon>
+      </button>
+      <button class="add-new-board__button" mat-icon-button [routerLink]="'/boards'" [queryParams]="{action: 'Create'}">
+        <mat-icon>add</mat-icon>
       </button>
     </div>
 
@@ -46,6 +44,19 @@
         <button mat-raised-button color="primary" (click)="logout()">Logout</button>
       </div>
 
+    </div>
+
+    <div class="search-block" *ngIf="chekUserStatus()">
+      <input matInput aria-label="Task" [matAutocomplete]="auto" [formControl]="searchTextControl" type="text"
+        placeholder="search" class="px-3 text-black bg-white">
+      <mat-autocomplete class="search-list" panelWidth="auto" #auto="matAutocomplete"
+        (optionSelected)="onSelectTask($event)" [displayWith]="displayFn">
+        <mat-option *ngFor="let task of filteredTasks$ | async" [value]="task">
+          <span>{{task.title}}</span> |
+          <small>{{task.description}}</small> |
+          <span>{{task.user.name}}</span>
+        </mat-option>
+      </mat-autocomplete>
     </div>
 
   </header>

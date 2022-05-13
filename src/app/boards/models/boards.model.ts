@@ -18,9 +18,14 @@ export interface Task {
   done?: boolean;
   description: string;
   userId: string;
+  user: UserData;
 }
 export interface Token {
   token: string;
+}
+
+export interface UserData {
+  name: string;
 }
 export interface Order {
   id: string;

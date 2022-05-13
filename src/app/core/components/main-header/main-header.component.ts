@@ -109,7 +109,6 @@ export class MainHeaderComponent implements OnInit {
   }
 
   onSelectTask(task: MatAutocompleteSelectedEvent) {
-    console.log(task)
     this.router.navigate([`boards/${task.option.value.boardId}`], {
       queryParams: {
         openTask: task.option.value.id

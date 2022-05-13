@@ -46,7 +46,6 @@ export class ProfilePageComponent {
     passwordRepeat: new FormControl('', [
       Validators.required,
       (passwordRepeatForm) => {
-        console.log(this.profileForm?.value.password)
         if (passwordRepeatForm.value !== this.profileForm?.value.password) {
           return { notMatch: 'Passwords do not match' }
         }

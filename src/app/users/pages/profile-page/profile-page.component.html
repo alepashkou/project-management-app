@@ -26,9 +26,9 @@
         </mat-error>
       </mat-form-field>
       <label for="password" class="text-left">{{'profile.password' | translate }}</label>
-      <!-- <mat-form-field appearance="outline">
-        <input formControlName="password" matInput type="password" placeholder="{{'profile.password' | translate }}" name="password"
-          class="border-solid">
+      <mat-form-field appearance="outline">
+        <input formControlName="password" matInput type="password" placeholder="{{'profile.password' | translate }}"
+          name="password" class="border-solid">
         <mat-error *ngIf="profileForm.get('password')?.dirty">
           <mat-error *ngIf="!profileForm.get('password')?.valid">
             {{'profile.passwordContains' | translate }}
@@ -52,15 +52,15 @@
       </mat-form-field>
       <label for="passwordRepeat" class="text-left">{{'profile.repeatPassword' | translate }}</label>
       <mat-form-field appearance="outline">
-        <input formControlName="passwordRepeat" matInput type="password" placeholder="{{'profile.confirm' | translate }}"
-          name="password" class="border-solid">
+        <input formControlName="passwordRepeat" matInput type="password"
+          placeholder="{{'profile.confirm' | translate }}" name="password" class="border-solid">
         <mat-error *ngIf="profileForm.get('passwordRepeat')?.hasError('notMatch')">
           {{'profile.PasswordsDoNotMatch' | translate }}
         </mat-error>
         <mat-error *ngIf="profileForm.get('passwordRepeat')?.hasError('required') && profileForm.dirty">
           {{'profile.repeatPasswordRequired' | translate }}
         </mat-error>
-      </mat-form-field> -->
+      </mat-form-field>
       <div class="buttons flex justify-around">
         <button type="submit" mat-raised-button color="primary">{{'profile.save' | translate }}</button>
         <button mat-raised-button color="warn" (click)="openDialog()">{{'profile.delete' | translate }}</button>

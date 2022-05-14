@@ -83,7 +83,8 @@ export class ProfilePageComponent {
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
-        message: 'Are you sure you want to delete your account?'
+        message: 'Are you sure you want to delete your account?',
+        confirmButtonText: 'Delete'
       },
     });
     dialogRef.afterClosed().subscribe(result => {

@@ -1,7 +1,3 @@
-<!-- <pre>
-  {{user$ | async | json}}
-</pre> -->
-
 <mat-card>
   <mat-card-content>
     <form [formGroup]="profileForm" (ngSubmit)="editProfile()">
@@ -62,7 +58,7 @@
         </mat-error>
       </mat-form-field>
       <div class="buttons flex justify-around">
-        <button type="submit" mat-raised-button color="primary">{{'profile.save' | translate }}</button>
+        <button type="submit" mat-raised-button color="accent">{{'profile.save' | translate }}</button>
         <button mat-raised-button color="warn" (click)="openDialog()">{{'profile.delete' | translate }}</button>
       </div>
     </form>

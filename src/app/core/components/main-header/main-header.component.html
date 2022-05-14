@@ -47,8 +47,8 @@
     </div>
 
     <div class="search-block" *ngIf="checkUserStatus()">
-      <input matInput aria-label="Task" [matAutocomplete]="auto" [formControl]="searchTextControl" type="text"
-        placeholder="{{'header.search' | translate }}" class="px-3 text-black bg-white">
+      <input aria-label="Task" [matAutocomplete]="auto" [formControl]="searchTextControl" type="text"
+        placeholder="{{'header.search' | translate }}" class="px-3 text-black bg-white rounded-lg">
       <mat-autocomplete class="search-list" panelWidth="auto" #auto="matAutocomplete"
         (optionSelected)="onSelectTask($event)" [displayWith]="displayFn">
         <mat-option *ngFor="let task of filteredTasks$ | async" [value]="task">

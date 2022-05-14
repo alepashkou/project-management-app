@@ -69,7 +69,7 @@
     "goals": "Achieve your goals!",
     "registration": "Let start",
     "course": "About course",
-    "courseInfo": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste culpa aliquam dolore ipsum doloribus incidunt quas perspiciatis consequuntur molestias nam placeat in odit, dolor blanditiis. Optio sequi similique fuga quia!",
+    "courseInfo": "This tutorial project was developed as part of the free online course \"Developing with Angular\" from The Rolling Scopes community. The course is intended for RS School students of the 2021Q3 set who have passed RS School stage #2, as well as for new students who have knowledge and practical experience in using the following technologies and tools: JavaScript, TypeScript, Git, GitHub, NPM, Webpack, CSS3 / HTML5 , Chrome DevTools, Figma, REST API concept understanding.",
     "opportunities": "App opportunities",
     "boards": "Create boards",
     "tasks": "Create tasks",

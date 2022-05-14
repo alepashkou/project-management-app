@@ -69,7 +69,7 @@
     "goals": "Достигайте ваши цели!",
     "registration": "Начать",
     "course": "О курсе",
-    "courseInfo": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste culpa aliquam dolore ipsum doloribus incidunt quas perspiciatis consequuntur molestias nam placeat in odit, dolor blanditiis. Optio sequi similique fuga quia!",
+    "courseInfo": "Этот учебный проект разработан в рамках бесплатного онлайн курса «Разработка на Angular» от сообщества The Rolling Scopes. Курс предназначен для студентов RS School набора 2021Q3, которые прошли RS School stage #2, а также для новых студентов, которые имеют знания и практический опыт использования следующих технологий и инструментов: JavaScript, TypeScript, Git, GitHub, NPM, Webpack, CSS3 / HTML5, Chrome DevTools, Figma, понимание концепции REST API.",
     "opportunities": "Возможности приложения",
     "boards": "Создавать доски",
     "tasks": "Создавать задачи",

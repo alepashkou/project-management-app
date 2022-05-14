@@ -157,7 +157,6 @@ export class AuthEffects {
       ofType(tokenExpired),
       tap(() => {
         localStorage.removeItem('token')
-        this.router.navigate([''])
       })
     )
   }, { dispatch: false })
@@ -168,6 +167,7 @@ export class AuthEffects {
       tap(() => {
         localStorage.removeItem('token')
         this.usersService.updateUserLoginStatus(false)
+        this.router.navigate([''])
       })
     )
   }, { dispatch: false })

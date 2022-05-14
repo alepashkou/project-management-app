@@ -107,11 +107,11 @@ export class AuthEffects {
     )
   }, { dispatch: false })
 
-  navigateToMainPageWhenLoginSuccess$ = createEffect(() => {
+  navigateToBoardsWhenLoginSuccess$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(loginSuccess),
       tap(() => {
-        this.router.navigate([''])
+        this.router.navigate(['boards'])
       }))
   },
     { dispatch: false }

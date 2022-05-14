@@ -7,6 +7,10 @@
     {{ "board.addColumn" | translate }}
     <mat-icon>dashboard</mat-icon>
   </button>
+  <button (click)="exportexcel()" mat-raised-button color="primary">
+    {{ "board.excel" | translate }}
+    <mat-icon>table_chart</mat-icon>
+  </button>
   <button mat-raised-button color="primary" [routerLink]="'/'">
     {{ "board.goToMain" | translate }}
     <mat-icon>home</mat-icon>

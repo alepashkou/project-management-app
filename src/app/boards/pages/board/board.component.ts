@@ -13,6 +13,7 @@ import { Task, Colum } from '../../models/boards.model';
 import { UserResponce } from '../../models/dialog.model';
 import { map } from 'rxjs';
 import { DialogTaskComponent } from '../../components/dialog-task/dialog-task.component';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-board',
@@ -192,6 +193,22 @@ export class BoardComponent {
       .subscribe(() => {
         this.update.emit(task.id);
       });
+  }
+  exportexcel(): void
+  {
+    const data:any = [
+      {'BOARD NAME:': `${this.board.title}`},
+  ];
+  this.board.columns?.forEach((column) => {
+      column.tasks?.forEach((task)=> {
+        data.push({[column.title]: task.title})
+      })
+  })
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+    XLSX.writeFile(wb, this.board.title + '.xlsx');
+
   }
 }
 

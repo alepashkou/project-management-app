@@ -41,7 +41,8 @@
     "addColumn": "Add Column",
     "column": "Column",
     "goToBoard": "Go to board",
-    "goToMain": "Go to main"
+    "goToMain": "Go to main",
+    "excel": "Export Excel"
   },
   "column": {
     "columnName": "Column name",
@@ -77,7 +78,7 @@
     "assign": "Assign performers",
     "done": "Check done tasks",
     "search": "Search by tasks boards or performers",
-    "about" : "About team" 
+    "about" : "About team"
   },
   "profile": {
     "edit": "Edit profile",

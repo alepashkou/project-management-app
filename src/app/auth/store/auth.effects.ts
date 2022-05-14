@@ -7,11 +7,10 @@ import { switchMap, map, tap, catchError, of, filter, timer } from 'rxjs';
 import { isNotNull } from 'src/app/core/utils';
 import { UsersService } from 'src/app/users/services/users.service';
 import { AuthService } from '../services/auth.service';
-import { loadToken, login, loginError, loginSuccess, signup, signupError, signupSuccess, tokenExpired } from './auth.actions';
+import { loadToken, login, loginError, loginSuccess, logout, signup, signupError, signupSuccess, tokenExpired } from './auth.actions';
 import { selectToken, selectTokenIat } from './auth.selectors';
 
 const TOKEN_EXPIRED = 86400_000
-
 @Injectable({
   providedIn: 'root',
 })
@@ -58,10 +57,10 @@ export class AuthEffects {
       tap((action) => {
         let message = '';
         if (action.type === loginError.type) {
-          message = 'The username and password were not recognized'
+          message = '❌ The username and password were not recognized'
         };
         if (action.type === signupError.type) {
-          message = `Impossible to create account`
+          message = `❌ Impossible to create account`
         };
         this.matSnackBar.open(message, 'Hide', {
           duration: 5000
@@ -101,18 +100,30 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(signupSuccess),
       tap(() => {
-        this.matSnackBar.open(`Congrats! You are registered! Let's login`, 'Hide', {
+        this.matSnackBar.open(`👍 Congrats! You are registered! Let's login`, 'Hide', {
           duration: 5000
         })
       })
     )
   }, { dispatch: false })
 
-  navigateToMainPageWhenLoginSuccess$ = createEffect(() => {
+  navigateToBoardsWhenLoginSuccess$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(loginSuccess),
       tap(() => {
-        this.router.navigate([''])
+        this.router.navigate(['boards'])
+      }))
+  },
+    { dispatch: false }
+  )
+
+  showSnackbarWhenLoginSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(loginSuccess),
+      tap(() => {
+        this.matSnackBar.open(`👍 You are login, let's start!`, 'Hide', {
+          duration: 5000
+        })
       }))
   },
     { dispatch: false }
@@ -146,7 +157,17 @@ export class AuthEffects {
       ofType(tokenExpired),
       tap(() => {
         localStorage.removeItem('token')
-        this.router.navigate(['auth/login'])
+      })
+    )
+  }, { dispatch: false })
+
+  logoutUser$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(logout),
+      tap(() => {
+        localStorage.removeItem('token')
+        this.usersService.updateUserLoginStatus(false)
+        this.router.navigate([''])
       })
     )
   }, { dispatch: false })

@@ -4,7 +4,7 @@
     "signIn": "sign in",
     "signUp": "sign up",
     "logout": "logout",
-    "search": "Search"
+    "search": "Search task"
   },
   "login": {
     "login": "Log In",
@@ -98,13 +98,12 @@
     "passwordContainsNumbers": "- number",
     "passwordContainsSymbol": "- special symbol",
     "passwordLength": "- min 8 characters",
-    "PasswordsDoNotMatch" : "Passwords do not match",
+    "PasswordsDoNotMatch": "Passwords do not match",
     "repeatPasswordRequired": "Please, repeat your password"
-
   },
   "Create": "Create",
   "Cancel": "Cancel",
-  "Ok" : "Ok",
+  "Ok": "Ok",
   "Delete": "Delete",
   "Edit": "Edit"
 }

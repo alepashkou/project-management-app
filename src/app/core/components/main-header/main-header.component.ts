@@ -9,9 +9,10 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/users/store/users.reducer';
 import { selectActiveUser } from 'src/app/users/store/users.selectors';
-import { logoutUser } from 'src/app/users/store/users.actions';
 import { UsersService } from 'src/app/users/services/users.service';
 import { Router } from '@angular/router';
+import { logout } from 'src/app/auth/store/auth.actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-main-header',
@@ -48,9 +49,9 @@ export class MainHeaderComponent implements OnInit {
     public translate: TranslateService,
     private searchService: SearchService,
     private router: Router,
-
     private store: Store<State>,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private matSnackBar: MatSnackBar
   ) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang(localStorage.getItem('language') || 'en');
@@ -127,13 +128,13 @@ export class MainHeaderComponent implements OnInit {
   }
 
   public logout(): void {
-    this.store.dispatch(logoutUser({ userInfo: { login: '', name: '', id: '' } }));
-    localStorage.removeItem('token');
-    this.usersService.updateUserLoginStatus(false);
-    this.router.navigate([''])
+    this.store.dispatch(logout());
+    this.matSnackBar.open(`You are logout`, 'Hide', {
+      duration: 5000
+    })
   }
 
-  public chekUserStatus(): boolean {
+  public checkUserStatus(): boolean {
     return this.usersService.getUserStatus();
   }
 

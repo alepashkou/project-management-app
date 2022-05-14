@@ -40,20 +40,20 @@ export class ProfilePageComponent {
       Validators.required,
       Validators.minLength(LOGIN_MIN_LENGTH),
     ]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(PASSWORD_MIN_LENGTH),
-      passwordDifficulty,
-    ]),
-    passwordRepeat: new FormControl('', [
-      Validators.required,
-      (passwordRepeatForm) => {
-        if (passwordRepeatForm.value !== this.profileForm?.value.password) {
-          return { notMatch: 'Passwords do not match' }
-        }
-        return null
-      }
-    ])
+    // password: new FormControl('', [
+    //   Validators.required,
+    //   Validators.minLength(PASSWORD_MIN_LENGTH),
+    //   passwordDifficulty,
+    // ]),
+    // passwordRepeat: new FormControl('', [
+    //   Validators.required,
+    //   (passwordRepeatForm) => {
+    //     if (passwordRepeatForm.value !== this.profileForm?.value.password) {
+    //       return { notMatch: 'Passwords do not match' }
+    //     }
+    //     return null
+    //   }
+    // ])
   })
 
   editProfile() {
@@ -69,6 +69,9 @@ export class ProfilePageComponent {
       await firstValueFrom(this.service.deleteUser(result))
       this.store.dispatch(logout())
       this.router.navigate(['auth/login'])
+      this.matSnackBar.open(`User deleted`, 'Hide', {
+        duration: 5000
+      })
     }
     else {
       this.matSnackBar.open(`❌ Something went wrong`, 'Hide', {

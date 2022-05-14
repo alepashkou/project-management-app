@@ -167,10 +167,7 @@ export class AuthEffects {
       ofType(logout),
       tap(() => {
         localStorage.removeItem('token')
-        this.usersService.updateUserLoginStatus(false);
-        this.matSnackBar.open(`User deleted`, 'Hide', {
-          duration: 5000
-        })
+        this.usersService.updateUserLoginStatus(false)
       })
     )
   }, { dispatch: false })

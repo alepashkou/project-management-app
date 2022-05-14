@@ -7,7 +7,7 @@ import { switchMap, map, tap, catchError, of, filter, timer } from 'rxjs';
 import { isNotNull } from 'src/app/core/utils';
 import { UsersService } from 'src/app/users/services/users.service';
 import { AuthService } from '../services/auth.service';
-import { loadToken, login, loginError, loginSuccess, signup, signupError, signupSuccess, tokenExpired } from './auth.actions';
+import { loadToken, login, loginError, loginSuccess, logout, signup, signupError, signupSuccess, tokenExpired } from './auth.actions';
 import { selectToken, selectTokenIat } from './auth.selectors';
 
 const TOKEN_EXPIRED = 86400_000
@@ -157,7 +157,20 @@ export class AuthEffects {
       ofType(tokenExpired),
       tap(() => {
         localStorage.removeItem('token')
-        this.router.navigate(['auth/login'])
+        this.router.navigate([''])
+      })
+    )
+  }, { dispatch: false })
+
+  logoutUser$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(logout),
+      tap(() => {
+        localStorage.removeItem('token')
+        this.usersService.updateUserLoginStatus(false);
+        this.matSnackBar.open(`User deleted`, 'Hide', {
+          duration: 5000
+        })
       })
     )
   }, { dispatch: false })

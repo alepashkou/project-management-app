@@ -1,6 +1,7 @@
 import { createReducer, on } from "@ngrx/store"
+import { logout } from "src/app/auth/store/auth.actions"
 import { UserInfo } from "../users.model"
-import { loadCurrentUser, loadUserSuccess, logoutUser, updateUser, updateUserSuccess } from "./users.actions"
+import { loadCurrentUser, loadUserSuccess, updateUserSuccess } from "./users.actions"
 
 export interface State {
   user?: UserInfo
@@ -24,7 +25,7 @@ export const reducer = createReducer(
     }
     return { ...state, user: { login: action.updateUser.login, name: action.updateUser.name, id: userId } }
   }),
-  on(logoutUser, (state): State => {
-    return { ...state, user: { login: '', name: '', id: '' } }
+  on(logout, (state): State => {
+    return { ...state, user: undefined }
   }),
 )

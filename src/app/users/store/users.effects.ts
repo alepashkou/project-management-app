@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, filter, map, of, switchMap, tap, withLatestFrom } from 'rxjs';
+import { logout } from 'src/app/auth/store/auth.actions';
 import { selectCurrentUserId } from 'src/app/auth/store/auth.selectors';
 import { isNotNull } from 'src/app/core/utils';
 import { UsersService } from '../services/users.service';
@@ -37,7 +38,6 @@ export class UsersEffects {
     )
   })
 
-
   updateUser$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(updateUser),
@@ -50,14 +50,8 @@ export class UsersEffects {
           catchError(() => of(updateUserError())),
         )
       }),
-      // tap(() => {
-      //   this.matSnackBar.open('👍 Your profile is updated', 'Hide', {
-      //     duration: 5000
-      //   })
-      // }),
     )
   })
-
 
   navigateToBoardsWhenUpdateUserSuccess$ = createEffect(() => {
     return this.actions$.pipe(
@@ -100,4 +94,6 @@ export class UsersEffects {
       })
     )
   }, { dispatch: false })
+
+
 } 

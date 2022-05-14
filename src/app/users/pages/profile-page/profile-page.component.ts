@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
 import { passwordDifficulty } from 'src/app/auth/pages/sign-up-page/sign-up-page.component';
+import { logout } from 'src/app/auth/store/auth.actions';
 import { DialogComponent } from 'src/app/core/dialog/dialog.component';
 import { selectCurrentUserId, selectParseToken } from '../../../auth/store/auth.selectors';
 import { UsersService } from '../../services/users.service';
@@ -28,7 +29,8 @@ export class ProfilePageComponent {
     private router: Router,
     private service: UsersService,
     private matSnackBar: MatSnackBar,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    private usersService: UsersService) {
     this.store.dispatch(loadCurrentUser())
   }
 
@@ -62,8 +64,10 @@ export class ProfilePageComponent {
 
   async deleteUser() {
     const result = await firstValueFrom(this.store.select(selectCurrentUserId));
+    console.log(result)
     if (result) {
       await firstValueFrom(this.service.deleteUser(result))
+      this.store.dispatch(logout())
       this.router.navigate(['auth/login'])
     }
     else {

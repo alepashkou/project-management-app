@@ -23,8 +23,3 @@ export const updateUserSuccess = createAction(
 export const updateUserError = createAction(
   '[Profile] Update User Error'
 )
-
-export const logoutUser = createAction(
-  '[Profile] Logout User',
-  props<{ userInfo: UserInfo }>()
-)

@@ -9,9 +9,9 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/users/store/users.reducer';
 import { selectActiveUser } from 'src/app/users/store/users.selectors';
-import { logoutUser } from 'src/app/users/store/users.actions';
 import { UsersService } from 'src/app/users/services/users.service';
 import { Router } from '@angular/router';
+import { logout } from 'src/app/auth/store/auth.actions';
 
 @Component({
   selector: 'app-main-header',
@@ -48,7 +48,6 @@ export class MainHeaderComponent implements OnInit {
     public translate: TranslateService,
     private searchService: SearchService,
     private router: Router,
-
     private store: Store<State>,
     private usersService: UsersService
   ) {
@@ -127,13 +126,10 @@ export class MainHeaderComponent implements OnInit {
   }
 
   public logout(): void {
-    this.store.dispatch(logoutUser({ userInfo: { login: '', name: '', id: '' } }));
-    localStorage.removeItem('token');
-    this.usersService.updateUserLoginStatus(false);
-    this.router.navigate([''])
+    this.store.dispatch(logout());
   }
 
-  public chekUserStatus(): boolean {
+  public checkUserStatus(): boolean {
     return this.usersService.getUserStatus();
   }
 

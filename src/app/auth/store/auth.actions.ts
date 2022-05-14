@@ -36,3 +36,7 @@ export const loadToken = createAction(
 export const tokenExpired = createAction(
   '[Auth] Token Expired',
 )
+
+export const logout = createAction(
+  '[Profile] Logout User'
+)

@@ -17,7 +17,7 @@
 
     </div>
 
-    <div class="add-new-board" *ngIf="chekUserStatus()">
+    <div class="add-new-board" *ngIf="checkUserStatus()">
       <button class="go-to-boards" mat-icon-button [routerLink]="'/boards'">
         <mat-icon>developer_board</mat-icon>
         <span>
@@ -31,22 +31,22 @@
 
     <div class="user-block">
 
-      <div class="profile-block" *ngIf="chekUserStatus()" title={{activeUserName}} [routerLink]="'/profile'">
+      <div class="profile-block" *ngIf="checkUserStatus()" title={{activeUserName}} [routerLink]="'/profile'">
         <mat-icon color="primary">person</mat-icon>
       </div>
 
-      <div class="auth-block" *ngIf="!chekUserStatus()">
+      <div class="auth-block" *ngIf="!checkUserStatus()">
         <button mat-raised-button color="primary" [routerLink]="'auth/login'">{{'header.signIn' | translate }}</button>
         <button mat-raised-button color="primary" [routerLink]="'auth/signup'">{{'header.signUp' | translate }}</button>
       </div>
 
-      <div class="auth-block" *ngIf="chekUserStatus()">
+      <div class="auth-block" *ngIf="checkUserStatus()">
         <button mat-raised-button color="primary" (click)="logout()">{{'header.logout' | translate }}</button>
       </div>
 
     </div>
 
-    <div class="search-block" *ngIf="chekUserStatus()">
+    <div class="search-block" *ngIf="checkUserStatus()">
       <input matInput aria-label="Task" [matAutocomplete]="auto" [formControl]="searchTextControl" type="text"
         placeholder="{{'header.search' | translate }}" class="px-3 text-black bg-white">
       <mat-autocomplete class="search-list" panelWidth="auto" #auto="matAutocomplete"

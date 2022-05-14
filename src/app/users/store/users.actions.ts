@@ -2,25 +2,24 @@ import { createAction, props } from '@ngrx/store';
 import { UpdateUser, UserInfo } from '../users.model';
 
 export const loadCurrentUser = createAction(
-  '[Profile] LoadCurrentUser'
+  '[Profile] Load Current User'
 );
 
 export const loadUserSuccess = createAction(
-  '[Profile] LoadUserSuccess',
+  '[Profile] Load User Success',
   props<{ userInfo: UserInfo }>()
 );
 
 export const updateUser = createAction(
-  '[Profile] updateUser',
+  '[Profile] Update User',
   props<{ updateUser: UpdateUser }>()
 )
 
 export const updateUserSuccess = createAction(
-  '[Profile] updateUserSuccess',
+  '[Profile] Update User Success',
   props<{ updateUser: UpdateUser }>()
 )
 
-export const logoutUser = createAction(
-  '[Profile] logoutUser',
-  props<{ userInfo: UserInfo }>()
+export const updateUserError = createAction(
+  '[Profile] Update User Error'
 )

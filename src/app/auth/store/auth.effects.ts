@@ -11,7 +11,6 @@ import { loadToken, login, loginError, loginSuccess, signup, signupError, signup
 import { selectToken, selectTokenIat } from './auth.selectors';
 
 const TOKEN_EXPIRED = 86400_000
-
 @Injectable({
   providedIn: 'root',
 })
@@ -49,11 +48,6 @@ export class AuthEffects {
           catchError(() => of(loginError()))
         )
       ),
-      tap(() => {
-        this.matSnackBar.open(`👍 You are login, let's start!`, 'Hide', {
-          duration: 5000
-        })
-      })
     )
   });
 
@@ -118,6 +112,18 @@ export class AuthEffects {
       ofType(loginSuccess),
       tap(() => {
         this.router.navigate([''])
+      }))
+  },
+    { dispatch: false }
+  )
+
+  showSnackbarWhenLoginSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(loginSuccess),
+      tap(() => {
+        this.matSnackBar.open(`👍 You are login, let's start!`, 'Hide', {
+          duration: 5000
+        })
       }))
   },
     { dispatch: false }

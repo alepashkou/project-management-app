@@ -4,7 +4,7 @@
     "signIn": "Войти",
     "signUp": "Зарегистрироваться",
     "logout": "Выход",
-    "search": "Поиск"
+    "search": "Поиск задачи"
   },
   "login": {
     "login": "Войти",
@@ -97,13 +97,12 @@
     "passwordContainsNumbers": "- числа",
     "passwordContainsSymbol": "- специальные символы",
     "passwordLength": "- минимум 8 символов",
-    "PasswordsDoNotMatch" : "Пароли не совпадают",
+    "PasswordsDoNotMatch": "Пароли не совпадают",
     "repeatPasswordRequired": "Пожалуйста, повторите пароль"
-
   },
   "Create": "Создать",
   "Cancel": "Отмена",
-  "Ok" : "Приянть",
+  "Ok": "Приянть",
   "Delete": "Удалить",
   "Edit": "Изменить"
 }

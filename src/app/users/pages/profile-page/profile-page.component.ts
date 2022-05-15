@@ -64,7 +64,6 @@ export class ProfilePageComponent {
 
   async deleteUser() {
     const result = await firstValueFrom(this.store.select(selectCurrentUserId));
-    console.log(result)
     if (result) {
       await firstValueFrom(this.service.deleteUser(result))
       this.store.dispatch(logout())

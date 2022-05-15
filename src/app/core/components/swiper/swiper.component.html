@@ -1,5 +1,5 @@
-<swiper [slidesPerView]="1" [spaceBetween]="50" [navigation]="true" [loop]="true" [speed]="1100" [pagination]="{ clickable: true }"
-  [scrollbar]="{ draggable: true }">
+<swiper [slidesPerView]="1" [spaceBetween]="50" [navigation]="true" [loop]="true" [speed]="1100"
+  [pagination]="{ clickable: true }" [scrollbar]="{ draggable: true }">
   <ng-template swiperSlide>
     <div class="slide">
       <h3 class="title">Alexander Pashkou</h3>
@@ -11,11 +11,11 @@
   </ng-template>
   <ng-template swiperSlide>
     <div class="slide">
-      <h3 class="title">Name</h3>
+      <h3 class="title">Julia Lepner</h3>
       <div class="slide-img">
-        <img src="https://fakeimg.pl/150x200/ff0000/" alt="fake img">
+        <img src="assets/slider/jlepner.png" width="300px" alt="juliaLepner">
       </div>
-      <p class="info">some info some info some info some info some info some info some info some info some info some info </p>
+      <p class="info">{{"welcome.julialepner" | translate}}</p>
     </div>
   </ng-template>
   <ng-template swiperSlide>
@@ -24,8 +24,8 @@
       <div class="slide-img">
         <img src="https://fakeimg.pl/150x200/ff0000/" alt="fake img">
       </div>
-      <p class="info">some info some info some info some info some info some info some info some info some info some info </p>
+      <p class="info">some info some info some info some info some info some info some info some info some info some
+        info </p>
     </div>
-
   </ng-template>
 </swiper>

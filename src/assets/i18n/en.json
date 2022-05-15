@@ -77,7 +77,8 @@
     "assign": "Assign performers",
     "done": "Check done tasks",
     "search": "Search by tasks boards or performers",
-    "about": "About team"
+    "about": "About team",
+    "alepashkou": "Modified and installed the backend. Develop a board and a page with boards."
   },
   "profile": {
     "edit": "Edit profile",

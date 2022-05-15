@@ -1,12 +1,12 @@
-<swiper [slidesPerView]="1" [spaceBetween]="50" [navigation]="true" [loop]="true" [pagination]="{ clickable: true }"
+<swiper [slidesPerView]="1" [spaceBetween]="50" [navigation]="true" [loop]="true" [speed]="1100" [pagination]="{ clickable: true }"
   [scrollbar]="{ draggable: true }">
   <ng-template swiperSlide>
     <div class="slide">
-      <h3 class="title">Name</h3>
+      <h3 class="title">Alexander Pashkou</h3>
       <div class="slide-img">
-        <img src="https://fakeimg.pl/150x200/ff0000/" alt="fake img">
+        <img src="assets/slider/alepashkou.jpg" width="300px" alt="alePashkou">
       </div>
-      <p class="info">some info some info some info some info some info some info some info some info some info some info </p>
+      <p class="info">{{"welcome.alepashkou" | translate}}</p>
     </div>
   </ng-template>
   <ng-template swiperSlide>

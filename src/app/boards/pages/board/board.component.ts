@@ -199,7 +199,6 @@ export class BoardComponent {
   exportExcel(): void {
     let taskArr: string[][] = []
     taskArr = fillTasksArray(this.board, getTableSize(this.board))
-    console.log(taskArr)
     const worksheet = XLSX.utils.aoa_to_sheet(taskArr);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, worksheet, this.board.title);

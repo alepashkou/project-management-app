@@ -14,6 +14,7 @@ import { UserResponce } from '../../models/dialog.model';
 import { map } from 'rxjs';
 import { DialogTaskComponent } from '../../components/dialog-task/dialog-task.component';
 import * as XLSX from 'xlsx';
+import { isNotNull } from 'src/app/core/utils';
 
 @Component({
   selector: 'app-board',
@@ -75,7 +76,7 @@ export class BoardComponent {
       const eventTask = event.previousContainer.data.find(
         (el: Task) => el.id === event.item.element.nativeElement.id
       );
-      this.chageTaskColum(
+      this.changeTaskColum(
         event.previousContainer.id,
         event.container.id,
         eventTask
@@ -120,7 +121,7 @@ export class BoardComponent {
         this.board.columns?.push(colum);
       });
   }
-  chageTaskColum(columIdPrev: string, columIdNew: string, task: Task) {
+  changeTaskColum(columIdPrev: string, columIdNew: string, task: Task) {
     this.boardService
       .updateTask(this.board.id, columIdPrev, task, columIdNew)
       .subscribe(() => {
@@ -194,35 +195,45 @@ export class BoardComponent {
         this.update.emit(task.id);
       });
   }
-  exportexcel(): void
-  {
-    const data:any = [
-      {'BOARD NAME:': `${this.board.title}`},
-  ];
-  this.board.columns?.forEach((column) => {
-      column.tasks?.forEach((task)=> {
-        data.push({[column.title]: task.title})
-      })
-  })
-    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-    XLSX.writeFile(wb, this.board.title + '.xlsx');
 
+  exportExcel(): void {
+    let taskArr: string[][] = []
+    taskArr = fillTasksArray(this.board, getTableSize(this.board))
+    console.log(taskArr)
+    const worksheet = XLSX.utils.aoa_to_sheet(taskArr);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, worksheet, this.board.title);
+    XLSX.writeFile(wb, this.board.title + '.xlsx');
   }
 }
 
 function findTask(board: Board, taskId: string) {
   if (board.columns) {
-    for (let column of board.columns) {
-      if (column.tasks) {
-        for (let task of column.tasks) {
-          if (task.id === taskId) {
-            return { column, task }
-          }
-        }
-      }
-    }
+    return board.columns.map(
+      (column) => column.tasks?.map(task => ({
+        column, task
+      }))
+    ).filter(isNotNull).flat().find((taskCol) => taskCol.task.id === taskId)
   }
   return null
+}
+
+function getTableSize(board: Board) {
+  if (!board.columns) {
+    return { rowLength: 0 }
+  }
+  let maxTasksLength = Math.max(...board.columns.map((column) => column!.tasks!.length))
+  return { rowLength: maxTasksLength }
+}
+
+function fillTasksArray(board: Board, tableSize: { rowLength: number }) {
+  let rows = []
+  for (let i = 0; i < tableSize.rowLength; i++) {
+    rows.push(
+      board!.columns!.map((column) => column!.tasks![i]?.title)
+    )
+  }
+  const colArr = board!.columns!.map((column) => column.title)
+  rows.unshift(colArr)
+  return rows
 }

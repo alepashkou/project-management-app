@@ -7,7 +7,7 @@
     {{ "board.addColumn" | translate }}
     <mat-icon>dashboard</mat-icon>
   </button>
-  <button (click)="exportexcel()" mat-raised-button color="primary">
+  <button (click)="exportExcel()" mat-raised-button color="primary">
     {{ "board.excel" | translate }}
     <mat-icon>table_chart</mat-icon>
   </button>
@@ -16,41 +16,18 @@
     <mat-icon>home</mat-icon>
   </button>
 </div>
-<div
-  cdkDropList
-  cdkDropListOrientation="horizontal"
-  class="colum-list"
-  (cdkDropListDropped)="dropColum($event)"
->
+<div cdkDropList cdkDropListOrientation="horizontal" class="colum-list" (cdkDropListDropped)="dropColum($event)">
   <div cdkDropListGroup class="box-list">
     <div *ngFor="let colum of board?.columns | sortColumns" cdkDrag>
       <div class="drag-handle-container">
         <mat-icon class="drag-handle" cdkDragHandle>open_with</mat-icon>
       </div>
-      <app-board-colum
-        [colum]="colum"
-        [boardId]="board.id"
-        (update)="updateBoard()"
-      >
-        <div
-          cdkDropList
-          [id]="colum.id"
-          [cdkDropListData]="colum.tasks"
-          class="task-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <app-board-task
-            class="task-box"
-            *ngFor="let task of colum.tasks | sortTask"
-            [boardId]="board.id"
-            [columId]="colum.id"
-            [task]="task"
-            [allUsers]="allUsers"
-            (update)="updateBoard()"
-            cdkDrag
-            [id]="task.id"
-            appLeftBorderColor
-          >
+      <app-board-colum [colum]="colum" [boardId]="board.id" (update)="updateBoard()">
+        <div cdkDropList [id]="colum.id" [cdkDropListData]="colum.tasks" class="task-list"
+          (cdkDropListDropped)="drop($event)">
+          <app-board-task class="task-box" *ngFor="let task of colum.tasks | sortTask" [boardId]="board.id"
+            [columId]="colum.id" [task]="task" [allUsers]="allUsers" (update)="updateBoard()" cdkDrag [id]="task.id"
+            appLeftBorderColor>
           </app-board-task>
         </div>
       </app-board-colum>

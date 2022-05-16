@@ -41,7 +41,8 @@
     "addColumn": "Добавить колонку",
     "column": "Колонка",
     "goToBoard": "К доскам",
-    "goToMain": "На главную"
+    "goToMain": "На главную",
+    "excel": "Экспорт Excel"
   },
   "column": {
     "columnName": "Имя колонки",

@@ -41,7 +41,8 @@
     "addColumn": "Add Column",
     "column": "Column",
     "goToBoard": "Go to board",
-    "goToMain": "Go to main"
+    "goToMain": "Go to main",
+    "excel": "Export Excel"
   },
   "column": {
     "columnName": "Column name",

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
 import { passwordDifficulty } from 'src/app/auth/pages/sign-up-page/sign-up-page.component';
-import { logout } from 'src/app/auth/store/auth.actions';
+import { deleteUserSuccess } from 'src/app/auth/store/auth.actions';
 import { DialogComponent } from 'src/app/core/dialog/dialog.component';
 import { selectCurrentUserId, selectParseToken } from '../../../auth/store/auth.selectors';
 import { UsersService } from '../../services/users.service';
@@ -26,12 +26,21 @@ export class ProfilePageComponent {
   user$ = this.store.select(selectActiveUser);
   constructor(
     private store: Store,
-    private router: Router,
     private service: UsersService,
     private matSnackBar: MatSnackBar,
     public dialog: MatDialog,
     private usersService: UsersService) {
     this.store.dispatch(loadCurrentUser())
+    this.user$.subscribe((user) => {
+      if (user) {
+        this.profileForm.setValue({
+          name: user.name,
+          login: user.login,
+          password: '',
+          passwordRepeat: ''
+        })
+      }
+    })
   }
 
   profileForm = new FormGroup({
@@ -66,16 +75,7 @@ export class ProfilePageComponent {
     const result = await firstValueFrom(this.store.select(selectCurrentUserId));
     if (result) {
       await firstValueFrom(this.service.deleteUser(result))
-      this.store.dispatch(logout())
-      this.router.navigate(['auth/login'])
-      this.matSnackBar.open(`User deleted`, 'Hide', {
-        duration: 5000
-      })
-    }
-    else {
-      this.matSnackBar.open(`❌ Something went wrong`, 'Hide', {
-        duration: 5000
-      })
+      this.store.dispatch(deleteUserSuccess())
     }
   }
 

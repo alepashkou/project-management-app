@@ -40,3 +40,7 @@ export const tokenExpired = createAction(
 export const logout = createAction(
   '[Profile] Logout User'
 )
+
+export const deleteUser = createAction(
+  '[Profile] Delete User'
+)

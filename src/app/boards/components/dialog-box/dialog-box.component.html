@@ -4,20 +4,20 @@
     <input matInput [formControl]="title" required />
     <mat-error *ngIf="title.hasError('minlength')">{{
       "boardDialog.minLengthError" | translate
-    }}</mat-error>
+      }}</mat-error>
     <mat-error *ngIf="title.hasError('maxlength')">{{
       "boardDialog.maxLengthError" | translate
-    }}</mat-error>
+      }}</mat-error>
   </mat-form-field>
   <mat-form-field class="dialog-field" appearance="fill">
     <mat-label>{{ "board.desc" | translate }}</mat-label>
     <input matInput [formControl]="description" required />
     <mat-error *ngIf="title.hasError('minlength')">{{
       "boardDialog.minLengthError" | translate
-    }}</mat-error>
+      }}</mat-error>
     <mat-error *ngIf="title.hasError('maxlength')">{{
       "boardDialog.maxLengthError" | translate
-    }}</mat-error>
+      }}</mat-error>
   </mat-form-field>
 </mat-dialog-content>
 <div mat-dialog-actions class="dialog-buttons">

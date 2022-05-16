@@ -7,7 +7,7 @@ import { switchMap, map, tap, catchError, of, filter, timer } from 'rxjs';
 import { isNotNull } from 'src/app/core/utils';
 import { UsersService } from 'src/app/users/services/users.service';
 import { AuthService } from '../services/auth.service';
-import { loadToken, login, loginError, loginSuccess, logout, signup, signupError, signupSuccess, tokenExpired } from './auth.actions';
+import { deleteUser, loadToken, login, loginError, loginSuccess, logout, signup, signupError, signupSuccess, tokenExpired } from './auth.actions';
 import { selectToken, selectTokenIat } from './auth.selectors';
 
 const TOKEN_EXPIRED = 86400_000
@@ -171,4 +171,39 @@ export class AuthEffects {
       })
     )
   }, { dispatch: false })
+
+  showSnackbarWhenUserLogout$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(logout),
+      tap(() => {
+        this.matSnackBar.open(`You are logout`, 'Hide', {
+          duration: 5000
+        })
+      }))
+  },
+    { dispatch: false }
+  )
+
+  deleteUser$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(deleteUser),
+      tap(() => {
+        localStorage.removeItem('token')
+        this.usersService.updateUserLoginStatus(false)
+        this.router.navigate([''])
+      })
+    )
+  }, { dispatch: false })
+
+  showSnackbarWhenUserDeleted$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(deleteUser),
+      tap(() => {
+        this.matSnackBar.open(`User deleted`, 'Hide', {
+          duration: 5000
+        })
+      }))
+  },
+    { dispatch: false }
+  )
 }

@@ -5,7 +5,9 @@
       <h3 class="app-info">{{'welcome.discription' | translate }}</h3>
       <p class="app-info">{{'welcome.goals' | translate }}</p>
 
-      <button mat-raised-button color="accent" routerLink="{{this.isOnline ? 'boards' : 'auth/login'}}">{{'welcome.registration' | translate }}</button>
+      <div class="start-container">
+        <button class="start" mat-raised-button color="accent" routerLink="{{this.isOnline ? 'boards' : 'auth/login'}}">{{'welcome.registration' | translate }}</button>
+      </div>
 
     </div>
     <div>
@@ -70,11 +72,9 @@
 
   </div>
 
-  <div>
+  <div class="about-course">
     <h2 class="subtitle">{{'welcome.course' | translate }}</h2>
     <p class="about-text">{{'welcome.courseInfo' | translate }}</p>
   </div>
-
-
 
 </div>

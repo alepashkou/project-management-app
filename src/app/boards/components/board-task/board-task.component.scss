@@ -15,3 +15,15 @@ mat-icon {
     opacity: 1;
   }
 }
+
+@media (max-width: 420px) { 
+  
+  mat-card-title {
+    font-size: 20px;
+  }
+
+  mat-card-subtitle {
+    font-size: 14px;
+  }
+
+}

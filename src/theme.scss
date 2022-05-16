@@ -7,7 +7,7 @@
 $angular-primary: mat.define-palette(mat.$gray-palette, 100, 400, 900);
 $angular-accent: mat.define-palette(mat.$blue-palette);
 
-$angular-primary-dark: mat.define-palette(mat.$indigo-palette, 300, 400, 900);
+$angular-primary-dark: mat.define-palette(mat.$indigo-palette, 100, 400, 900);
 $angular-accent-dark: mat.define-palette(mat.$pink-palette);
 
 
@@ -45,6 +45,9 @@ $angular-default-theme: mat.define-light-theme(
   input:-webkit-autofill {
     -webkit-box-shadow: inset 0 0 0 50px #f2f8f9 !important;
     -webkit-text-fill-color: #000000 !important;
+  }
+  input {
+    caret-color: #000000 !important;
   }
 
   @include mat.all-component-colors($angular-default-theme);

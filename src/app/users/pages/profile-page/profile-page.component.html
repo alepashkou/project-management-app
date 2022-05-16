@@ -1,69 +1,68 @@
-<mat-card>
-  <mat-card-content>
-    <form [formGroup]="profileForm" (ngSubmit)="editProfile()">
-      <h2>{{'profile.edit' | translate }}</h2>
-      <label for="username" class="text-left">{{'profile.name' | translate }}</label>
-      <mat-form-field appearance="outline">
-        <input autocomplete formControlName="name" matInput placeholder="{{'profile.name' | translate }}"
-          name="username" class="border-solid">
-        <mat-error *ngIf="profileForm.get('name')?.hasError('required')">
-          {{'profile.enterName' | translate }}
-        </mat-error>
-      </mat-form-field>
-      <label for="login" class="text-left">{{'profile.login' | translate }}</label>
-      <mat-form-field appearance="outline">
-        <input autocomplete formControlName="login" matInput placeholder="{{'profile.login' | translate }}" name="login"
-          class="border-solid">
-        <mat-error *ngIf="profileForm.get('login')?.hasError('minlength')">
-          {{'profile.loginSize' | translate }}
-        </mat-error>
-        <mat-error *ngIf="profileForm.get('login')?.hasError('required')">
-          {{'profile.enetrLogin' | translate }}
-        </mat-error>
-      </mat-form-field>
-      <label for="password" class="text-left">{{'profile.password' | translate }}</label>
-      <mat-form-field appearance="outline">
-        <input autocomplete formControlName="password" matInput type="password"
-          placeholder="{{'profile.password' | translate }}" name="password" class="border-solid">
-        <mat-error *ngIf="profileForm.get('password')?.dirty">
-          <mat-error *ngIf="!profileForm.get('password')?.valid">
-            {{'profile.passwordContains' | translate }}
-            <ng-container *ngIf="profileForm.get('password')?.hasError('smallLetter')">
-              {{'profile.passwordContainsSmallLetters' | translate }}
-            </ng-container>
-            <ng-container *ngIf="profileForm.get('password')?.hasError('capitalLetter')">
-              {{'profile.passwordContainsCapitalLetters' | translate }}
-            </ng-container>
-            <ng-container *ngIf="profileForm.get('password')?.hasError('number')">
-              {{'profile.passwordContainsNumbers' | translate }}
-            </ng-container>
-            <ng-container *ngIf="profileForm.get('password')?.hasError('symbol')">
-              {{'profile.passwordContainsSymbol' | translate }}
-            </ng-container>
-            <ng-container *ngIf="profileForm.get('password')?.hasError('minlength')">
-              {{'profile.passwordLength' | translate }}
-            </ng-container>
+<div class="profile-form-container">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="profileForm" (ngSubmit)="editProfile()">
+        <h2>{{'profile.edit' | translate }}</h2>
+        <label for="username" class="text-left">{{'profile.name' | translate }}</label>
+        <mat-form-field appearance="outline">
+          <input autocomplete formControlName="name" matInput placeholder="{{'profile.name' | translate }}"
+            name="username" class="border-solid">
+          <mat-error *ngIf="profileForm.get('name')?.hasError('required')">
+            {{'profile.enterName' | translate }}
           </mat-error>
-        </mat-error>
-      </mat-form-field>
-      <label for="passwordRepeat" class="text-left">{{'profile.repeatPassword' | translate }}</label>
-      <mat-form-field appearance="outline">
-        <input autocomplete formControlName="passwordRepeat" matInput type="password"
-          placeholder="{{'profile.confirm' | translate }}" name="password" class="border-solid">
-        <mat-error *ngIf="profileForm.get('passwordRepeat')?.hasError('notMatch')">
-          {{'profile.PasswordsDoNotMatch' | translate }}
-        </mat-error>
-        <mat-error *ngIf="profileForm.get('passwordRepeat')?.hasError('required') && profileForm.dirty">
-          {{'profile.repeatPasswordRequired' | translate }}
-        </mat-error>
-      </mat-form-field>
-      <div class="buttons flex justify-around">
-        <button type="submit" [disabled]="!profileForm.valid" mat-raised-button color="accent">{{'profile.save' |
-          translate }}</button>
-        <button type="button" [disabled]="!profileForm.valid" mat-raised-button color="warn"
-          (click)="openDialog()">{{'profile.delete' | translate
-          }}</button>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+        </mat-form-field>
+        <label for="login" class="text-left">{{'profile.login' | translate }}</label>
+        <mat-form-field appearance="outline">
+          <input autocomplete formControlName="login" matInput placeholder="{{'profile.login' | translate }}"
+            name="login" class="border-solid">
+          <mat-error *ngIf="profileForm.get('login')?.hasError('minlength')">
+            {{'profile.loginSize' | translate }}
+          </mat-error>
+          <mat-error *ngIf="profileForm.get('login')?.hasError('required')">
+            {{'profile.enetrLogin' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <label for="password" class="text-left">{{'profile.password' | translate }}</label>
+        <mat-form-field appearance="outline">
+          <input autocomplete formControlName="password" matInput type="password"
+            placeholder="{{'profile.password' | translate }}" name="password" class="border-solid">
+          <mat-error *ngIf="profileForm.get('password')?.dirty">
+            <mat-error *ngIf="!profileForm.get('password')?.valid">
+              {{'profile.passwordContains' | translate }}
+              <ng-container *ngIf="profileForm.get('password')?.hasError('smallLetter')">
+                {{'profile.passwordContainsSmallLetters' | translate }}
+              </ng-container>
+              <ng-container *ngIf="profileForm.get('password')?.hasError('capitalLetter')">
+                {{'profile.passwordContainsCapitalLetters' | translate }}
+              </ng-container>
+              <ng-container *ngIf="profileForm.get('password')?.hasError('number')">
+                {{'profile.passwordContainsNumbers' | translate }}
+              </ng-container>
+              <ng-container *ngIf="profileForm.get('password')?.hasError('symbol')">
+                {{'profile.passwordContainsSymbol' | translate }}
+              </ng-container>
+              <ng-container *ngIf="profileForm.get('password')?.hasError('minlength')">
+                {{'profile.passwordLength' | translate }}
+              </ng-container>
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+        <label for="passwordRepeat" class="text-left">{{'profile.repeatPassword' | translate }}</label>
+        <mat-form-field appearance="outline">
+          <input autocomplete formControlName="passwordRepeat" matInput type="password"
+            placeholder="{{'profile.confirm' | translate }}" name="password" class="border-solid">
+          <mat-error *ngIf="profileForm.get('passwordRepeat')?.hasError('notMatch')">
+            {{'profile.PasswordsDoNotMatch' | translate }}
+          </mat-error>
+          <mat-error *ngIf="profileForm.get('passwordRepeat')?.hasError('required') && profileForm.dirty">
+            {{'profile.repeatPasswordRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <div class="buttons flex justify-around">
+          <button type="submit" [disabled]="!profileForm.valid" mat-raised-button color="accent">{{'profile.save' | translate }}</button>
+          <button type="button" [disabled]="!profileForm.valid" mat-raised-button color="warn" (click)="openDialog()">{{'profile.delete' | translate}}</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

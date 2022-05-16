@@ -1,5 +1,12 @@
-<swiper [slidesPerView]="1" [spaceBetween]="50" [navigation]="true" [loop]="true" [speed]="1100"
-  [pagination]="{ clickable: true }" [scrollbar]="{ draggable: true }">
+<swiper 
+  [slidesPerView]="1" 
+  [spaceBetween]="50" 
+  [navigation]="true" 
+  [loop]="true"
+  [pagination]="{ clickable: true }"
+  [scrollbar]="{ draggable: true }" 
+  [autoplay]="{ delay: 3000, disableOnInteraction: false }"
+>
   <ng-template swiperSlide>
     <div class="slide">
       <h3 class="title">Alexander Pashkou</h3>

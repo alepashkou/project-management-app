@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
-import SwiperCore, { Navigation, Pagination, Scrollbar } from 'swiper';
+import SwiperCore, { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper';
 
-SwiperCore.use([Navigation, Pagination, Scrollbar]);
+SwiperCore.use([Autoplay, Navigation, Pagination, Scrollbar]);
 
 @Component({
   selector: 'app-swiper',

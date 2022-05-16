@@ -60,10 +60,16 @@ export class MainHeaderComponent implements OnInit {
   private _filterTasks(value: string, tasks: Task[]): Task[] {
     const filterValue = value.toLowerCase();
     return tasks.filter((task) => {
-      if (task.user) {
-        return task.title.toLowerCase().includes(filterValue) || task.description.toLowerCase().includes(filterValue)
+      if (task.title.toLowerCase().includes(filterValue)) {
+        return true
       }
-      return task.title.toLowerCase().includes(filterValue) || task.description.toLowerCase().includes(filterValue)
+      if (task.description.toLowerCase().includes(filterValue)) {
+        return true
+      }
+      if (task.user?.name.toLowerCase().includes(filterValue)) {
+        return true
+      }
+      return false
     }
     )
   }

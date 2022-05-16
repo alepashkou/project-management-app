@@ -41,6 +41,6 @@ export const logout = createAction(
   '[Profile] Logout User'
 )
 
-export const deleteUser = createAction(
+export const deleteUserSuccess = createAction(
   '[Profile] Delete User'
 )

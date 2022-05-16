@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { firstValueFrom } from 'rxjs';
 import { passwordDifficulty } from 'src/app/auth/pages/sign-up-page/sign-up-page.component';
+import { deleteUserSuccess } from 'src/app/auth/store/auth.actions';
 import { DialogComponent } from 'src/app/core/dialog/dialog.component';
 import { selectCurrentUserId, selectParseToken } from '../../../auth/store/auth.selectors';
 import { UsersService } from '../../services/users.service';
@@ -74,7 +75,7 @@ export class ProfilePageComponent {
     const result = await firstValueFrom(this.store.select(selectCurrentUserId));
     if (result) {
       await firstValueFrom(this.service.deleteUser(result))
-      // this.store.dispatch(deleteUser())
+      this.store.dispatch(deleteUserSuccess())
     }
     // else {
     //   this.matSnackBar.open(`❌ Something went wrong`, 'Hide', {

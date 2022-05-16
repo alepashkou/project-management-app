@@ -59,7 +59,12 @@ export class MainHeaderComponent implements OnInit {
 
   private _filterTasks(value: string, tasks: Task[]): Task[] {
     const filterValue = value.toLowerCase();
-    return tasks.filter((task) => task.title.toLowerCase().includes(filterValue) || task.description.toLowerCase().includes(filterValue) || task.user.name.toLowerCase().includes(filterValue)
+    return tasks.filter((task) => {
+      if (task.user) {
+        return task.title.toLowerCase().includes(filterValue) || task.description.toLowerCase().includes(filterValue)
+      }
+      return task.title.toLowerCase().includes(filterValue) || task.description.toLowerCase().includes(filterValue)
+    }
     )
   }
 
@@ -129,9 +134,6 @@ export class MainHeaderComponent implements OnInit {
 
   public logout(): void {
     this.store.dispatch(logout());
-    this.matSnackBar.open(`You are logout`, 'Hide', {
-      duration: 5000
-    })
   }
 
   public checkUserStatus(): boolean {

@@ -110,3 +110,23 @@ mat-icon {
   }
 
 }
+
+
+@media (max-width: 540px) {
+  .app-info, 
+  .about-text {
+    font-size: 14px;
+  }
+
+  h3.app-info {
+    height: 210px;
+  }
+
+  .info {
+    padding: 0;
+  }
+
+  .opportunities-item {
+    font-size: 14px;
+  }
+}

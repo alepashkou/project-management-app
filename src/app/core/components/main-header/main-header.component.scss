@@ -117,13 +117,25 @@
   }
 
   .search-block {
-    padding: 0px 10px;
+    padding: 0px 5px;
   }
 
 }
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
 
+  .main-header {
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
 
+  .search-block {
+    order: 3;
+  }
+
+  .mobile-menu > button {
+    padding: 0;
+    min-width: auto;
+  } 
 
 }

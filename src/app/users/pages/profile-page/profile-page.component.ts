@@ -77,11 +77,6 @@ export class ProfilePageComponent {
       await firstValueFrom(this.service.deleteUser(result))
       this.store.dispatch(deleteUserSuccess())
     }
-    // else {
-    //   this.matSnackBar.open(`❌ Something went wrong`, 'Hide', {
-    //     duration: 5000
-    //   })
-    // }
   }
 
   openDialog() {

@@ -12,6 +12,10 @@
   font-size: 22px;
 }
 
+.development-date {
+  margin: 0;
+}
+
 .developer-link {
   transition: 0.5s;
   text-decoration: none;
@@ -19,6 +23,10 @@
   &:hover {
     color: red;
   }
+}
+
+.developer-link-mobile {
+
 }
 
 .main-footer-container {
@@ -30,4 +38,27 @@
 
 .mat-toolbar {
   height: 100px;
+}
+
+.mobile-links {
+  display: none;
+  width: 100%;
+}
+
+.developer-link-mobile {
+  height: 35px;
+  width: 35px;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+  .mobile-links {
+    display: flex;
+    justify-content: space-around;
+  }
 }

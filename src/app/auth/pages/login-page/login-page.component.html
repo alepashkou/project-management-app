@@ -12,7 +12,7 @@
         </mat-form-field>
         <mat-form-field class="py-3">
           <input matInput type="password" placeholder="{{'login.passwordPlaceholder' | translate }}" name="password"
-            formControlName="password">
+            formControlName="password" autocomplete>
           <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
             {{'login.passwordRequired' | translate }}
           </mat-error>

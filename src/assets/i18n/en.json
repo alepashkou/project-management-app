@@ -4,7 +4,8 @@
     "signIn": "sign in",
     "signUp": "sign up",
     "logout": "logout",
-    "search": "Search task"
+    "search": "Search task",
+    "signedAs": "Signed as : "
   },
   "login": {
     "login": "Log In",

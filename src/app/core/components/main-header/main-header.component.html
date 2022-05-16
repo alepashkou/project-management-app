@@ -41,7 +41,7 @@
       </div>
 
       <div class="auth-block" *ngIf="checkUserStatus()">
-        <button mat-raised-button color="primary" (click)="logout()">{{'header.logout' | translate }}</button>
+        <button class="logout-button" mat-raised-button color="primary" (click)="logout()">{{'header.logout' | translate }}</button>
       </div>
 
     </div>
@@ -57,6 +57,35 @@
           <span>{{task.user.name}}</span>
         </mat-option>
       </mat-autocomplete>
+    </div>
+
+    <div class="mobile-menu">
+      <button color="primary" mat-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button class="signed-as" mat-menu-item *ngIf="checkUserStatus()">
+            {{'header.signedAs' | translate }}{{activeUserName}}
+        </button>
+
+        <button mat-menu-item *ngIf="checkUserStatus()" [routerLink]="'/boards'">
+          {{'board.boards' | translate }}
+        </button>
+        <button mat-menu-item *ngIf="checkUserStatus()" [routerLink]="'/boards'" [queryParams]="{action: 'Create'}">
+          {{'board.addBoard' | translate }}
+        </button>
+
+        <button mat-menu-item *ngIf="!checkUserStatus()" [routerLink]="'auth/login'">
+          <mat-icon>login</mat-icon>
+        </button>
+        <button mat-menu-item *ngIf="!checkUserStatus()" [routerLink]="'auth/signup'">
+          {{'header.signUp' | translate }}
+        </button>
+
+        <button mat-menu-item *ngIf="checkUserStatus()" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-menu>
     </div>
 
   </header>

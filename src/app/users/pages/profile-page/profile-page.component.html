@@ -5,16 +5,16 @@
         <h2>{{'profile.edit' | translate }}</h2>
         <label for="username" class="text-left">{{'profile.name' | translate }}</label>
         <mat-form-field appearance="outline">
-          <input formControlName="name" matInput placeholder="{{'profile.name' | translate }}" name="username"
-            class="border-solid test" [ngModel]="(user$ | async)?.name" autocomplete>
+          <input autocomplete formControlName="name" matInput placeholder="{{'profile.name' | translate }}"
+            name="username" class="border-solid">
           <mat-error *ngIf="profileForm.get('name')?.hasError('required')">
             {{'profile.enterName' | translate }}
           </mat-error>
         </mat-form-field>
         <label for="login" class="text-left">{{'profile.login' | translate }}</label>
         <mat-form-field appearance="outline">
-          <input formControlName="login" matInput placeholder="{{'profile.login' | translate }}" name="login"
-            class="border-solid" [ngModel]="(user$ | async)?.login" autocomplete>
+          <input autocomplete formControlName="login" matInput placeholder="{{'profile.login' | translate }}"
+            name="login" class="border-solid">
           <mat-error *ngIf="profileForm.get('login')?.hasError('minlength')">
             {{'profile.loginSize' | translate }}
           </mat-error>
@@ -24,8 +24,8 @@
         </mat-form-field>
         <label for="password" class="text-left">{{'profile.password' | translate }}</label>
         <mat-form-field appearance="outline">
-          <input formControlName="password" matInput type="password" placeholder="{{'profile.password' | translate }}"
-            name="password" class="border-solid" autocomplete>
+          <input autocomplete formControlName="password" matInput type="password"
+            placeholder="{{'profile.password' | translate }}" name="password" class="border-solid">
           <mat-error *ngIf="profileForm.get('password')?.dirty">
             <mat-error *ngIf="!profileForm.get('password')?.valid">
               {{'profile.passwordContains' | translate }}
@@ -49,8 +49,8 @@
         </mat-form-field>
         <label for="passwordRepeat" class="text-left">{{'profile.repeatPassword' | translate }}</label>
         <mat-form-field appearance="outline">
-          <input formControlName="passwordRepeat" matInput type="password"
-            placeholder="{{'profile.confirm' | translate }}" name="password" class="border-solid" autocomplete>
+          <input autocomplete formControlName="passwordRepeat" matInput type="password"
+            placeholder="{{'profile.confirm' | translate }}" name="password" class="border-solid">
           <mat-error *ngIf="profileForm.get('passwordRepeat')?.hasError('notMatch')">
             {{'profile.PasswordsDoNotMatch' | translate }}
           </mat-error>
@@ -59,8 +59,8 @@
           </mat-error>
         </mat-form-field>
         <div class="buttons flex justify-around">
-          <button type="submit" mat-raised-button color="accent">{{'profile.save' | translate }}</button>
-          <button mat-raised-button color="warn" (click)="openDialog()">{{'profile.delete' | translate }}</button>
+          <button type="submit" [disabled]="!profileForm.valid" mat-raised-button color="accent">{{'profile.save' | translate }}</button>
+          <button type="button" [disabled]="!profileForm.valid" mat-raised-button color="warn" (click)="openDialog()">{{'profile.delete' | translate}}</button>
         </div>
       </form>
     </mat-card-content>

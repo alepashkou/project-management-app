@@ -144,3 +144,40 @@ app-board-task {
     opacity: 1;
   }
 }
+
+
+
+@media (max-width: 670px) { 
+  .control-container {
+    flex-wrap: wrap;
+  }
+
+  button {
+    width: 45%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 420px) { 
+  
+  :root {
+    min-width: 190px;
+  }
+
+  .task-box {
+    padding: 10px;
+  }
+
+  .task-list {
+    height: 300px;
+  }
+  
+  button {
+    width: 100%;
+  }
+
+  mat-card-title {
+    font-size: 18px;
+  }
+
+}

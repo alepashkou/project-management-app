@@ -95,7 +95,7 @@
     "password": "Пароль",
     "repeatPassword": "Повторите пароль",
     "confirm": "Подтвердить пароль",
-    "save": "Сохранить изменеия",
+    "save": "Сохранить",
     "delete": "Удалить аккаунт",
     "passwordContains": "Пароль должен включать:",
     "passwordContainsSmallLetters": "- строчные буквы",

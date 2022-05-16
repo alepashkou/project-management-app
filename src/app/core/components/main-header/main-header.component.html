@@ -64,7 +64,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button class="signed-as" mat-menu-item *ngIf="checkUserStatus()">
+        <button class="signed-as" mat-menu-item *ngIf="checkUserStatus()" [routerLink]="'/profile'">
             {{'header.signedAs' | translate }}{{activeUserName}}
         </button>
 

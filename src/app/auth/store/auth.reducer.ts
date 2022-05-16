@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { AuthInfo } from '../models/auth.model';
-import { loadToken, login, loginError, loginSuccess, logout, tokenExpired } from "./auth.actions";
+import { deleteUserSuccess, loadToken, login, loginError, loginSuccess, logout, tokenExpired } from "./auth.actions";
 
 export interface State {
   user?: AuthInfo;
@@ -29,6 +29,9 @@ export const reducer = createReducer(
     return { ...state, user: undefined }
   }),
   on(logout, (state): State => {
+    return { ...state, user: undefined }
+  }),
+  on(deleteUserSuccess, (state): State => {
     return { ...state, user: undefined }
   }),
 )

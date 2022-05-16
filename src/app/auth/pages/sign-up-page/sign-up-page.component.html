@@ -4,14 +4,15 @@
       <form [formGroup]="signUpForm" (ngSubmit)="signup()">
         <h2>{{'signup.signup' | translate }}</h2>
         <mat-form-field>
-          <input matInput placeholder="{{'signup.userNamePlaceholder' | translate }}" name="username"
+          <input autocomplete matInput placeholder="{{'signup.userNamePlaceholder' | translate }}" name="username"
             formControlName="name">
           <mat-error *ngIf="signUpForm.get('name')?.hasError('required')">
             {{'signup.userNameRequired' | translate }}
           </mat-error>
         </mat-form-field>
         <mat-form-field class="py-3">
-          <input matInput placeholder="{{'signup.loginPlaceholder' | translate }}" name="login" formControlName="login">
+          <input autocomplete matInput placeholder="{{'signup.loginPlaceholder' | translate }}" name="login"
+            formControlName="login">
           <mat-error *ngIf="signUpForm.get('login')?.hasError('minlength')">
             {{'signup.loginMinLengthError' | translate }}
           </mat-error>
@@ -20,8 +21,8 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field class="py-1">
-          <input matInput type="password" placeholder="{{'signup.passwordPlaceholder' | translate }}" name="password"
-            formControlName="password" autocomplete>
+          <input autocomplete matInput type="password" placeholder="{{'signup.passwordPlaceholder' | translate }}"
+            name="password" formControlName="password">
           <mat-error *ngIf="!signUpForm.valid">
             {{'signup.passwordContains' | translate }}
             <mat-error>
@@ -53,7 +54,8 @@
             {{'signup.passwordRepeatRequired' | translate }}
           </mat-error>
         </mat-form-field>
-        <button type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">{{'signup.create' | translate }}</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">{{'signup.create' |
+          translate }}</button>
       </form>
     </mat-card-content>
   </mat-card>

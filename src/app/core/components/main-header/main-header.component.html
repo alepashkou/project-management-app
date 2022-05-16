@@ -53,8 +53,8 @@
         (optionSelected)="onSelectTask($event)" [displayWith]="displayFn">
         <mat-option *ngFor="let task of filteredTasks$ | async" [value]="task">
           <span>{{task.title}}</span> |
-          <small>{{task.description}}</small> |
-          <span>{{task.user.name}}</span>
+          <small>{{task.description}}</small>
+          <span> | {{task.user?.name}}</span>
         </mat-option>
       </mat-autocomplete>
     </div>

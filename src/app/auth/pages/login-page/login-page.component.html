@@ -4,15 +4,15 @@
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <h2>{{'login.login' | translate }}</h2>
         <mat-form-field>
-          <input matInput placeholder="{{'login.loginPlaceholder' | translate }}" name="username"
+          <input autocomplete matInput placeholder="{{'login.loginPlaceholder' | translate }}" name="username"
             formControlName="login">
           <mat-error *ngIf="loginForm.get('login')?.hasError('required')">
             {{'login.loginRequired' | translate }}
           </mat-error>
         </mat-form-field>
         <mat-form-field class="py-3">
-          <input matInput type="password" placeholder="{{'login.passwordPlaceholder' | translate }}" name="password"
-            formControlName="password" autocomplete>
+          <input autocomplete matInput type="password" placeholder="{{'login.passwordPlaceholder' | translate }}"
+            name="password" formControlName="password">
           <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
             {{'login.passwordRequired' | translate }}
           </mat-error>

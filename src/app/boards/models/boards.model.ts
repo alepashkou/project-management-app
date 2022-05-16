@@ -18,7 +18,7 @@ export interface Task {
   done?: boolean;
   description: string;
   userId: string;
-  user: UserData;
+  user?: UserData;
 }
 export interface Token {
   token: string;

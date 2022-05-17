@@ -3,7 +3,7 @@ import { ThemeService } from '../../services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Task } from '../../../boards/models/boards.model';
 import { FormControl } from '@angular/forms';
-import { combineLatest, filter, map } from 'rxjs';
+import { combineLatest, filter, interval, map, startWith, switchMap } from 'rxjs';
 import { SearchService } from '../../services/search.service';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Store } from '@ngrx/store';
@@ -23,7 +23,10 @@ export class MainHeaderComponent implements OnInit {
 
   searchTextControl = new FormControl();
 
-  tasks$ = this.searchService.getAllTasks();
+  tasks$ = interval(30000).pipe(
+    startWith(0),
+    switchMap(() => this.searchService.getAllTasks())
+  );
 
   filteredTasks$ = combineLatest([this.tasks$,
   this.searchTextControl.valueChanges.pipe(
@@ -51,7 +54,6 @@ export class MainHeaderComponent implements OnInit {
     private router: Router,
     private store: Store<State>,
     private usersService: UsersService,
-    private matSnackBar: MatSnackBar
   ) {
     translate.addLangs(['en', 'ru']);
     translate.setDefaultLang(localStorage.getItem('language') || 'en');

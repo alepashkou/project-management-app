@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 100%;
+  height: calc(100vh - 200px);
 }
 
 .error-container {
@@ -29,4 +29,29 @@
   left: 50%;
   transform: translate(-50%, -50%) !important;
   pointer-events: all!important;
+}
+
+.back-button {
+  width: 110px;
+}
+
+@media (max-width: 910px) { 
+
+  .error-text {
+    font-size: 30px;
+  }
+
+  .dark-mode .error-text {
+    color: #000;
+  }
+
+}
+
+@media (max-width: 600px) { 
+
+  .error-text {
+    transform: none;
+    position: initial;
+  }
+
 }

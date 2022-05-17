@@ -105,6 +105,9 @@ $angular-default-theme: mat.define-light-theme(
   & .colum-list mat-icon {
     color: rgba(0, 0, 0, 0.87);
   }
+  & .error-text {
+    color: #000000;
+  }
   input {
     outline: none;
   }
@@ -114,4 +117,10 @@ $angular-default-theme: mat.define-light-theme(
   }
 
   @include mat.all-component-colors($angular-dark-theme);
+}
+
+@media (max-width: 600px) { 
+  .dark-mode .error-text {
+    color: #ffffff;
+  }
 }

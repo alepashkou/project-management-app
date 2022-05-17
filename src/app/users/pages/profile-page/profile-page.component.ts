@@ -58,7 +58,7 @@ export class ProfilePageComponent {
       Validators.required,
       (passwordRepeatForm) => {
         if (passwordRepeatForm.value !== this.profileForm?.value.password) {
-          return { notMatch: 'Passwords do not match' }
+          return { notMatch: localStorage.getItem('language') === 'en' ? 'Passwords do not match' : 'Пароли не совпадают' }
         }
         return null
       }
@@ -82,8 +82,12 @@ export class ProfilePageComponent {
   openDialog() {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
-        message: 'Are you sure you want to delete your account?',
-        confirmButtonText: 'Delete'
+        message: localStorage.getItem('language') === 'en' 
+          ? 'Are you sure you want to delete your account?' 
+          : 'Вы действительно хотите удалить ваш аккаунт?',
+        confirmButtonText: localStorage.getItem('language') === 'en' 
+          ? 'Delete' 
+          : 'Удалить',
       },
     });
     dialogRef.afterClosed().subscribe(result => {

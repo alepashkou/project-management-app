@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 50px 0px;
+  padding: 25px 0px;
 }
 
 .info {
@@ -25,6 +25,14 @@
 
 .app-info {
   font-size: 20px;
+}
+
+h3.app-info {
+  height: 170px;
+}
+
+.start {
+  width: 90px;
 }
 
 .about-text {
@@ -56,4 +64,69 @@
 mat-icon {
   font-weight: bold;
   color: green;
+}
+
+.about-course {
+  padding: 20px 0px;
+}
+
+// @media (max-width: 768px) {
+//   h3.app-info {
+//     height: 190px;
+//   }
+// }
+
+@media (max-width: 1000px) {
+
+  .welcome-container {
+    flex-direction: column;
+  }
+  
+  .info {
+    width: 100%;
+  }
+
+  h3.app-info {
+    height: 170px;
+  }
+
+  .start-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+
+  .about-project > .welcome-container > div:first-child {
+    order: 2;
+  }
+
+  .about-project > .welcome-container .info {
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  
+  .team-img-container {
+    margin-top: 20px;
+  }
+
+}
+
+
+@media (max-width: 540px) {
+  .app-info, 
+  .about-text {
+    font-size: 14px;
+  }
+
+  h3.app-info {
+    height: 210px;
+  }
+
+  .info {
+    padding: 0;
+  }
+
+  .opportunities-item {
+    font-size: 14px;
+  }
 }

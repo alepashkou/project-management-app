@@ -24,15 +24,23 @@
   margin-left: 5px;
   border: 1px solid;
   width: auto;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 10px 0px 5px;
   border-radius: 0;
 }
 
 .go-to-boards {
-  padding: 0px 5px 0px 5px;
-  width: auto;
+  padding: 0px 10px;
+  width: 90px;
   border: 1px solid;
   border-radius: 0;
+}
+
+.logout-button {
+  width: 80px;
+}
+
+.logout-button > .mat-button-wrapper > span {
+  width: 50px;
 }
 
 .page-header {
@@ -56,6 +64,7 @@
 .therm-block {
   align-items: center;
   display: flex;
+  cursor: pointer;
 }
 
 .setting-block,
@@ -70,6 +79,15 @@
 .auth-block {
   gap: 15px;
 }
+
+.mobile-menu {
+  display: none;
+}
+
+.signed-as {
+  border-bottom: 1px solid;
+}
+
 ::ng-deep .mat-autocomplete-panel{
   max-width: 252px !important;
 }
@@ -86,4 +104,39 @@
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #ff4081;
+}
+
+@media (max-width: 768px) {
+
+  .mobile-menu {
+    display: block;
+  }
+
+  .add-new-board,
+  .user-block {
+    display: none;
+  }
+
+  .search-block {
+    padding: 0px 5px;
+  }
+
+}
+
+@media (max-width: 540px) {
+
+  .main-header {
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .search-block {
+    order: 3;
+  }
+
+  .mobile-menu > button {
+    padding: 0;
+    min-width: auto;
+  } 
+
 }

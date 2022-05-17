@@ -5,7 +5,7 @@ import {
   Inject,
   Optional,
 } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogBoxData } from '../../models/dialog.model';
 
@@ -23,6 +23,8 @@ export class DialogBoxComponent implements AfterViewChecked {
 
   description: FormControl;
 
+  form: FormGroup;
+  
   constructor(
     public dialog: MatDialogRef<DialogBoxComponent>,
     private readonly changeDetectorRef: ChangeDetectorRef,
@@ -31,21 +33,17 @@ export class DialogBoxComponent implements AfterViewChecked {
     this.dialog.disableClose = true;
     this.localData = { ...data };
     this.action = this.localData.action;
-    this.title = new FormControl('', [
-      Validators.minLength(3),
-      Validators.maxLength(15),
-    ]);
-    this.description = new FormControl('', [
-      Validators.minLength(3),
-      Validators.maxLength(15),
-    ]);
+    this.form = new FormGroup({
+      title: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)]),
+      description: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)])
+    });
   }
   ngAfterViewChecked(): void {
     this.changeDetectorRef.detectChanges();
   }
   doAction() {
-    this.localData.title = this.title.value;
-    this.localData.description = this.description.value;
+    this.localData.title = this.form.controls['title'].value
+    this.localData.description = this.form.controls['description'].value
     this.dialog.close({ event: this.action, data: this.localData });
   }
 

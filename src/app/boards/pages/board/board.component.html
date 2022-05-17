@@ -16,6 +16,9 @@
     <mat-icon>home</mat-icon>
   </button>
 </div>
+<div class="title-container">
+  <div class="title" [align]="'center'">{{this.board?.title}}</div>
+</div>
 <div cdkDropList cdkDropListOrientation="horizontal" class="colum-list" (cdkDropListDropped)="dropColum($event)">
   <div cdkDropListGroup class="box-list">
     <div *ngFor="let colum of board?.columns | sortColumns" cdkDrag>

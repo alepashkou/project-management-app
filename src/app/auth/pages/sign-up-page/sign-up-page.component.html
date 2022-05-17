@@ -45,8 +45,8 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field class="py-2">
-          <input autocomplete matInput type="password" placeholder="{{'signup.passwordRepeatPlaceholder' | translate}}"
-            name="passwordRepeat" formControlName="passwordRepeat">
+          <input matInput type="password" placeholder="{{'signup.passwordRepeatPlaceholder' | translate}}"
+            name="passwordRepeat" formControlName="passwordRepeat" autocomplete>
           <mat-error *ngIf="signUpForm.get('passwordRepeat')?.hasError('notMatch')">
             {{'signup.passwordRepeatMatch' | translate }}
           </mat-error>

@@ -66,7 +66,9 @@ export class UsersEffects {
     return this.actions$.pipe(
       ofType(updateUserSuccess),
       tap(() => {
-        this.matSnackBar.open('👍 Your profile is updated', 'Hide', {
+        const message = localStorage.getItem('language') === 'en' ? '👍 Your profile is updated' : '👍 Ваш профиль обновлен'; 
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть'; 
+        this.matSnackBar.open(message, button, {
           duration: 5000
         })
       }))
@@ -87,7 +89,9 @@ export class UsersEffects {
     return this.actions$.pipe(
       ofType(updateUserError),
       tap(() => {
-        this.matSnackBar.open('❌ Unable to update data', 'Hide', {
+        const message = localStorage.getItem('language') === 'en' ? '❌ Unable to update data' : '❌ Не удалось обновить данные'; 
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть'; 
+        this.matSnackBar.open(message, button, {
           duration: 5000
         })
       })

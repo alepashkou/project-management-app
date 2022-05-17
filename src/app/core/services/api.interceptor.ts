@@ -30,30 +30,46 @@ export class ApiInterceptor implements HttpInterceptor {
     return next.handle(clonedRequest).pipe(
       catchError((err) => {
         if (err instanceof HttpErrorResponse) {
+          const language = localStorage.getItem('language');
+          const button = language === 'en' ? 'Hide' : 'Скрыть';
           let message = '';
           if (err.status === 400) {
-            message = 'Bad request'
+            language === 'en' 
+            ? message = 'Bad request' 
+            : message = 'Плохой запрос';
           }
           if (err.status === 401) {
-            message = 'Not authorized'
+            language === 'en' 
+            ? message = 'Not authorized' 
+            : message = 'Не авторизован';
             this.router.navigate(['auth', 'login'])
           }
           if (err.status === 404) {
-            message = 'Not found'
+            language === 'en' 
+            ? message = 'Not found'
+            : message = 'Не найден';
           }
           if (err.status === 500) {
-            message = 'Internal server error'
+            language === 'en' 
+            ? message = 'Internal server error'
+            : message = 'Внутренняя ошибка сервера';
           }
           if (err.status === 502) {
-            message = 'Bad Gateway'
+            language === 'en' 
+            ? message = 'Bad Gateway'
+            : message = 'Плохой провайдер';
           }
           if (err.status === 503) {
-            message = 'Service Unavailable'
+            language === 'en' 
+            ? message = 'Service Unavailable'
+            : message = 'Не доступно';
           }
           if (err.status === 505) {
-            message = 'HTTP Version Not Supported'
+            language === 'en' 
+            ? message = 'HTTP Version Not Supported'
+            : message = 'Не поддерживаемая версия HTTP';
           }
-          this.matSnackBar.open(message, 'Hide', {
+          this.matSnackBar.open(message, button, {
             duration: 5000
           })
         }

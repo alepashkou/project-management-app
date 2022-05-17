@@ -90,7 +90,7 @@
     "login": "Login",
     "loginSize": "Your login must be at least 4 characters long",
     "enterName": "Enter your name",
-    "enetrLogin": "Введите логин",
+    "enetrLogin": "Enter your login",
     "password": "Password",
     "repeatPassword": "Re-enter password",
     "confirm": "Confirm your password",

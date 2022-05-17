@@ -179,6 +179,7 @@ export class BoardComponent {
     const dialog = this.dialog.open(DialogTaskComponent, {
       width: '300px',
       data: { action: 'Edit', task },
+      restoreFocus: false
     });
     dialog.afterClosed().subscribe((result) => {
       if (result.event === 'Edit') {

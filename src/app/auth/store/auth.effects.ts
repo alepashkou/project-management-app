@@ -55,14 +55,20 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(loginError, signupError),
       tap((action) => {
+        const language = localStorage.getItem('language');
+        const button = language === 'en' ? 'Hide' : 'Скрыть';
         let message = '';
         if (action.type === loginError.type) {
-          message = '❌ The username and password were not recognized'
+          language === 'en' 
+            ? message = '❌ The username and password were not recognized' 
+            : message = '❌ Имя пользователя и пароль не распознаны'
         };
         if (action.type === signupError.type) {
-          message = `❌ Impossible to create account`
+          language === 'en' 
+          ? message = `❌ Impossible to create account`
+          : message = '❌ Невозможно создать аккаунт'
         };
-        this.matSnackBar.open(message, 'Hide', {
+        this.matSnackBar.open(message, button, {
           duration: 5000
         })
       })
@@ -100,7 +106,9 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(signupSuccess),
       tap(() => {
-        this.matSnackBar.open(`👍 Congrats! You are registered! Let's login`, 'Hide', {
+        const message = localStorage.getItem('language') === 'en' ? '👍 Congrats! You are registered! Let\'s login' : '👍 Поздравляем! Вы успешно зарегистрированы!'; 
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть'; 
+        this.matSnackBar.open(message, button, {
           duration: 5000
         })
       })
@@ -121,7 +129,9 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(loginSuccess),
       tap(() => {
-        this.matSnackBar.open(`👍 You are login, let's start!`, 'Hide', {
+        const message = localStorage.getItem('language') === 'en' ? '👍 You are login, let\'s start!' : '👍 Вы успешно авторизованы!'; 
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть'; 
+        this.matSnackBar.open(message, button, {
           duration: 5000
         })
       }))
@@ -176,7 +186,9 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(logout),
       tap(() => {
-        this.matSnackBar.open(`You are logout`, 'Hide', {
+        const message = localStorage.getItem('language') === 'en' ? 'You are logout' : 'Вы вышли'; 
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть'; 
+        this.matSnackBar.open(message, button, {
           duration: 5000
         })
       }))
@@ -199,7 +211,9 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(deleteUserSuccess),
       tap(() => {
-        this.matSnackBar.open(`User deleted`, 'Hide', {
+        const message = localStorage.getItem('language') === 'en' ? 'User deleted' : 'Пользователь удален'; 
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть'; 
+        this.matSnackBar.open(message, button, {
           duration: 5000
         })
       }))

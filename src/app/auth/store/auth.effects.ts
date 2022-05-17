@@ -59,14 +59,14 @@ export class AuthEffects {
         const button = language === 'en' ? 'Hide' : 'Скрыть';
         let message = '';
         if (action.type === loginError.type) {
-          language === 'en' 
-            ? message = '❌ The username and password were not recognized' 
+          language === 'en'
+            ? message = '❌ The username and password were not recognized'
             : message = '❌ Имя пользователя и пароль не распознаны'
         };
         if (action.type === signupError.type) {
-          language === 'en' 
-          ? message = `❌ Impossible to create account`
-          : message = '❌ Невозможно создать аккаунт'
+          language === 'en'
+            ? message = `❌ Impossible to create account`
+            : message = '❌ Невозможно создать аккаунт'
         };
         this.matSnackBar.open(message, button, {
           duration: 5000
@@ -106,8 +106,8 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(signupSuccess),
       tap(() => {
-        const message = localStorage.getItem('language') === 'en' ? '👍 Congrats! You are registered! Let\'s login' : '👍 Поздравляем! Вы успешно зарегистрированы!'; 
-        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть'; 
+        const message = localStorage.getItem('language') === 'en' ? '👍 Congrats! You are registered! Let\'s login' : '👍 Поздравляем! Вы успешно зарегистрированы!';
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть';
         this.matSnackBar.open(message, button, {
           duration: 5000
         })
@@ -129,8 +129,8 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(loginSuccess),
       tap(() => {
-        const message = localStorage.getItem('language') === 'en' ? '👍 You are login, let\'s start!' : '👍 Вы успешно авторизованы!'; 
-        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть'; 
+        const message = localStorage.getItem('language') === 'en' ? '👍 You are login, let\'s start!' : '👍 Вы успешно авторизованы!';
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть';
         this.matSnackBar.open(message, button, {
           duration: 5000
         })
@@ -162,14 +162,30 @@ export class AuthEffects {
     )
   })
 
-  deleteTokenIfExpired$ = createEffect(() => {
+  deleteTokenIfExpiredAndRedirect$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(tokenExpired),
       tap(() => {
         localStorage.removeItem('token')
-      })
+        this.usersService.updateUserLoginStatus(false)
+        this.router.navigate([''])
+      }),
     )
   }, { dispatch: false })
+
+  showSnackbarWhenTokenExpired$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(tokenExpired),
+      tap(() => {
+        const message = localStorage.getItem('language') === 'en' ? 'Authorization expired' : 'Cрок авторизации истек';
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть';
+        this.matSnackBar.open(message, button, {
+          duration: 5000
+        })
+      }))
+  },
+    { dispatch: false }
+  )
 
   logoutUser$ = createEffect(() => {
     return this.actions$.pipe(
@@ -186,8 +202,8 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(logout),
       tap(() => {
-        const message = localStorage.getItem('language') === 'en' ? 'You are logout' : 'Вы вышли'; 
-        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть'; 
+        const message = localStorage.getItem('language') === 'en' ? 'You are logout' : 'Вы вышли';
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть';
         this.matSnackBar.open(message, button, {
           duration: 5000
         })
@@ -211,8 +227,8 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(deleteUserSuccess),
       tap(() => {
-        const message = localStorage.getItem('language') === 'en' ? 'User deleted' : 'Пользователь удален'; 
-        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть'; 
+        const message = localStorage.getItem('language') === 'en' ? 'User deleted' : 'Пользователь удален';
+        const button = localStorage.getItem('language') === 'en' ? 'Hide' : 'Скрыть';
         this.matSnackBar.open(message, button, {
           duration: 5000
         })

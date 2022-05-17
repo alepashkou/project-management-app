@@ -3,7 +3,7 @@ import { ThemeService } from '../../services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Task } from '../../../boards/models/boards.model';
 import { FormControl } from '@angular/forms';
-import { combineLatest, filter, interval, map, startWith, Subject, switchMap, tap } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs';
 import { SearchService } from '../../services/search.service';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Store } from '@ngrx/store';

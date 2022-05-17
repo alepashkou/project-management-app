@@ -3,7 +3,7 @@ import { ThemeService } from '../../services/theme.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Task } from '../../../boards/models/boards.model';
 import { FormControl } from '@angular/forms';
-import { combineLatest, filter, interval, map, startWith, switchMap } from 'rxjs';
+import { combineLatest, filter, interval, map, startWith, Subject, switchMap, tap } from 'rxjs';
 import { SearchService } from '../../services/search.service';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Store } from '@ngrx/store';
@@ -12,7 +12,6 @@ import { selectActiveUser } from 'src/app/users/store/users.selectors';
 import { UsersService } from 'src/app/users/services/users.service';
 import { Router } from '@angular/router';
 import { logout } from 'src/app/auth/store/auth.actions';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-main-header',
@@ -23,22 +22,18 @@ export class MainHeaderComponent implements OnInit {
 
   searchTextControl = new FormControl();
 
-  tasks$ = interval(30000).pipe(
-    startWith(0),
-    switchMap(() => this.searchService.getAllTasks())
-  );
+  tasks$ = this.searchService.getAllTasks();
 
-  filteredTasks$ = combineLatest([this.tasks$,
-  this.searchTextControl.valueChanges.pipe(
-    filter((textOrTask) => typeof textOrTask === 'string')
-  )
-  ]).pipe(
-    map(([tasks, searchText]) => {
-      if (searchText) {
-        return this._filterTasks(searchText, tasks)
-      }
-      return []
-    })
+  filteredTasks$ = this.searchTextControl.valueChanges.pipe(
+    filter((textOrTask) => typeof textOrTask === 'string'),
+    switchMap((text: string) => this.tasks$.pipe(
+      map((task) => {
+        if (text) {
+          return this._filterTasks(text, task)
+        }
+        return []
+      })
+    ))
   )
 
   public currentTheme: string | null = 'light';

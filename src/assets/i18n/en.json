@@ -58,6 +58,7 @@
     "boardName": "Board Name",
     "minLengthError": "Too short (min 3)",
     "maxLengthError": "Too long (max 15)",
+    "maxLengthError30": "Too long (max 30)",
     "sureToDelete": "Are you sure you want to delete this board?",
     "cancel": "Cancel"
   },

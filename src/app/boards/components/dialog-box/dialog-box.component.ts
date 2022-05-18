@@ -35,7 +35,7 @@ export class DialogBoxComponent implements AfterViewChecked {
     this.action = this.localData.action;
     this.form = new FormGroup({
       title: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)]),
-      description: new FormControl('', [Validators.minLength(3), Validators.maxLength(15)])
+      description: new FormControl('', [Validators.minLength(3), Validators.maxLength(30)])
     });
   }
   ngAfterViewChecked(): void {

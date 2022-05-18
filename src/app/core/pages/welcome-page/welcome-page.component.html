@@ -1,64 +1,65 @@
 <div class="container">
   <div class="welcome-container">
     <div class="info">
-      <h1 class="title">{{'welcome.title' | translate }}</h1>
-      <h3 class="app-info">{{'welcome.discription' | translate }}</h3>
-      <p class="app-info">{{'welcome.goals' | translate }}</p>
+      <h1 class="title">{{ "welcome.title" | translate }}</h1>
+      <h3 class="app-info">{{ "welcome.discription" | translate }}</h3>
+      <p class="app-info">{{ "welcome.goals" | translate }}</p>
 
       <div class="start-container">
-        <button class="start" mat-raised-button color="accent" routerLink="{{this.isOnline ? 'boards' : 'auth/login'}}">{{'welcome.registration' | translate }}</button>
+        <button
+          class="start"
+          mat-raised-button
+          color="accent"
+          routerLink="{{ this.isOnline ? 'boards' : 'auth/login' }}"
+        >
+          {{ "welcome.registration" | translate }}
+        </button>
       </div>
-
     </div>
     <div>
       <div class="welcome-img">
-        <img src="assets/welcome.gif" alt="welcome">
+        <img src="assets/welcome.gif" alt="welcome" />
       </div>
     </div>
-
   </div>
 
   <div class="about-project">
     <div class="welcome-container">
-
       <div>
         <div>
-          <img src="assets/opportunities.gif" alt="opportunities">
+          <img src="assets/opportunities.gif" alt="opportunities" />
         </div>
       </div>
 
       <div class="info">
-        <h2 class="subtitle">{{'welcome.opportunities' | translate }}</h2>
+        <h2 class="subtitle">{{ "welcome.opportunities" | translate }}</h2>
         <ul class="opportunities-list">
           <li class="opportunities-item">
-            <mat-icon>check</mat-icon>{{'welcome.boards' | translate }}
+            <mat-icon>check</mat-icon>{{ "welcome.boards" | translate }}
           </li>
           <li class="opportunities-item">
-            <mat-icon>check</mat-icon>{{'welcome.tasks' | translate }}
+            <mat-icon>check</mat-icon>{{ "welcome.tasks" | translate }}
           </li>
           <li class="opportunities-item">
-            <mat-icon>check</mat-icon>{{'welcome.transfer' | translate }}
+            <mat-icon>check</mat-icon>{{ "welcome.transfer" | translate }}
           </li>
           <li class="opportunities-item">
-            <mat-icon>check</mat-icon>{{'welcome.assign' | translate }}
+            <mat-icon>check</mat-icon>{{ "welcome.assign" | translate }}
           </li>
           <li class="opportunities-item">
-            <mat-icon>check</mat-icon>{{'welcome.done' | translate }}
+            <mat-icon>check</mat-icon>{{ "welcome.done" | translate }}
           </li>
           <li class="opportunities-item">
-            <mat-icon>check</mat-icon>{{'welcome.search' | translate }}
+            <mat-icon>check</mat-icon>{{ "welcome.search" | translate }}
           </li>
         </ul>
-
       </div>
-
     </div>
-
   </div>
 
   <div class="welcome-container">
     <div class="info about-team">
-      <h2 class="subtitle">{{'welcome.about' | translate }}</h2>
+      <h2 class="subtitle">{{ "welcome.about" | translate }}</h2>
       <div>
         <app-swiper></app-swiper>
       </div>
@@ -66,15 +67,38 @@
 
     <div class="team-img-container">
       <div class="welcome-img">
-        <img src="assets/team.gif" alt="team">
+        <img src="assets/team.gif" alt="team" />
       </div>
     </div>
-
   </div>
 
   <div class="about-course">
-    <h2 class="subtitle">{{'welcome.course' | translate }}</h2>
-    <p class="about-text">{{'welcome.courseInfo' | translate }}</p>
+    <h2 class="subtitle">{{ "welcome.course" | translate }}</h2>
+    <p class="about-text">{{ "welcome.courseInfo" | translate }}</p>
   </div>
 
+  <div class="download">
+    <h2 class="subtitle">{{ "welcome.download" | translate }}</h2>
+    <div class="download_container">
+      <span>Windows</span>
+      <button mat-raised-button class="download_btn">
+        <a href="https://disk.yandex.by/d/qWYKh1LXO8CC3w" target="_blank">
+          <mat-icon>cloud_download</mat-icon> x64
+        </a>
+      </button>
+      <button mat-raised-button class="download_btn">
+        <a href="https://disk.yandex.by/d/wdUkC5tyDdojfw" target="_blank">
+          <mat-icon>cloud_download</mat-icon> x86
+        </a>
+      </button>
+    </div>
+    <div class="download_container">
+      <span>Android</span>
+      <button mat-raised-button class="download_btn">
+        <a href="https://www.google.com/" target="_blank">
+          <mat-icon>cloud_download</mat-icon> Android 5.1+
+        </a>
+      </button>
+    </div>
+  </div>
 </div>

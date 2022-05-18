@@ -69,7 +69,24 @@ mat-icon {
 .about-course {
   padding: 20px 0px;
 }
-
+.download_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  mat-icon {
+    font-weight: bold;
+    color: black;
+    margin-right: 5px;
+  }
+  a {
+    display: flex;
+    align-items: center;
+  }
+}
+.download_btn {
+  margin: 20px;
+}
 // @media (max-width: 768px) {
 //   h3.app-info {
 //     height: 190px;
@@ -77,11 +94,10 @@ mat-icon {
 // }
 
 @media (max-width: 1000px) {
-
   .welcome-container {
     flex-direction: column;
   }
-  
+
   .info {
     width: 100%;
   }
@@ -104,16 +120,14 @@ mat-icon {
     margin-bottom: 25px;
     text-align: center;
   }
-  
+
   .team-img-container {
     margin-top: 20px;
   }
-
 }
 
-
 @media (max-width: 540px) {
-  .app-info, 
+  .app-info,
   .about-text {
     font-size: 14px;
   }

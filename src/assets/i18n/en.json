@@ -1,7 +1,7 @@
 {
   "header": {
     "board": "Add new board",
-    "signIn": "sign in",
+    "signIn": "log in",
     "signUp": "sign up",
     "logout": "logout",
     "search": "Search task",

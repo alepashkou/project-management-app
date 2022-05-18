@@ -42,6 +42,11 @@ $angular-default-theme: mat.define-light-theme(
   & .mat-form-field-label {
     color: #000000 !important;
   }
+  & .task-list::-webkit-scrollbar-thumb,
+    .box-list::-webkit-scrollbar-thumb {
+      background-color: #2196f3;
+  }
+
   input:-webkit-autofill {
     -webkit-box-shadow: inset 0 0 0 50px #f2f8f9 !important;
     -webkit-text-fill-color: #000000 !important;
@@ -114,6 +119,10 @@ $angular-default-theme: mat.define-light-theme(
   & .task-done {
     color: green !important;
   }
+  & .task-list::-webkit-scrollbar-thumb,
+    .box-list::-webkit-scrollbar-thumb {
+    background-color: #e91e63;
+}
   input {
     outline: none;
   }

@@ -15,9 +15,10 @@ mat-icon {
     opacity: 1;
   }
 }
-
-@media (max-width: 420px) { 
-  
+.task-done {
+  color: green;
+}
+@media (max-width: 420px) {
   mat-card-title {
     font-size: 20px;
   }
@@ -25,5 +26,4 @@ mat-icon {
   mat-card-subtitle {
     font-size: 14px;
   }
-
 }

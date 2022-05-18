@@ -42,6 +42,7 @@ export class DialogTaskComponent implements AfterViewChecked, OnInit {
       ]),
       description: new FormControl('', [Validators.required]),
       userId: new FormControl('', [Validators.required]),
+      done: new FormControl(''),
     });
   }
   ngOnInit(): void {
@@ -55,6 +56,7 @@ export class DialogTaskComponent implements AfterViewChecked, OnInit {
         title: this.localData.task?.title,
         description: this.localData.task?.description,
         userId: this.localData.task?.userId,
+        done: this.localData.task?.done,
       });
     }
   }
@@ -65,6 +67,7 @@ export class DialogTaskComponent implements AfterViewChecked, OnInit {
     this.localData.task.title = this.param.get('title')?.value;
     this.localData.task.description = this.param.get('description')?.value;
     this.localData.task.userId = this.param.get('userId')?.value;
+    this.localData.task.done = this.param.get('done')?.value;
     this.dialog.close({ event: this.action, data: this.localData });
   }
 

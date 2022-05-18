@@ -87,7 +87,6 @@ mat-form-field {
 .box-list::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #ff4081;
 }
 .task-box {
   padding: 20px 10px;
@@ -134,7 +133,6 @@ mat-form-field {
 }
 app-board-task {
   border-left-width: 3px;
-  transition: all 0.4s;
   &:hover {
     background-color: rgba(204, 204, 204, 0.761);
   }

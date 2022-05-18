@@ -107,6 +107,9 @@ $angular-default-theme: mat.define-light-theme(
   }
   & .error-text {
     color: #000000;
+  } 
+  & .cloud {
+    color: white !important;
   }
   input {
     outline: none;

@@ -40,16 +40,17 @@ export class BoardColumComponent implements OnInit {
           this.createTask(
             result.data.task.title,
             result.data.task.description,
-            result.data.task.userId
+            result.data.task.userId,
+            result.data.task.done
           );
         }
       });
     } else {
       let message = '';
       if (localStorage.getItem('language') === 'en') {
-        message = 'Are you sure you want to delete column?'
+        message = 'Are you sure you want to delete column?';
       } else {
-        message = 'Вы действительно хотите удалить колонку?'
+        message = 'Вы действительно хотите удалить колонку?';
       }
       const dialogRef = this.dialog.open(DialogComponent, {
         data: {
@@ -63,7 +64,7 @@ export class BoardColumComponent implements OnInit {
       });
     }
   }
-  createTask(title: string, desc: string, userId: string) {
+  createTask(title: string, desc: string, userId: string, done: boolean) {
     this.boardService
       .createTask(
         title,
@@ -71,7 +72,8 @@ export class BoardColumComponent implements OnInit {
         userId,
         this.colum.id,
         this.boardId,
-        this.colum.tasks?.length
+        this.colum.tasks?.length,
+        done
       )
       .subscribe((task) => {
         this.update.emit(task.id);

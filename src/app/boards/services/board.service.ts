@@ -32,14 +32,15 @@ export class BoardService {
     userId: string,
     columId: string,
     boardId: string,
-    lenght: number = 0
+    lenght: number = 0,
+    done: boolean = false
   ) {
     return this.http.post<Task>(`boards/${boardId}/columns/${columId}/tasks`, {
       title: title,
       order: lenght + 1,
       description: desc,
       userId: userId,
-      done: false,
+      done: done,
     });
   }
   getAllUsers() {
@@ -68,7 +69,7 @@ export class BoardService {
         title: task.title,
         description: task.description,
         order: task.order,
-        done: false,
+        done: task.done,
       }
     );
   }

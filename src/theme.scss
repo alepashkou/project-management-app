@@ -111,6 +111,9 @@ $angular-default-theme: mat.define-light-theme(
   & .cloud {
     color: white !important;
   }
+  & .task-done {
+    color: green !important;
+  }
   input {
     outline: none;
   }

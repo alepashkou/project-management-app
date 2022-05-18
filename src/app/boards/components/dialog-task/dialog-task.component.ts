@@ -42,7 +42,7 @@ export class DialogTaskComponent implements AfterViewChecked, OnInit {
       ]),
       description: new FormControl('', [Validators.required]),
       userId: new FormControl('', [Validators.required]),
-      done: new FormControl(''),
+      done: new FormControl(false),
     });
   }
   ngOnInit(): void {

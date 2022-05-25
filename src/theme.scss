@@ -1,0 +1,141 @@
+@use '@angular/material' as mat;
+
+@import "@angular/material/theming";
+
+@include mat.core();
+
+$angular-primary: mat.define-palette(mat.$gray-palette, 100, 400, 900);
+$angular-accent: mat.define-palette(mat.$blue-palette);
+
+$angular-primary-dark: mat.define-palette(mat.$indigo-palette, 100, 400, 900);
+$angular-accent-dark: mat.define-palette(mat.$pink-palette);
+
+
+$angular-warn: mat.define-palette(mat.$red-palette);
+
+$angular-default-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $angular-primary,
+      accent: $angular-accent,
+      warn: $angular-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($angular-default-theme);
+
+ $angular-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $angular-primary-dark,
+      accent: $angular-accent-dark,
+      warn: $angular-warn,
+    ),
+  )
+);
+
+.light {
+  & .mat-card {
+    background: #f2f8f9 !important;
+  }
+  & .mat-form-field-label {
+    color: #000000 !important;
+  }
+  & .task-list::-webkit-scrollbar-thumb,
+    .box-list::-webkit-scrollbar-thumb {
+      background-color: #2196f3;
+  }
+
+  input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 50px #f2f8f9 !important;
+    -webkit-text-fill-color: #000000 !important;
+  }
+  input {
+    caret-color: #000000 !important;
+  }
+
+  @include mat.all-component-colors($angular-default-theme);
+}
+
+.dark-mode {
+  & .mat-card {
+    background: #424242 !important;
+  }
+  & .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: #f44336 !important;
+  }
+  & .mat-button-disabled {
+    background: #c5cae9 !important;
+  }
+  & button[disabled] {
+    color: #000000 !important;
+  }
+  & mat-card-title {
+    color: #fff;
+  }
+  & .sticky {
+    filter: hue-rotate(340deg) drop-shadow(2px 8px 6px #d91e97) !important;
+  }
+  & .mat-app-background {
+    color: rgba(0, 0, 0, 0.87) !important;
+  }
+  & .swiper-button-next {
+    color: #e91e63 !important;
+  }
+  & .swiper-button-prev {
+    color: #e91e63 !important;
+  }
+  & .swiper-pagination-bullet-active {
+    background: #e91e63 !important;
+  }
+  & .search-block > input::placeholder {
+    color: #000000 !important;
+  }
+  .board-card:hover {
+    box-shadow: 0px 4px 8px rgb(255 255 255 / 45%) !important;
+  }
+  & .colum-container .mat-card-title, .task-container .mat-card-title {
+    color: #000000 !important;
+  }
+  & .colum-container .mat-card-subtitle, .task-container .mat-card-subtitle {
+    color: rgba(0, 0, 0, 0.54);
+  }
+  & .mat-form-field-underline {
+    background-color: #000000 !important;
+  }
+  & .colum-list {
+    background: #a0a0a0 !important;
+  }
+  & .colum-list mat-icon {
+    color: rgba(0, 0, 0, 0.87);
+  }
+  & .error-text {
+    color: #000000;
+  } 
+  & .cloud {
+    color: white !important;
+  }
+  & .task-done {
+    color: green !important;
+  }
+  & .task-list::-webkit-scrollbar-thumb,
+    .box-list::-webkit-scrollbar-thumb {
+    background-color: #e91e63;
+}
+  input {
+    outline: none;
+  }
+  input:-webkit-autofill {
+    -webkit-box-shadow: inset 0 0 0 500px #424242 !important;
+    -webkit-text-fill-color: #fff !important;
+  }
+
+  @include mat.all-component-colors($angular-dark-theme);
+}
+
+@media (max-width: 600px) { 
+  .dark-mode .error-text {
+    color: #ffffff;
+  }
+}

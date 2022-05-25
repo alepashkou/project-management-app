@@ -1,0 +1,62 @@
+<div class="signup-form-container">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="signUpForm" (ngSubmit)="signup()">
+        <h2>{{'signup.signup' | translate }}</h2>
+        <mat-form-field>
+          <input autocomplete matInput placeholder="{{'signup.userNamePlaceholder' | translate }}" name="username"
+            formControlName="name">
+          <mat-error *ngIf="signUpForm.get('name')?.hasError('required')">
+            {{'signup.userNameRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="py-3">
+          <input autocomplete matInput placeholder="{{'signup.loginPlaceholder' | translate }}" name="login"
+            formControlName="login">
+          <mat-error *ngIf="signUpForm.get('login')?.hasError('minlength')">
+            {{'signup.loginMinLengthError' | translate }}
+          </mat-error>
+          <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">
+            {{'signup.loginRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="py-1">
+          <input autocomplete matInput type="password" placeholder="{{'signup.passwordPlaceholder' | translate }}"
+            name="password" formControlName="password">
+          <mat-error *ngIf="!signUpForm.valid">
+            {{'signup.passwordContains' | translate }}
+            <mat-error>
+              <ng-container *ngIf="signUpForm.get('password')?.hasError('capitalLetter')">
+                {{'signup.passwordContainsCapitalLetters' | translate }}
+              </ng-container>
+              <ng-container *ngIf="signUpForm.get('password')?.hasError('smallLetter')">
+                {{'signup.passwordContainsSmallLetters' | translate }}
+              </ng-container>
+              <ng-container *ngIf="signUpForm.get('password')?.hasError('number')">
+                {{'signup.passwordContainsNumbers' | translate }}
+              </ng-container>
+              <ng-container *ngIf="signUpForm.get('password')?.hasError('symbol')">
+                {{'signup.passwordContainsSymbol' | translate }}
+              </ng-container>
+              <ng-container *ngIf="signUpForm.get('password')?.hasError('minlength')">
+                {{'signup.passwordLength' | translate }}
+              </ng-container>
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="py-2">
+          <input matInput type="password" placeholder="{{'signup.passwordRepeatPlaceholder' | translate}}"
+            name="passwordRepeat" formControlName="passwordRepeat" autocomplete>
+          <mat-error *ngIf="signUpForm.get('passwordRepeat')?.hasError('notMatch')">
+            {{'signup.passwordRepeatMatch' | translate }}
+          </mat-error>
+          <mat-error *ngIf="signUpForm.get('passwordRepeat')?.hasError('required')">
+            {{'signup.passwordRepeatRequired' | translate }}
+          </mat-error>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!signUpForm.valid">{{'signup.create' |
+          translate }}</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

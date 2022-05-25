@@ -1,0 +1,17 @@
+<div class="task-container" (click)="openDialog('Edit')">
+  <div class="task-title">
+    <mat-card-title>
+      {{ task.title
+      }}<mat-icon *ngIf="task.done" class="task-done"
+        >done</mat-icon
+      ></mat-card-title
+    >
+    <mat-card-subtitle>{{ currentUser?.name }}</mat-card-subtitle>
+    <mat-card-content>{{ task.description }}</mat-card-content>
+  </div>
+  <div class="task-delete">
+    <mat-icon (click)="openDialog('Delete'); $event.stopPropagation()"
+      >delete</mat-icon
+    >
+  </div>
+</div>

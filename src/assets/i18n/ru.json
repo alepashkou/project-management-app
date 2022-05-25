@@ -1,0 +1,117 @@
+{
+  "header": {
+    "board": "Добавить доску",
+    "signIn": "Войти",
+    "signUp": "Зарегистрироваться",
+    "logout": "Выход",
+    "search": "Поиск задачи",
+    "signedAs": "Пользователь : "
+  },
+  "login": {
+    "login": "Войти",
+    "loginPlaceholder": "Логин",
+    "passwordPlaceholder": "Пароль",
+    "loginRequired": "Пожалуйста, введите ваш логин",
+    "passwordRequired": "Пожалуйста, введите ваш пароль",
+    "accountQuestion": "Пока не зарегистрированы?"
+  },
+  "signup": {
+    "signup": "Регистрация",
+    "userNamePlaceholder": "Имя",
+    "userNameRequired": "Пожалуйста, введите ваше имя",
+    "loginPlaceholder": "Логин",
+    "loginMinLengthError": " Ваш логин должен быть не менее чем 4 символа",
+    "loginRequired": "Пожалуйста, введите ваш логин",
+    "passwordPlaceholder": "Пароль",
+    "passwordContains": "Пароль должен включать:",
+    "passwordContainsSmallLetters": "- строчные буквы",
+    "passwordContainsCapitalLetters": "- заглавные буквы",
+    "passwordContainsNumbers": "- числа",
+    "passwordContainsSymbol": "- специальные символы",
+    "passwordLength": "- минимум 8 символов",
+    "create": "Зарегистрировать",
+    "passwordRepeatPlaceholder": "Повторите пароль",
+    "passwordRepeatRequired": "Пожалуйста, повторите пароль",
+    "passwordRepeatMatch": "Пароли не совпадают"
+  },
+  "board": {
+    "desc": "Описание",
+    "addBoard": "Добавить доску",
+    "board": "Доска",
+    "boards": "Доски",
+    "addColumn": "Добавить колонку",
+    "column": "Колонка",
+    "goToBoard": "К доскам",
+    "goToMain": "На главную",
+    "excel": "Экспорт Excel"
+  },
+  "column": {
+    "columnName": "Имя колонки",
+    "addTask": "Создать задачу"
+  },
+  "task": {
+    "taskName": "Имя задачи",
+    "taskDesc": "Описание",
+    "user": "Пользователь"
+  },
+  "boardDialog": {
+    "boardName": "Название доски",
+    "minLengthError": "Слишком коротко (минимум 3)",
+    "maxLengthError": "Слишком длинно (максимум 15)",
+    "maxLengthError30": "Слишком длинно (максимум 30)",
+    "sureToDelete": "Вы уверены, что хотите удалить эту доску?",
+    "cancel": "Отмена",
+    "done": "Выполнено"
+  },
+  "404": {
+    "notFound": "Страница не найдена",
+    "back": "На главную"
+  },
+  "welcome": {
+    "title": "Boardy",
+    "discription": "Приложение, которое поможет командам эффективно решать рабочие задачи. Оно поможет организовать работу так, чтобы все знали, чем нужно заниматься. Отслеживайте прогресс выполнения задач, будьте в курсе происходящего. Правильно планируйте сроки и объем работы.",
+    "goals": "Достигайте ваши цели!",
+    "registration": "Начать",
+    "course": "О курсе",
+    "courseInfo": "Этот учебный проект разработан в рамках бесплатного онлайн курса «Разработка на Angular» от сообщества The Rolling Scopes. Курс предназначен для студентов RS School набора 2021Q3, которые прошли RS School stage #2, а также для новых студентов, которые имеют знания и практический опыт использования следующих технологий и инструментов: JavaScript, TypeScript, Git, GitHub, NPM, Webpack, CSS3 / HTML5, Chrome DevTools, Figma, понимание концепции REST API.",
+    "opportunities": "Возможности приложения",
+    "boards": "Создавать доски",
+    "tasks": "Создавать задачи",
+    "transfer": "Перемещать задачи",
+    "assign": "Назначать исполнителей",
+    "done": "Отмечать выполненные",
+    "search": "Поиск по задачам доскам или исполнителям",
+    "about": "О команде",
+    "alepashkou": "Доработал и установил бэкенд. Разработал доску и страницу с досками.",
+    "julialepner": "Реализовала авторизацию и регистрацию пользователя, страницу профиля, поиск задачи.",
+    "siarheiAsmalouski": "Реализовал главную страницу, темную тему, перевод на два языка.",
+    "download": "Загрузки",
+    "clients": "Доступен клиент на Компьютере и мобильном."
+  },
+  "profile": {
+    "edit": "Редактировать профиль",
+    "name": "Имя",
+    "login": "Логин",
+    "loginSize": "Ваш логин должен быть не менее 4 символов",
+    "enterName": "Введите ваше имя",
+    "enetrLogin": "Введите логин",
+    "password": "Пароль",
+    "repeatPassword": "Повторите пароль",
+    "confirm": "Подтвердить пароль",
+    "save": "Сохранить",
+    "delete": "Удалить аккаунт",
+    "passwordContains": "Пароль должен включать:",
+    "passwordContainsSmallLetters": "- строчные буквы",
+    "passwordContainsCapitalLetters": "- заглавные буквы",
+    "passwordContainsNumbers": "- числа",
+    "passwordContainsSymbol": "- специальные символы",
+    "passwordLength": "- минимум 8 символов",
+    "PasswordsDoNotMatch": "Пароли не совпадают",
+    "repeatPasswordRequired": "Пожалуйста, повторите пароль"
+  },
+  "Create": "Создать",
+  "Cancel": "Отмена",
+  "Ok": "Приянть",
+  "Delete": "Удалить",
+  "Edit": "Изменить"
+}

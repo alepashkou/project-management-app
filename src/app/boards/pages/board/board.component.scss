@@ -1,0 +1,181 @@
+.control-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+}
+.title {
+  font-size: 20px;
+  margin: 10px;
+}
+mat-form-field {
+  width: 300px;
+}
+.colum-list {
+  max-width: 100%;
+  border: solid 1px #ccc;
+  min-height: 60px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.colum-box {
+  padding: 20px 10px;
+  border-right: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background: white;
+  font-size: 14px;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.colum-box:last-child {
+  border: none;
+}
+
+.colum-list.cdk-drop-list-dragging .colum-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.task-list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  display: block;
+  height: 400px;
+  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.task-list::-webkit-scrollbar,
+.box-list::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.task-list::-webkit-scrollbar-track,
+.box-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+.task-list::-webkit-scrollbar-thumb,
+.box-list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.task-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.task-list.cdk-drop-list-dragging .task-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.box-list {
+  display: flex;
+  overflow: scroll;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.task-btn {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+app-board-task {
+  border-left-width: 3px;
+  &:hover {
+    background-color: rgba(204, 204, 204, 0.761);
+  }
+}
+.drag-handle-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 15px;
+}
+.drag-handle {
+  transition: all 0.3s;
+  opacity: 0.8;
+  cursor: move;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 670px) {
+  .control-container {
+    flex-wrap: wrap;
+  }
+
+  button {
+    width: 45%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .task-box {
+    padding: 10px;
+  }
+
+  .task-list {
+    height: 300px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  mat-card-title {
+    font-size: 18px;
+  }
+}

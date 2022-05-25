@@ -1,0 +1,37 @@
+<swiper 
+  [slidesPerView]="1" 
+  [spaceBetween]="50" 
+  [navigation]="true" 
+  [loop]="true"
+  [pagination]="{ clickable: true }"
+  [scrollbar]="{ draggable: true }" 
+  [autoplay]="{ delay: 3000, disableOnInteraction: false }"
+>
+  <ng-template swiperSlide>
+    <div class="slide">
+      <h3 class="title">Alexander Pashkou</h3>
+      <div class="slide-img">
+        <img src="assets/slider/alepashkou.jpg" width="300px" alt="alePashkou">
+      </div>
+      <p class="info">{{"welcome.alepashkou" | translate}}</p>
+    </div>
+  </ng-template>
+  <ng-template swiperSlide>
+    <div class="slide">
+      <h3 class="title">Julia Lepner</h3>
+      <div class="slide-img">
+        <img src="assets/slider/jlepner.png" width="300px" alt="juliaLepner">
+      </div>
+      <p class="info">{{"welcome.julialepner" | translate}}</p>
+    </div>
+  </ng-template>
+  <ng-template swiperSlide>
+    <div class="slide">
+      <h3 class="title">Siarhei Asmalouski</h3>
+      <div class="slide-img">
+        <img src="assets/slider/siarheiAsmalouski.jpg" width="300px" alt="siarheiAsmalouski">
+      </div>
+      <p class="info">{{"welcome.siarheiAsmalouski" | translate}} </p>
+    </div>
+  </ng-template>
+</swiper>

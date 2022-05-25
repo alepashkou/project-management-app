@@ -1,0 +1,27 @@
+<div class="colum-container">
+  <div class="colum-title">
+    <mat-card-title *ngIf="!editTitle">{{ colum.title }}
+      <mat-icon class="colum-edit-icon" (click)="editTitle = true">edit</mat-icon>
+    </mat-card-title>
+    <div *ngIf="editTitle" class="colum-edit">
+      <button mat-icon-button>
+        <mat-icon (click)="changeTitle()">done all icon</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon (click)="editTitle = false">cancel</mat-icon>
+      </button>
+      <mat-form-field class="dialog-field" appearance="outline">
+        <mat-label>{{ "column.columnName" | translate }}</mat-label>
+        <input autocomplete matInput required [formControl]="changeNameInput" />
+      </mat-form-field>
+    </div>
+    <mat-card-subtitle>{{ "board.column" | translate }}</mat-card-subtitle>
+  </div>
+  <div class="task-delete">
+    <mat-icon (click)="openDialog('Delete'); $event.stopPropagation()">delete</mat-icon>
+  </div>
+</div>
+<ng-content></ng-content>
+<button mat-raised-button color="accent" class="task-btn" (click)="openDialog('Create')">
+  {{ "column.addTask" | translate }} <mat-icon>note_add</mat-icon>
+</button>

@@ -1,0 +1,27 @@
+.slide {
+  text-align: center;
+
+  &-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+}
+
+.info {
+  padding: 0px 100px;
+  font-size: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+@media (max-width: 540px) {
+  .info {
+    padding: 0;
+    font-size: 14px;
+  }
+}

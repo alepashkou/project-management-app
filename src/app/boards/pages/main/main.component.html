@@ -1,0 +1,8 @@
+<div class="boards-container">
+    <app-board-card *ngFor="let item of allBoards" [board]="item" (deleteDialog)="openDialog('Delete', $event)" (editDialog)="openDialog('Edit', $event)"></app-board-card>
+    <mat-card class="board-plus" (click)="openDialog('Create')">
+        <div class="board-plus-area">
+            <p>{{'board.addBoard' | translate }}</p>
+        </div>
+    </mat-card>
+</div>

@@ -1,0 +1,31 @@
+.boards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.board-plus {
+  display: block;
+  top: 0px;
+  position: relative;
+  width: 264px;
+  background-color: #f2f8f9;
+  margin: 12px;
+  text-decoration: none;
+  z-index: 0;
+  overflow: hidden;
+  &:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -2px;
+    background-color: white;
+    cursor: pointer;
+  }
+}
+.board-plus-area {
+  border: 2px dashed #bbb;
+  border-radius: 5px;
+  padding: 23px;
+  text-align: center;
+  font: 20pt bold arial;
+  color: #bbb;
+}

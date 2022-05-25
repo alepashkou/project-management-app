@@ -1,0 +1,40 @@
+mat-card {
+  max-width: 400px;
+  width: 400px;
+  margin: auto;
+  text-align: center;
+}
+
+mat-form-field {
+  display: block;
+}
+
+.profile-form-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  height: calc(100vh - 200px);
+}
+
+@media (max-width: 540px) {
+  mat-card {
+    width: 300px;
+  }
+
+  ::ng-deep .mat-form-field-infix {
+    padding: 0.5em 0 0.5em 0 !important;
+  }
+
+  .text-left {
+    font-size: 14px;
+  }
+
+  .mat-button-wrapper {
+    font-size: 14px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+}
